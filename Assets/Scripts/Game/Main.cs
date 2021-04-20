@@ -14,7 +14,7 @@ namespace Game {
             _moduleLs.Add(SceneModule.Instance);
             _moduleLs.Add(ResourceModule.Instance);
             // Functional modules
-
+            _moduleLs.Add(ArchiveModule.Instance);
             // Module initialization
             foreach (var module in _moduleLs) {
                 module.Init();
