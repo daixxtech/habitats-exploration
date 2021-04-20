@@ -12,6 +12,7 @@ namespace Game {
             // General modules
             _moduleLs.Add(UIModule.Instance);
             _moduleLs.Add(SceneModule.Instance);
+            _moduleLs.Add(ResourceModule.Instance);
             // Functional modules
 
             // Module initialization
