@@ -22,7 +22,17 @@ namespace Game.Modules {
 
         public void Update() { }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) { }
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+            UIModule.Instance.HideUIAll();
+            switch (scene.name) {
+            case "Start":
+                UIModule.Instance.ShowUI(UIDef.START);
+                break;
+            case "Level_01":
+                UIModule.Instance.ShowUI(UIDef.HUD);
+                break;
+            }
+        }
 
         private void OnSceneUnloaded(Scene scene) { }
 
