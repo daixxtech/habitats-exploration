@@ -1,4 +1,5 @@
-﻿using Game.Modules.Base;
+﻿using Game.Modules;
+using Game.Modules.Base;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,13 +10,16 @@ namespace Game {
         private void Awake() {
             _moduleLs = new List<IModule>();
             // General modules
-
+            _moduleLs.Add(UIModule.Instance);
+            _moduleLs.Add(SceneModule.Instance);
             // Functional modules
 
             // Module initialization
             foreach (var module in _moduleLs) {
                 module.Init();
             }
+            // Go to Start scene
+            SceneModule.Instance.LoadScene("Start");
         }
 
         private void Update() {
