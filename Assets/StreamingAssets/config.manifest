@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3967920048
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8283b50247c87f19aac2c1a09092a845
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Res/Config/ConfLoadingTips.json
+- Assets/Res/Config/ConfAnimal.json
+Dependencies: []

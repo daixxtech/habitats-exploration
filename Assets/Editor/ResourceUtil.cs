@@ -26,6 +26,7 @@ namespace Editor {
                 string[] bundleDependencies = manifest.GetAllDependencies(bundleName);
                 bundleInfos[i] = new BundleInfo(bundleName, bundleAssets, bundleDependencies);
                 bundle.Unload(true);
+                Debug.Log($"[{nameof(ResourceUtil)}] BuildAssetBundle: Build {bundleName}");
             }
             string infoPath = Path.Combine(Application.streamingAssetsPath, "BundleInfos.json");
             File.WriteAllText(infoPath, JsonConvert.SerializeObject(bundleInfos));
