@@ -1,4 +1,5 @@
-﻿using Game.Utils;
+﻿using Game.Config;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Views.Scene {
@@ -95,7 +96,7 @@ namespace Game.Views.Scene {
             Vector3 position = transform.position;
             Vector3 pointTop = position + new Vector3(0, 0.15F, 0);
             Vector3 pointBtm = position + new Vector3(0, 1.33F, 0);
-            int colliderCount = Physics.OverlapCapsuleNonAlloc(pointTop, pointBtm, 0.17F, Colliders, LayerMask.GetMask("Ground"));
+            int colliderCount = Physics.OverlapCapsuleNonAlloc(pointTop, pointBtm, 0.17F, Colliders, GameConfig.GroundLayer);
             _isGrounded = colliderCount > 0;
         }
 

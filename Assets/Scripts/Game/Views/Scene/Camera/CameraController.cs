@@ -1,4 +1,5 @@
-﻿using Game.Utils;
+﻿using Game.Config;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Views.Scene {
@@ -14,7 +15,6 @@ namespace Game.Views.Scene {
 
         [Header("Camera Position")]
         [SerializeField] private float _scrollSpeed;
-        [SerializeField] private float _defaultDistance;
         [SerializeField] private float _distanceLowerLimit;
         [SerializeField] private float _distanceUpperLimit;
         [SerializeField] [InspectorReadOnly] private float _distance;
@@ -27,7 +27,7 @@ namespace Game.Views.Scene {
 
         private void Awake() {
             _playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-            _distance = _defaultDistance;
+            _distance = GameConfig.CameraTargetDefaultDistance;
         }
 
         private void Start() {
@@ -46,7 +46,7 @@ namespace Game.Views.Scene {
             // 计算相机与角色的实际距离（地形碰撞检测）
             Vector3 playerPos = _playerTrans.position + _playerPosOffset;
             Ray cameraRay = new Ray(playerPos, Vector3.Normalize(transform.position - playerPos));
-            _actualDistance = Physics.Raycast(cameraRay, out var hitInfo, _distance, LayerMask.GetMask("Ground")) ? hitInfo.distance : _distance;
+            _actualDistance = Physics.Raycast(cameraRay, out var hitInfo, _distance, GameConfig.GroundLayer) ? hitInfo.distance : _distance;
             // 计算相机与角色的位置偏移
             float newRadius = _actualDistance * Mathf.Cos(_rotateRadX);
             _offsetPos.x = newRadius * Mathf.Sin(_rotateRadY);
