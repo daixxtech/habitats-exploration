@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3967920048
+CRC: 1750642664
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8283b50247c87f19aac2c1a09092a845
+    Hash: 7f4607b15f036b5cc82ffba80ae4ac99
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -14,4 +14,5 @@ ClassTypes:
 Assets:
 - Assets/Res/Config/ConfLoadingTips.json
 - Assets/Res/Config/ConfAnimal.json
+- Assets/Res/Config/ConfHabitat.json
 Dependencies: []
