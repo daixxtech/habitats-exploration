@@ -43,10 +43,18 @@ namespace Game.Views.UI {
         private void OnEnable() {
             ConfAnimal[] confArr = ConfAnimal.GetArray();
             int length = archiveCtnrElems.Length;
+            int defaultCheckedIndex = -1;
             for (int i = 0; i < length; i++) {
                 archiveCtnrElems[i].SetInfo(confArr[i]);
+                if (ArchiveModule.Instance.GetArchiveState(confArr[i].id) && defaultCheckedIndex == -1) {
+                    defaultCheckedIndex = i;
+                }
             }
-            ShowDetails(confArr[0]);
+            if (defaultCheckedIndex == -1) {
+                defaultCheckedIndex = 0;
+            }
+            archiveCtnrElems[defaultCheckedIndex].GetComponent<Toggle>().isOn = true;
+            ShowDetails(confArr[defaultCheckedIndex]);
         }
 
         private void ShowDetails(ConfAnimal conf) {
