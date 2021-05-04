@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using System;
+﻿using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ namespace Game.Utils {
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class InspectorReadOnlyAttribute : PropertyAttribute { }
 
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(InspectorReadOnlyAttribute))]
     public class InspectorReadOnlyDrawer : PropertyDrawer {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
@@ -19,5 +19,5 @@ namespace Game.Utils {
             GUI.enabled = true; // 恢复状态
         }
     }
-}
 #endif
+}
