@@ -10,7 +10,7 @@ namespace Game.Views.UI {
             guideCpnt = transform.Find("Root/Guide").gameObject;
 
             Button startBtn = transform.Find("Root/Options/StartBtn").GetComponent<Button>();
-            startBtn.onClick.AddListener(() => SceneModule.Instance.LoadSceneAsync("Level_01"));
+            startBtn.onClick.AddListener(() => SceneModule.Instance.LoadSceneAsync("Habitat_Panda"));
             Button guideBtn = transform.Find("Root/Options/GuideBtn").GetComponent<Button>();
             guideBtn.onClick.AddListener(() => { guideCpnt.SetActive(true); });
             Button guideCloseBtn = transform.Find("Root/Guide/Root/Header/CloseBtn").GetComponent<Button>();

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 3e352bc9950b2a548b55dfa600c26ad2
   - enabled: 1
-    path: Assets/Scenes/Level_01.unity
+    path: Assets/Scenes/Habitat_Panda.unity
     guid: efdf979b4756b8c4590422db740666f7
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5ac342d61efdfff49bca28ff8dd91e7d,

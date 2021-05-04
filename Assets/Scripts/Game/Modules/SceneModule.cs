@@ -28,7 +28,7 @@ namespace Game.Modules {
             case "Start":
                 UIModule.Instance.ShowUI(UIDef.START);
                 break;
-            case "Level_01":
+            case "Habitat_Panda":
                 UIModule.Instance.ShowUI(UIDef.HUD);
                 break;
             }
