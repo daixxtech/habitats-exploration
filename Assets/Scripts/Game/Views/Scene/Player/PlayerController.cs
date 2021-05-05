@@ -1,4 +1,5 @@
-﻿using Game.Utils;
+﻿using Game.Config;
+using Game.Utils;
 using UnityEngine;
 
 namespace Game.Views.Scene {
@@ -14,6 +15,8 @@ namespace Game.Views.Scene {
         [SerializeField] [InspectorReadOnly] private Animator _animator;
         [SerializeField] [InspectorReadOnly] private Transform _cameraTrans;
 
+        private ConfClue _confClue;
+
         private void Awake() {
             _controller = GetComponent<CharacterController3D>();
             _animator = GetComponent<Animator>();
@@ -27,6 +30,9 @@ namespace Game.Views.Scene {
             if (Input.GetButtonDown("Jump")) {
                 _isJumpPressed = true;
             }
+            if (Input.GetKeyDown(KeyCode.F) && _confClue != null) {
+                Debug.Log($"线索名称：{_confClue.name}");
+            }
         }
 
         private void FixedUpdate() {
@@ -36,6 +42,20 @@ namespace Game.Views.Scene {
             UpdateControllerState();
             // 重置跳跃输入
             _isJumpPressed = false;
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            if (other.CompareTag("Clue")) {
+                Facade.Player.TriggeredClue?.Invoke(other, true);
+                _confClue = other.GetComponent<ClueController>().Conf;
+            }
+        }
+
+        private void OnTriggerExit(Collider other) {
+            if (other.CompareTag("Clue")) {
+                Facade.Player.TriggeredClue?.Invoke(other, false);
+                _confClue = null;
+            }
         }
 
         /// <summary> 更新动画控制器状态 </summary>
