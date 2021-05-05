@@ -5,9 +5,10 @@ using System.Collections.Generic;
 namespace Game.Modules {
     public class ArchiveModule : IModule {
         private static ArchiveModule _Instance;
+        public static ArchiveModule Instance => _Instance ?? (_Instance = new ArchiveModule());
+
         private Dictionary<int, bool> _archive;
 
-        public static ArchiveModule Instance => _Instance ?? (_Instance = new ArchiveModule());
         public bool NeedUpdate { get; } = false;
 
         public void Init() {

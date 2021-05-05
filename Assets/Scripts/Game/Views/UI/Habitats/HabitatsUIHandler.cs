@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 namespace Game.Views.UI.Habitats {
     public class HabitatsUIHandler : MonoBehaviour {
-        public HabitatCtnrElem[] habitatCtnrElems;
-        public GameObject _notAvailableTipsCpnt;
+        private HabitatCtnrElem[] _habitatCtnrElems;
+        private GameObject _notAvailableTipsCpnt;
 
         private void Awake() {
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
@@ -17,11 +17,11 @@ namespace Game.Views.UI.Habitats {
             Transform archiveCtnr = transform.Find("Root/Habitats/Ctnr/Viewport/Content");
             GameObject template = archiveCtnr.Find("Template").gameObject;
             ConfHabitat[] confArr = ConfHabitat.GetArray();
-            habitatCtnrElems = new HabitatCtnrElem[confArr.Length];
+            _habitatCtnrElems = new HabitatCtnrElem[confArr.Length];
             Action<ConfHabitat> onClicked = LoadHabitatScene;
             for (int i = 0, count = confArr.Length; i < count; i++) {
-                habitatCtnrElems[i] = Instantiate(template, archiveCtnr).AddComponent<HabitatCtnrElem>();
-                habitatCtnrElems[i].clicked += onClicked;
+                _habitatCtnrElems[i] = Instantiate(template, archiveCtnr).AddComponent<HabitatCtnrElem>();
+                _habitatCtnrElems[i].Clicked += onClicked;
             }
             template.SetActive(false);
 
@@ -33,9 +33,9 @@ namespace Game.Views.UI.Habitats {
 
         private void OnEnable() {
             ConfHabitat[] confArr = ConfHabitat.GetArray();
-            int length = habitatCtnrElems.Length;
+            int length = _habitatCtnrElems.Length;
             for (int i = 0; i < length; i++) {
-                habitatCtnrElems[i].SetInfo(confArr[i]);
+                _habitatCtnrElems[i].SetInfo(confArr[i]);
             }
         }
 

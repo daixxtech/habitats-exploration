@@ -5,10 +5,11 @@ using UnityEngine;
 namespace Game.Modules {
     public class UIModule : IModule {
         private static UIModule _Instance;
+        public static UIModule Instance => _Instance ?? (_Instance = new UIModule());
+
         private Transform _uiRoot;
         private Dictionary<string, GameObject> _uiDict;
 
-        public static UIModule Instance => _Instance ?? (_Instance = new UIModule());
         public bool NeedUpdate { get; } = false;
         public object Param { get; private set; }
 

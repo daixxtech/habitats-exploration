@@ -19,11 +19,12 @@ namespace Game.Modules {
 
     public class ResourceModule : IModule {
         private static ResourceModule _Instance;
+        public static ResourceModule Instance => _Instance ?? (_Instance = new ResourceModule());
+
         private Dictionary<string, BundleInfo> _infoDict;
         private Dictionary<string, string> _resDict;
         private Dictionary<string, AssetBundle> _bundleDict;
 
-        public static ResourceModule Instance => _Instance ?? (_Instance = new ResourceModule());
         public bool NeedUpdate { get; } = false;
 
         public void Init() {

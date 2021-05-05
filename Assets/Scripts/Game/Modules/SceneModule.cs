@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 namespace Game.Modules {
     public class SceneModule : IModule {
         private static SceneModule _Instance;
-
         public static SceneModule Instance => _Instance ?? (_Instance = new SceneModule());
+
         public bool NeedUpdate { get; } = false;
 
         public void Init() {
