@@ -1,5 +1,7 @@
 ﻿using Game.Config;
+using Game.Modules;
 using Game.Utils;
+using Game.Views.UI;
 using UnityEngine;
 
 namespace Game.Views.Scene {
@@ -30,8 +32,9 @@ namespace Game.Views.Scene {
             if (Input.GetButtonDown("Jump")) {
                 _isJumpPressed = true;
             }
+            // 判断线索交互
             if (Input.GetKeyDown(KeyCode.F) && _confClue != null) {
-                Debug.Log($"线索名称：{_confClue.name}");
+                UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, _confClue);
             }
         }
 
