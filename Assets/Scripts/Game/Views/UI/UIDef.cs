@@ -8,5 +8,6 @@
         
         public const string HUD = "UI_HUD";
         public const string CLUE_TIPS = "UI_ClueTips";
+        public const string PAUSE = "UI_Pause";
     }
 }
