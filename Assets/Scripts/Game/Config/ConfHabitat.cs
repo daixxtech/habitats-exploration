@@ -13,16 +13,16 @@ namespace Game.Config {
         public readonly string name;
         /// <summary> 图标 </summary>
         public readonly string icon;
-        /// <summary> 场景名称 </summary>
-        public readonly string sceneName;
+        /// <summary> 场景 ID </summary>
+        public readonly int sceneID;
         /// <summary> 是否可用 </summary>
         public readonly bool isAvailable;
 
-        public ConfHabitat(int id, string name, string icon, string sceneName, bool isAvailable) {
+        public ConfHabitat(int id, string name, string icon, int sceneID, bool isAvailable) {
             this.id = id;
             this.name = name;
             this.icon = icon;
-            this.sceneName = sceneName;
+            this.sceneID = sceneID;
             this.isAvailable = isAvailable;
         }
 

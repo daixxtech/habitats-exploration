@@ -1,4 +1,5 @@
-﻿using Game.Modules.Base;
+﻿using Game.Config;
+using Game.Modules.Base;
 using Game.Views.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ namespace Game.Modules {
         public static SceneModule Instance => _Instance ?? (_Instance = new SceneModule());
 
         public bool NeedUpdate { get; } = false;
+        public ConfScene CurScene { get; private set; }
 
         public void Init() {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -36,12 +38,14 @@ namespace Game.Modules {
 
         private void OnSceneUnloaded(Scene scene) { }
 
-        public void LoadScene(string sceneName) {
-            SceneManager.LoadScene(sceneName);
+        public void LoadScene(int sceneID) {
+            CurScene = ConfScene.Get(sceneID);
+            SceneManager.LoadScene(CurScene.name);
         }
 
-        public void LoadSceneAsync(string sceneName) {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        public void LoadSceneAsync(int sceneID) {
+            CurScene = ConfScene.Get(sceneID);
+            AsyncOperation operation = SceneManager.LoadSceneAsync(CurScene.name);
             operation.allowSceneActivation = false;
             UIModule.Instance.ShowUI(UIDef.LOADING, operation);
         }

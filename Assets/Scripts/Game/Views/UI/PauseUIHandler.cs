@@ -1,4 +1,5 @@
-﻿using Game.Modules;
+﻿using Game.Config;
+using Game.Modules;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ namespace Game.Views.UI {
             Button backBtn = transform.Find("Root/Menu/BackBtn").GetComponent<Button>();
             backBtn.onClick.AddListener(() => {
                 UIModule.Instance.HideUI(UIDef.PAUSE);
-                SceneModule.Instance.LoadSceneAsync("Start");
+                SceneModule.Instance.LoadSceneAsync((int) ESceneDef.Start);
             });
         }
 

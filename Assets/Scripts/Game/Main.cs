@@ -1,5 +1,7 @@
-﻿using Game.Modules;
+﻿using Game.Config;
+using Game.Modules;
 using Game.Modules.Base;
+using Game.Views.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +22,7 @@ namespace Game {
                 module.Init();
             }
             // Go to Start scene
-            SceneModule.Instance.LoadScene("Start");
+            SceneModule.Instance.LoadScene((int) ESceneDef.Start);
         }
 
         private void Update() {
@@ -28,6 +30,9 @@ namespace Game {
                 if (module.NeedUpdate) {
                     module.Update();
                 }
+            }
+            if (Input.GetButtonDown("Cancel") && SceneModule.Instance.CurScene.canPause) {
+                UIModule.Instance.ShowUI(UIDef.PAUSE);
             }
         }
 

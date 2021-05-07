@@ -41,7 +41,7 @@ namespace Game.Views.UI.Habitats {
 
         private void LoadHabitatScene(ConfHabitat conf) {
             if (conf.isAvailable) {
-                SceneModule.Instance.LoadSceneAsync(conf.sceneName);
+                SceneModule.Instance.LoadSceneAsync(conf.sceneID);
             } else {
                 _notAvailableTipsCpnt.SetActive(true);
             }
