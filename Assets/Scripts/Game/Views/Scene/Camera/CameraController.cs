@@ -44,7 +44,7 @@ namespace Game.Views.Scene {
                 Cursor.lockState = CursorLockMode.None;
             }
             // 松开 Alt 锁定鼠标指针
-            if (Input.GetKeyUp(KeyCode.LeftAlt)) {
+            if (Time.timeScale != 0 && Input.GetKeyUp(KeyCode.LeftAlt)) {
                 Cursor.lockState = CursorLockMode.Locked;
             }
             // 鼠标指针为锁定状态，则相机跟随移动
