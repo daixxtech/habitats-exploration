@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Game.Modules {
     public class BundleInfo {
@@ -33,10 +34,13 @@ namespace Game.Modules {
             _bundleDict = new Dictionary<string, AssetBundle>();
 
             string infoPath = Path.Combine(Application.streamingAssetsPath, "BundleInfos.json");
-            if (!File.Exists(infoPath)) {
-                return;
-            }
-            BundleInfo[] bundleInfos = JsonConvert.DeserializeObject<BundleInfo[]>(File.ReadAllText(infoPath));
+            UnityWebRequest request = new UnityWebRequest(infoPath) {downloadHandler = new DownloadHandlerBuffer()};
+            UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+            while (!operation.isDone) { }
+
+            string content = request.downloadHandler.text;
+            BundleInfo[] bundleInfos = JsonConvert.DeserializeObject<BundleInfo[]>(content);
+            _resDict = new Dictionary<string, string>(3);
             for (int i = 0, count = bundleInfos.Length; i < count; i++) {
                 BundleInfo bundleInfo = bundleInfos[i];
                 _infoDict.Add(bundleInfo.Name, bundleInfo);
@@ -67,7 +71,12 @@ namespace Game.Modules {
         }
 
         private AssetBundle LoadBundle(string bundleName) {
-            var bundle = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, bundleName));
+            string path = Path.Combine(Application.streamingAssetsPath, bundleName);
+            UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(path);
+            UnityWebRequestAsyncOperation operation = request.SendWebRequest();
+            while (!operation.isDone) { }
+
+            AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
             if (bundle) {
                 BundleInfo bundleInfo = _infoDict[bundleName];
                 string[] dependencies = bundleInfo.Dependencies;

@@ -12,7 +12,7 @@ namespace Editor {
             if (!Directory.Exists(Application.streamingAssetsPath)) {
                 Directory.CreateDirectory(Application.streamingAssetsPath);
             }
-            var manifest = BuildPipeline.BuildAssetBundles(Application.streamingAssetsPath, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
+            var manifest = BuildPipeline.BuildAssetBundles(Application.streamingAssetsPath, BuildAssetBundleOptions.None, BuildTarget.Android);
             if (manifest == null) {
                 Debug.LogError($"[{nameof(ResourceUtil)}] BuildAssetBundle: No AssetBundle found");
                 return;

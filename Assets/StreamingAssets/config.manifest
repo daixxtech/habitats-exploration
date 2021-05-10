@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4157165012
+CRC: 453167926
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e1e9bf3839555f30d03a2be3d16bf501
+    Hash: c968c73c298d9ff443039e94cf031675
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -11,11 +11,12 @@ HashAppended: 0
 ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Config/ConfLoadingTips.json
-- Assets/Res/Config/ConfClue.json
-- Assets/Res/Config/ConfAnimal.json
-- Assets/Res/Config/ConfHabitat.json
-- Assets/Res/Config/ConfSceneDef.json
 - Assets/Res/Config/ConfScene.json
+- Assets/Res/Config/ConfAnimal.json
+- Assets/Res/Config/ConfClue.json
+- Assets/Res/Config/ConfSceneDef.json
+- Assets/Res/Config/ConfHabitat.json
 Dependencies: []
