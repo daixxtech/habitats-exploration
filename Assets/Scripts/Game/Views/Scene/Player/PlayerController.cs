@@ -25,13 +25,15 @@ namespace Game.Views.Scene {
             _cameraTrans = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
 
+        private void OnEnable() {
+            Facade.Input.OnJoystickDragged += OnJoystickDragged;
+        }
+
+        private void OnDisable() {
+            Facade.Input.OnJoystickDragged -= OnJoystickDragged;
+        }
+
         private void Update() {
-            // 读取垂直 & 水平输入，检测跳跃输入
-            _inputV = Input.GetAxis("Vertical");
-            _inputH = Input.GetAxis("Horizontal");
-            if (Input.GetButtonDown("Jump")) {
-                _isJumpPressed = true;
-            }
             // 判断线索交互
             if (Input.GetKeyDown(KeyCode.F) && _confClue != null) {
                 UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, _confClue);
@@ -59,6 +61,11 @@ namespace Game.Views.Scene {
                 Facade.Player.TriggeredClue?.Invoke(other, false);
                 _confClue = null;
             }
+        }
+
+        private void OnJoystickDragged(Vector2 direction) {
+            _inputV = direction.y;
+            _inputH = direction.x;
         }
 
         /// <summary> 更新动画控制器状态 </summary>

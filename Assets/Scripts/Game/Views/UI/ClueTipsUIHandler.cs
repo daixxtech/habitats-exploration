@@ -21,15 +21,10 @@ namespace Game.Views.UI {
         }
 
         private void OnEnable() {
-            Cursor.lockState = CursorLockMode.None;
             if (UIModule.Instance.Param is ConfClue confClue) {
                 _nameTxt.text = confClue.name;
                 _descriptionTxt.text = confClue.description;
             }
-        }
-
-        private void OnDisable() {
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

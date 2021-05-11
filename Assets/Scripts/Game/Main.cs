@@ -10,18 +10,20 @@ namespace Game {
         private List<IModule> _moduleLs;
 
         private void Awake() {
+            /* 加载模块 */
             _moduleLs = new List<IModule>();
-            // General modules
+            // 通用模块
             _moduleLs.Add(UIModule.Instance);
             _moduleLs.Add(SceneModule.Instance);
             _moduleLs.Add(ResourceModule.Instance);
-            // Functional modules
+            _moduleLs.Add(InputModule.Instance);
+            // 功能模块
             _moduleLs.Add(ArchiveModule.Instance);
-            // Module initialization
+            // 模块初始化
             foreach (var module in _moduleLs) {
                 module.Init();
             }
-            // Go to Start scene
+            /* 进入 Start 场景 */
             SceneModule.Instance.LoadScene((int) ESceneDef.Start);
         }
 
