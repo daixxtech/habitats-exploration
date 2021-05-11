@@ -1,5 +1,6 @@
 ﻿using Framework.Modules.UI;
 using Framework.Views.UI;
+using Game.Views.UI.HUD;
 using UnityEngine;
 
 namespace Game.Views.UI {
@@ -9,6 +10,8 @@ namespace Game.Views.UI {
 
         protected override void Awake() {
             base.Awake();
+
+            transform.Find("Root/Joystick").gameObject.AddComponent<JoystickElem>();
 
             _interactionCpnt = transform.Find("Root/Interaction").gameObject;
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Game.Views.UI.HUD {
-    public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler {
+    public class JoystickElem : MonoBehaviour, IDragHandler, IEndDragHandler {
         private Vector2 _origin;
         private RectTransform _centerTrans;
 
