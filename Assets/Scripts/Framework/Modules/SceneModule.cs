@@ -1,13 +1,12 @@
 ﻿using Game.Config;
-using Game.Modules.Base;
 using Game.Views.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Game.Modules {
+namespace Framework.Modules {
     public class SceneModule : IModule {
         private static SceneModule _Instance;
-        public static SceneModule Instance => _Instance ?? (_Instance = new SceneModule());
+        public static SceneModule Instance => _Instance ??= new SceneModule();
 
         public bool NeedUpdate { get; } = false;
         public ConfScene CurScene { get; private set; }

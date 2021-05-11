@@ -1,11 +1,12 @@
-﻿using Game.Config;
+﻿using Framework.Modules;
+using Game.Config;
 using Game.Modules;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Game.Views.UI {
+namespace Game.Views.UI.Archives {
     public class ArchiveCtnrElem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler {
         private Image _iconImg;
         private Text _nameTxt;

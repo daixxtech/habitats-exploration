@@ -1,5 +1,5 @@
-﻿using Game.Config;
-using Game.Modules.Base;
+﻿using Framework.Modules;
+using Game.Config;
 using System.Collections.Generic;
 
 namespace Game.Modules {

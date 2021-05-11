@@ -1,6 +1,6 @@
-﻿using Game.Config;
+﻿using Framework.Modules;
+using Game.Config;
 using Game.Modules;
-using Game.Modules.Base;
 using Game.Views.UI;
 using System.Collections.Generic;
 using UnityEngine;

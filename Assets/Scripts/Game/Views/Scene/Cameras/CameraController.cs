@@ -1,9 +1,8 @@
-﻿using Game.Config;
-using Game.Modules;
+﻿using Framework.Modules;
+using Game.Config;
 using Game.Utils;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Game.Views.Scene {
     public class CameraController : MonoBehaviour {

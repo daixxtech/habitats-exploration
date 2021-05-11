@@ -24,7 +24,6 @@ namespace Game.Views.Scene {
         [SerializeField] [InspectorReadOnly] private bool _isFalling; // 是否处于下落状态
 
         #region 对外接口
-
         /// <summary> 是否落地 </summary>
         public bool IsGrounded => _isGrounded;
         /// <summary> 是否处于下落状态 </summary>
@@ -63,7 +62,6 @@ namespace Game.Views.Scene {
                 _rig3D.velocity = new Vector3(_rig3D.velocity.x, _jumpForce, _rig3D.velocity.z);
             }
         }
-
         #endregion
 
         private void Awake() {

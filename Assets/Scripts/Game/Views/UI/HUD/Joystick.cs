@@ -2,7 +2,7 @@ using Game.Config;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Game.Views.UI {
+namespace Game.Views.UI.HUD {
     public class Joystick : MonoBehaviour, IDragHandler, IEndDragHandler {
         private Vector2 _origin;
         private RectTransform _centerTrans;
@@ -17,12 +17,12 @@ namespace Game.Views.UI {
             float radius = Mathf.Clamp(offset.magnitude, 0, GameConfig.JoystickDragRadius);
             Vector2 direction = offset.normalized;
             _centerTrans.anchoredPosition = direction * radius;
-            Facade.Input.OnJoystickDragged?.Invoke(direction * radius / GameConfig.JoystickDragRadius);
+            Framework.Facade.Input.OnJoystickDragged?.Invoke(direction * radius / GameConfig.JoystickDragRadius);
         }
 
         public void OnEndDrag(PointerEventData eventData) {
             _centerTrans.anchoredPosition = Vector2.zero;
-            Facade.Input.OnJoystickDragged?.Invoke(Vector2.zero);
+            Framework.Facade.Input.OnJoystickDragged?.Invoke(Vector2.zero);
         }
     }
 }

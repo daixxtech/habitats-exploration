@@ -1,7 +1,7 @@
-﻿using Game.Config;
-using Game.Modules;
-using Game.Modules.UI;
-using Game.Views.UI.Base;
+﻿using Framework.Modules;
+using Framework.Modules.UI;
+using Framework.Views.UI;
+using Game.Config;
 using UnityEngine.Events;
 using UnityEngine.UI;
 

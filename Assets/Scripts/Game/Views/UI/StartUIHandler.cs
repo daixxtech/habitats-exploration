@@ -1,6 +1,6 @@
-﻿using Game.Modules;
-using Game.Modules.UI;
-using Game.Views.UI.Base;
+﻿using Framework.Modules;
+using Framework.Modules.UI;
+using Framework.Views.UI;
 using UnityEngine;
 using UnityEngine.UI;
 

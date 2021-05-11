@@ -1,13 +1,14 @@
-﻿using Game.Config;
-using Game.Modules;
-using Game.Modules.UI;
-using Game.Views.UI.Base;
+﻿using Framework.Modules;
+using Framework.Modules.UI;
+using Framework.Views.UI;
+using Game.Config;
+using Game.Views.UI.Habitats;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Game.Views.UI.Habitats {
+namespace Game.Views.UI {
     [UIBind(UIDef.HABITATS)]
     public class HabitatsUIHandler : AUIHandler {
         private HabitatCtnrElem[] _habitatCtnrElems;

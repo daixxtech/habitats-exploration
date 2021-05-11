@@ -1,8 +1,8 @@
-﻿using Game.Config;
-using Game.Modules;
-using Game.Modules.UI;
+﻿using Framework.Modules;
+using Framework.Modules.UI;
+using Framework.Views.UI;
+using Game.Config;
 using Game.Utils;
-using Game.Views.UI.Base;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +22,7 @@ namespace Game.Views.UI {
 
         protected override void OnEnable() {
             base.OnEnable();
-            
+
             _tipsTxt.gameObject.SetActive(false);
             _progressBarImg.gameObject.SetActive(false);
             ConfLoadingTips[] tips = ConfLoadingTips.GetArray();

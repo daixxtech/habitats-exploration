@@ -1,15 +1,14 @@
-﻿using Game.Modules.Base;
-using Game.Modules.UI;
-using Game.Views.UI.Base;
+﻿using Framework.Modules.UI;
+using Framework.Views.UI;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace Game.Modules {
+namespace Framework.Modules {
     public class UIModule : IModule {
         private static UIModule _Instance;
-        public static UIModule Instance => _Instance ?? (_Instance = new UIModule());
+        public static UIModule Instance => _Instance ??= new UIModule();
 
         private Transform _root;
         private Dictionary<string, Type> _typeDict;

@@ -1,26 +1,14 @@
-﻿using Game.Modules.Base;
+﻿using Framework.Modules.Resource;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Game.Modules {
-    public class BundleInfo {
-        public string Name { get; }
-        public string[] Assets { get; }
-        public string[] Dependencies { get; }
-
-        public BundleInfo(string name, string[] assets, string[] dependencies) {
-            Name = name;
-            Assets = assets;
-            Dependencies = dependencies;
-        }
-    }
-
+namespace Framework.Modules {
     public class ResourceModule : IModule {
         private static ResourceModule _Instance;
-        public static ResourceModule Instance => _Instance ?? (_Instance = new ResourceModule());
+        public static ResourceModule Instance => _Instance ??= new ResourceModule();
 
         private Dictionary<string, BundleInfo> _infoDict;
         private Dictionary<string, string> _resDict;

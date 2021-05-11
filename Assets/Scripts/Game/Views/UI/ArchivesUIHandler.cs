@@ -1,14 +1,16 @@
-﻿using Game.Config;
+﻿using Framework.Modules;
+using Framework.Modules.UI;
+using Framework.Views.UI;
+using Game.Config;
 using Game.Modules;
-using Game.Modules.UI;
-using Game.Views.UI.Base;
+using Game.Views.UI.Archives;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.ARCHIVE)]
-    public class ArchiveUIHandler : AUIHandler {
+    public class ArchivesUIHandler : AUIHandler {
         private ArchiveCtnrElem[] _archiveCtnrElems;
         private GameObject _detailsCpnt, _lockedCpnt;
         private Text _nameTxt;

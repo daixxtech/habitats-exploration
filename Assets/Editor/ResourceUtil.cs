@@ -1,4 +1,5 @@
-﻿using Game.Modules;
+﻿using Framework.Modules.Resource;
+using Game.Modules;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;

@@ -1,5 +1,5 @@
-﻿using Game.Config;
-using Game.Modules;
+﻿using Framework.Modules;
+using Game.Config;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;

@@ -1,10 +1,10 @@
-﻿using Game.Modules.UI;
-using Game.Views.UI.Base;
+﻿using Framework.Modules.UI;
+using Framework.Views.UI;
 using UnityEngine;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.HUD)]
-    public class HUDUIHandle : AUIHandler {
+    public class HUDUIHandler : AUIHandler {
         private GameObject _interactionCpnt;
 
         protected override void Awake() {

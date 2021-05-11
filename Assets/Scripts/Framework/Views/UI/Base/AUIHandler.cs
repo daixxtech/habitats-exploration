@@ -1,7 +1,7 @@
-using Game.Modules;
+using Framework.Modules;
 using UnityEngine;
 
-namespace Game.Views.UI.Base {
+namespace Framework.Views.UI {
     public abstract class AUIHandler : MonoBehaviour {
         private const int DESTROY_TIME_LIMIT = 10;
 

@@ -1,4 +1,4 @@
-﻿namespace Game.Modules.Base {
+﻿namespace Framework.Modules {
     public interface IModule {
         bool NeedUpdate { get; }
 
