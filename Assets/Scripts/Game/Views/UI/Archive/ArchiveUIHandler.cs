@@ -1,11 +1,14 @@
 ﻿using Game.Config;
 using Game.Modules;
+using Game.Modules.UI;
+using Game.Views.UI.Base;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
-    public class ArchiveUIHandler : MonoBehaviour {
+    [UIBind(UIDef.ARCHIVE)]
+    public class ArchiveUIHandler : AUIHandler {
         private ArchiveCtnrElem[] _archiveCtnrElems;
         private GameObject _detailsCpnt, _lockedCpnt;
         private Text _nameTxt;
@@ -14,7 +17,9 @@ namespace Game.Views.UI {
         private Text _latinNameTxt;
         private Text _descriptionTxt;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
+
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
 
@@ -38,7 +43,9 @@ namespace Game.Views.UI {
             template.SetActive(false);
         }
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
+
             ConfAnimal[] confArr = ConfAnimal.GetArray();
             int length = _archiveCtnrElems.Length;
             int defaultCheckedIndex = -1;

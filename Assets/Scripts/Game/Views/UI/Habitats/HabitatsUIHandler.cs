@@ -1,16 +1,21 @@
 ﻿using Game.Config;
 using Game.Modules;
+using Game.Modules.UI;
+using Game.Views.UI.Base;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Game.Views.UI.Habitats {
-    public class HabitatsUIHandler : MonoBehaviour {
+    [UIBind(UIDef.HABITATS)]
+    public class HabitatsUIHandler : AUIHandler {
         private HabitatCtnrElem[] _habitatCtnrElems;
         private GameObject _notAvailableTipsCpnt;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
+
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
 
@@ -31,7 +36,9 @@ namespace Game.Views.UI.Habitats {
             _notAvailableTipsCpnt.transform.Find("Content/ConfirmBtn").GetComponent<Button>().onClick.AddListener(closeTips);
         }
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
+
             ConfHabitat[] confArr = ConfHabitat.GetArray();
             int length = _habitatCtnrElems.Length;
             for (int i = 0; i < length; i++) {

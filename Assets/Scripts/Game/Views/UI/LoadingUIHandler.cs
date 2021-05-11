@@ -1,21 +1,28 @@
 ﻿using Game.Config;
 using Game.Modules;
+using Game.Modules.UI;
 using Game.Utils;
+using Game.Views.UI.Base;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
-    public class LoadingUIHandler : MonoBehaviour {
+    [UIBind(UIDef.LOADING)]
+    public class LoadingUIHandler : AUIHandler {
         private Text _tipsTxt;
         private Image _progressBarImg;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
+
             _tipsTxt = transform.Find("Tips/Text").GetComponent<Text>();
             _progressBarImg = transform.Find("ProgressBar/ValueImg").GetComponent<Image>();
         }
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
+            
             _tipsTxt.gameObject.SetActive(false);
             _progressBarImg.gameObject.SetActive(false);
             ConfLoadingTips[] tips = ConfLoadingTips.GetArray();

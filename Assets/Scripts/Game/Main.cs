@@ -25,6 +25,7 @@ namespace Game {
             }
             /* 进入 Start 场景 */
             SceneModule.Instance.LoadScene((int) ESceneDef.Start);
+            Application.targetFrameRate = 60;
         }
 
         private void Update() {

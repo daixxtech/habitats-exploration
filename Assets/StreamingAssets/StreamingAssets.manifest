@@ -1,7 +1,18 @@
 ManifestFileVersion: 0
-CRC: 1414223043
+CRC: 2502203375
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: config
+      Dependencies: {}
+    Info_1:
+      Name: prefabs.ui
+      Dependencies:
+        Dependency_0: textures.ui
+        Dependency_1: fonts
+    Info_2:
+      Name: textures.ui
+      Dependencies: {}
+    Info_3:
+      Name: fonts
       Dependencies: {}

@@ -1,11 +1,16 @@
 ﻿using Game.Config;
 using Game.Modules;
+using Game.Modules.UI;
+using Game.Views.UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
-    public class PauseUIHandler : MonoBehaviour {
-        private void Awake() {
+    [UIBind(UIDef.PAUSE)]
+    public class PauseUIHandler : AUIHandler {
+        protected override void Awake() {
+            base.Awake();
+
             Button continueBtn = transform.Find("Root/Menu/ContinueBtn").GetComponent<Button>();
             continueBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.PAUSE));
             Button backBtn = transform.Find("Root/Menu/BackBtn").GetComponent<Button>();
@@ -15,7 +20,9 @@ namespace Game.Views.UI {
             });
         }
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
+
             Time.timeScale = 0;
         }
 

@@ -1,12 +1,17 @@
 ﻿using Game.Modules;
+using Game.Modules.UI;
+using Game.Views.UI.Base;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
-    public class StartUIHandler : MonoBehaviour {
+    [UIBind(UIDef.START)]
+    public class StartUIHandler : AUIHandler {
         private GameObject _guideCpnt;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
+
             Button startBtn = transform.Find("Root/Options/StartBtn").GetComponent<Button>();
             startBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.HABITATS));
             Button guideBtn = transform.Find("Root/Options/GuideBtn").GetComponent<Button>();
@@ -17,7 +22,7 @@ namespace Game.Views.UI {
             archiveBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.ARCHIVE));
             Button quitBtn = transform.Find("Root/Options/QuitBtn").GetComponent<Button>();
             quitBtn.onClick.AddListener(Application.Quit);
-            
+
             _guideCpnt = transform.Find("Root/Guide").gameObject;
         }
     }

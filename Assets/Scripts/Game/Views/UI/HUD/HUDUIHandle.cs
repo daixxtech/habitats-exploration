@@ -1,14 +1,21 @@
-﻿using UnityEngine;
+﻿using Game.Modules.UI;
+using Game.Views.UI.Base;
+using UnityEngine;
 
 namespace Game.Views.UI {
-    public class HUDUIHandle : MonoBehaviour {
+    [UIBind(UIDef.HUD)]
+    public class HUDUIHandle : AUIHandler {
         private GameObject _interactionCpnt;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
+
             _interactionCpnt = transform.Find("Root/Interaction").gameObject;
         }
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
+
             Facade.Player.TriggeredClue += OnPlayerTriggeredClue;
         }
 

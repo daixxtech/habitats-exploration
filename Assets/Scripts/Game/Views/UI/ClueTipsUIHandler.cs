@@ -1,15 +1,19 @@
 ﻿using Game.Config;
 using Game.Modules;
-using UnityEngine;
+using Game.Modules.UI;
+using Game.Views.UI.Base;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
-    public class ClueTipsUIHandler : MonoBehaviour {
+    [UIBind(UIDef.CLUE_TIPS)]
+    public class ClueTipsUIHandler : AUIHandler {
         private Text _nameTxt;
         private Text _descriptionTxt;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
+
             UnityAction closeTips = () => gameObject.SetActive(false);
             Button background = transform.Find("Background").GetComponent<Button>();
             background.onClick.AddListener(closeTips);
@@ -20,7 +24,9 @@ namespace Game.Views.UI {
             _descriptionTxt = transform.Find("Root/Tips/DescTxt").GetComponent<Text>();
         }
 
-        private void OnEnable() {
+        protected override void OnEnable() {
+            base.OnEnable();
+
             if (UIModule.Instance.Param is ConfClue confClue) {
                 _nameTxt.text = confClue.name;
                 _descriptionTxt.text = confClue.description;
