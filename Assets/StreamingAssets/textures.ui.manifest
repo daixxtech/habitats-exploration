@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2202044853
+CRC: 1026866253
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fc89792f8c68b8a30996a0154aab8422
+    Hash: e71eccacdc968c424ccfdee353b7e164
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
@@ -18,5 +18,7 @@ Assets:
 - Assets/Res/Textures/UI/ui_back.png
 - Assets/Res/Textures/UI/ui_quit.png
 - Assets/Res/Textures/UI/ui_archive.png
+- Assets/Res/Textures/UI/ui_joystick.png
+- Assets/Res/Textures/UI/ui_circle.png
 - Assets/Res/Textures/UI/ui_guide.png
 Dependencies: []

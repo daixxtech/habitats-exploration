@@ -13,17 +13,17 @@ namespace Frame.Runtime.Modules {
         public static UIModule Instance => _Instance ??= new UIModule();
 
         private Transform _root;
-        private Camera _camera;
         private Dictionary<string, Type> _typeDict;
         private Dictionary<string, UIHandlerBase> _handlerDict;
         private List<string> _destroyList;
 
         public bool NeedUpdate { get; } = true;
+        public Camera UICamera { get; private set; }
         public object Parameter { get; private set; }
 
         public void Init() {
             _root = GameObject.Find("UIRoot").transform;
-            _camera = _root.Find("UICamera").GetComponent<Camera>();
+            UICamera = _root.Find("UICamera").GetComponent<Camera>();
             UnityEngine.Object.DontDestroyOnLoad(_root);
 
             _typeDict = new Dictionary<string, Type>();
@@ -72,7 +72,7 @@ namespace Frame.Runtime.Modules {
                     GameObject ui = UnityEngine.Object.Instantiate(prefab, _root);
                     handler = (UIHandlerBase) ui.AddComponent(type);
                     _handlerDict.Add(name, handler);
-                    handler.GetComponent<Canvas>().worldCamera = _camera;
+                    handler.GetComponent<Canvas>().worldCamera = UICamera;
                 } else {
                     throw new Exception($"[{nameof(UIModule)}] ShowUI: Cannot find script bound with {name}");
                 }

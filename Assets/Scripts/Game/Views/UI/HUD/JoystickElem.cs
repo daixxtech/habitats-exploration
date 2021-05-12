@@ -1,3 +1,4 @@
+using Frame.Runtime.Modules;
 using Game.Config;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ namespace Game.Views.UI.HUD {
         private RectTransform _centerTrans;
 
         protected void Start() {
-            _origin = ((RectTransform) transform).anchoredPosition;
+            _origin = RectTransformUtility.WorldToScreenPoint(UIModule.Instance.UICamera, transform.position);
             _centerTrans = transform.Find("Control/Center").GetComponent<RectTransform>();
         }
 
