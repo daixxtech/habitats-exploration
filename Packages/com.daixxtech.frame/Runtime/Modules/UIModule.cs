@@ -68,7 +68,7 @@ namespace Frame.Runtime.Modules {
                 handler.gameObject.SetActive(true);
             } else {
                 if (_typeDict.TryGetValue(name, out var type)) {
-                    GameObject prefab = ResourceModule.Instance.LoadRes<GameObject>(name);
+                    GameObject prefab = AssetModule.Instance.LoadAsset<GameObject>(name);
                     GameObject ui = UnityEngine.Object.Instantiate(prefab, _root);
                     handler = (UIHandlerBase) ui.AddComponent(type);
                     _handlerDict.Add(name, handler);

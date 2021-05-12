@@ -40,7 +40,7 @@ namespace Game.Views.UI.Archives {
 
         public void SetInfo(ConfAnimal conf) {
             _conf = conf;
-            _iconImg.sprite = ResourceModule.Instance.LoadRes<Sprite>(_conf.icon);
+            _iconImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(_conf.icon);
             _nameTxt.text = _conf.name;
             _lockedCpnt.SetActive(!ArchiveModule.Instance.GetArchiveState(_conf.id));
         }

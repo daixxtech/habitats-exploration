@@ -1,4 +1,4 @@
-﻿using Frame.Runtime.Modules.Resource;
+﻿using Frame.Runtime.Modules.Assets;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;

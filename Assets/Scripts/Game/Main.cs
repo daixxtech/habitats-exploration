@@ -15,7 +15,7 @@ namespace Game {
             // 通用模块
             _moduleLs.Add(UIModule.Instance);
             _moduleLs.Add(SceneModule.Instance);
-            _moduleLs.Add(ResourceModule.Instance);
+            _moduleLs.Add(AssetModule.Instance);
             _moduleLs.Add(InputModule.Instance);
             // 功能模块
             _moduleLs.Add(ArchiveModule.Instance);

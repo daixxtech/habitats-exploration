@@ -15,7 +15,7 @@ namespace Game.Views.UI.Habitats {
 
         public void SetInfo(ConfHabitat conf) {
             _conf = conf;
-            _iconImg.sprite = ResourceModule.Instance.LoadRes<Sprite>(_conf.icon);
+            _iconImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(_conf.icon);
             _nameTxt.text = _conf.name;
         }
 

@@ -67,7 +67,7 @@ namespace Game.Views.UI {
             if (unlocked) {
                 _nameTxt.text = conf.name;
                 _distributionTxt.text = conf.distribution;
-                _iconImg.sprite = ResourceModule.Instance.LoadRes<Sprite>(conf.icon);
+                _iconImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(conf.icon);
                 _latinNameTxt.text = conf.latinName;
                 _descriptionTxt.text = conf.description;
             }

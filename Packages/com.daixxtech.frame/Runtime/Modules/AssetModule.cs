@@ -1,4 +1,4 @@
-﻿using Frame.Runtime.Modules.Resource;
+﻿using Frame.Runtime.Modules.Assets;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Frame.Runtime.Modules {
-    public class ResourceModule : IModule {
-        private static ResourceModule _Instance;
-        public static ResourceModule Instance => _Instance ??= new ResourceModule();
+    public class AssetModule : IModule {
+        private static AssetModule _Instance;
+        public static AssetModule Instance => _Instance ??= new AssetModule();
 
         private Dictionary<string, BundleInfo> _infoDict;
         private Dictionary<string, string> _resDict;
@@ -47,15 +47,15 @@ namespace Frame.Runtime.Modules {
 
         public void Update() { }
 
-        public T LoadRes<T>(string resName) where T : Object {
-            resName = resName.ToLower();
-            if (!_resDict.TryGetValue(resName, out string bundleName)) {
+        public T LoadAsset<T>(string assetName) where T : Object {
+            assetName = assetName.ToLower();
+            if (!_resDict.TryGetValue(assetName, out string bundleName)) {
                 return null;
             }
             if (!_bundleDict.TryGetValue(bundleName, out var bundle)) {
                 bundle = LoadBundle(bundleName);
             }
-            return bundle ? bundle.LoadAsset<T>(resName) : null;
+            return bundle ? bundle.LoadAsset<T>(assetName) : null;
         }
 
         private AssetBundle LoadBundle(string bundleName) {
