@@ -8,17 +8,13 @@ namespace Game.Views.UI {
     public class HUDUIHandler : AUIHandler {
         private GameObject _interactionCpnt;
 
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             transform.Find("Root/Joystick").gameObject.AddComponent<JoystickElem>();
 
             _interactionCpnt = transform.Find("Root/Interaction").gameObject;
         }
 
-        protected override void OnEnable() {
-            base.OnEnable();
-
+        public void OnEnable() {
             Facade.Player.TriggeredClue += OnPlayerTriggeredClue;
         }
 

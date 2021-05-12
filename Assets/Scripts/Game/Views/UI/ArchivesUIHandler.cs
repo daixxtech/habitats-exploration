@@ -19,9 +19,7 @@ namespace Game.Views.UI {
         private Text _latinNameTxt;
         private Text _descriptionTxt;
 
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
 
@@ -45,9 +43,7 @@ namespace Game.Views.UI {
             template.SetActive(false);
         }
 
-        protected override void OnEnable() {
-            base.OnEnable();
-
+        public void OnEnable() {
             ConfAnimal[] confArr = ConfAnimal.GetArray();
             int length = _archiveCtnrElems.Length;
             int defaultCheckedIndex = -1;

@@ -8,9 +8,7 @@ using UnityEngine.UI;
 namespace Game.Views.UI {
     [UIBind(UIDef.PAUSE)]
     public class PauseUIHandler : AUIHandler {
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             Button continueBtn = transform.Find("Root/Menu/ContinueBtn").GetComponent<Button>();
             continueBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.PAUSE));
             Button backBtn = transform.Find("Root/Menu/BackBtn").GetComponent<Button>();
@@ -20,9 +18,7 @@ namespace Game.Views.UI {
             });
         }
 
-        protected override void OnEnable() {
-            base.OnEnable();
-
+        public void OnEnable() {
             Time.timeScale = 0;
         }
 

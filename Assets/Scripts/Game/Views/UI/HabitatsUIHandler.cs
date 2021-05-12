@@ -14,9 +14,7 @@ namespace Game.Views.UI {
         private HabitatCtnrElem[] _habitatCtnrElems;
         private GameObject _notAvailableTipsCpnt;
 
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
 
@@ -37,9 +35,7 @@ namespace Game.Views.UI {
             _notAvailableTipsCpnt.transform.Find("Content/ConfirmBtn").GetComponent<Button>().onClick.AddListener(closeTips);
         }
 
-        protected override void OnEnable() {
-            base.OnEnable();
-
+        public void OnEnable() {
             ConfHabitat[] confArr = ConfHabitat.GetArray();
             int length = _habitatCtnrElems.Length;
             for (int i = 0; i < length; i++) {

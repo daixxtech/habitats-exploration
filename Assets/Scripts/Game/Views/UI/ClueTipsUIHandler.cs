@@ -11,9 +11,7 @@ namespace Game.Views.UI {
         private Text _nameTxt;
         private Text _descriptionTxt;
 
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             UnityAction closeTips = () => gameObject.SetActive(false);
             Button background = transform.Find("Background").GetComponent<Button>();
             background.onClick.AddListener(closeTips);
@@ -24,10 +22,8 @@ namespace Game.Views.UI {
             _descriptionTxt = transform.Find("Root/Tips/DescTxt").GetComponent<Text>();
         }
 
-        protected override void OnEnable() {
-            base.OnEnable();
-
-            if (UIModule.Instance.Param is ConfClue confClue) {
+        public void OnEnable() {
+            if (UIModule.Instance.Parameter is ConfClue confClue) {
                 _nameTxt.text = confClue.name;
                 _descriptionTxt.text = confClue.description;
             }

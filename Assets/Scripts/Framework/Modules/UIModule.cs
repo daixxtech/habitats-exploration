@@ -7,22 +7,24 @@ using UnityEngine;
 
 namespace Framework.Modules {
     public class UIModule : IModule {
+        private const int DESTROY_TIME = 10;
+
         private static UIModule _Instance;
         public static UIModule Instance => _Instance ??= new UIModule();
 
         private Transform _root;
+        private Camera _camera;
         private Dictionary<string, Type> _typeDict;
         private Dictionary<string, AUIHandler> _handlerDict;
         private List<string> _destroyList;
 
         public bool NeedUpdate { get; } = true;
-        public Camera UICamera { get; private set; }
-        public object Param { get; private set; }
+        public object Parameter { get; private set; }
 
         public void Init() {
             _root = GameObject.Find("UIRoot").transform;
+            _camera = _root.Find("UICamera").GetComponent<Camera>();
             UnityEngine.Object.DontDestroyOnLoad(_root);
-            UICamera = _root.Find("UICamera").GetComponent<Camera>();
 
             _typeDict = new Dictionary<string, Type>();
             _handlerDict = new Dictionary<string, AUIHandler>();
@@ -50,7 +52,7 @@ namespace Framework.Modules {
             _destroyList.Clear();
             foreach (var pair in _handlerDict) {
                 AUIHandler handler = pair.Value;
-                if (!handler.gameObject.activeSelf && (handler.DestroyCountDown -= Time.deltaTime) <= 0) {
+                if (!handler.gameObject.activeSelf && (handler.DestroyTimer -= Time.deltaTime) <= 0) {
                     _destroyList.Add(pair.Key);
                 }
             }
@@ -61,19 +63,21 @@ namespace Framework.Modules {
         }
 
         public void ShowUI(string name, object param = null) {
-            Param = param;
+            Parameter = param;
             if (_handlerDict.TryGetValue(name, out var handler)) {
                 handler.gameObject.SetActive(true);
             } else {
                 if (_typeDict.TryGetValue(name, out var type)) {
                     GameObject prefab = ResourceModule.Instance.LoadRes<GameObject>(name);
                     GameObject ui = UnityEngine.Object.Instantiate(prefab, _root);
-                    handler = ui.AddComponent(type) as AUIHandler;
+                    handler = (AUIHandler) ui.AddComponent(type);
                     _handlerDict.Add(name, handler);
+                    handler.GetComponent<Canvas>().worldCamera = _camera;
                 } else {
                     throw new Exception($"[{nameof(UIModule)}] ShowUI: Cannot find script bound with {name}");
                 }
             }
+            handler.DestroyTimer = DESTROY_TIME;
         }
 
         public void HideUI(string name) {

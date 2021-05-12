@@ -13,16 +13,12 @@ namespace Game.Views.UI {
         private Text _tipsTxt;
         private Image _progressBarImg;
 
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             _tipsTxt = transform.Find("Tips/Text").GetComponent<Text>();
             _progressBarImg = transform.Find("ProgressBar/ValueImg").GetComponent<Image>();
         }
 
-        protected override void OnEnable() {
-            base.OnEnable();
-
+        public void OnEnable() {
             _tipsTxt.gameObject.SetActive(false);
             _progressBarImg.gameObject.SetActive(false);
             ConfLoadingTips[] tips = ConfLoadingTips.GetArray();
@@ -33,7 +29,7 @@ namespace Game.Views.UI {
             _tipsTxt.gameObject.SetActive(true);
             _progressBarImg.gameObject.SetActive(true);
 
-            if (UIModule.Instance.Param is AsyncOperation operation) {
+            if (UIModule.Instance.Parameter is AsyncOperation operation) {
                 StartCoroutine(RefreshProgress(operation));
             } else {
                 Debug.LogError($"[{nameof(LoadingUIHandler)}] OnEnable: UI Param is null");

@@ -9,9 +9,7 @@ namespace Game.Views.UI {
     public class StartUIHandler : AUIHandler {
         private GameObject _guideCpnt;
 
-        protected override void Awake() {
-            base.Awake();
-
+        private void Awake() {
             Button startBtn = transform.Find("Root/Options/StartBtn").GetComponent<Button>();
             startBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.HABITATS));
             Button guideBtn = transform.Find("Root/Options/GuideBtn").GetComponent<Button>();
