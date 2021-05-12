@@ -1,4 +1,4 @@
-﻿using Framework.Modules;
+﻿using FrameworkRuntime.Modules;
 using Game.Config;
 using Game.Modules;
 using Game.Views.UI;

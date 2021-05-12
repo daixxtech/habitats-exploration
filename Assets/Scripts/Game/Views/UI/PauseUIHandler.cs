@@ -1,7 +1,8 @@
-﻿using Framework.Modules;
-using Framework.Modules.UI;
-using Framework.Views.UI;
+﻿using FrameworkRuntime.Modules;
+using FrameworkRuntime.Modules.UI;
+using FrameworkRuntime.Views.UI;
 using Game.Config;
+using Game.Modules;
 using UnityEngine;
 using UnityEngine.UI;
 

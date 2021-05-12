@@ -1,6 +1,6 @@
-﻿using Framework.Modules;
+﻿using FrameworkRuntime.Modules;
+using FrameworkRuntime.Utils;
 using Game.Config;
-using Game.Utils;
 using Game.Views.UI;
 using UnityEngine;
 
@@ -26,11 +26,11 @@ namespace Game.Views.Scene {
         }
 
         private void OnEnable() {
-            Framework.Facade.Input.OnJoystickDragged += OnJoystickDragged;
+            FrameworkRuntime.Facade.Input.OnJoystickDragged += OnJoystickDragged;
         }
 
         private void OnDisable() {
-            Framework.Facade.Input.OnJoystickDragged -= OnJoystickDragged;
+            FrameworkRuntime.Facade.Input.OnJoystickDragged -= OnJoystickDragged;
         }
 
         private void Update() {

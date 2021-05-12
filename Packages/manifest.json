@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.daixxtech.framework": "file:com.daixxtech.framework",
     "com.unity.assetbundlebrowser": "1.7.0",
     "com.unity.collab-proxy": "1.3.9",
     "com.unity.ide.rider": "2.0.7",

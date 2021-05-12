@@ -1,5 +1,5 @@
-﻿using Framework.Modules.UI;
-using Framework.Views.UI;
+﻿using FrameworkRuntime.Modules.UI;
+using FrameworkRuntime.Views.UI;
 using Game.Views.UI.HUD;
 using UnityEngine;
 
