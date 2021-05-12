@@ -1,6 +1,5 @@
 ﻿using FrameworkRuntime.Utils;
 using Game.Config;
-using Game.Utils;
 using UnityEngine;
 
 namespace Game.Views.Scene {
