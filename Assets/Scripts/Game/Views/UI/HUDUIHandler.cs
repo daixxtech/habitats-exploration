@@ -1,11 +1,11 @@
-﻿using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using Game.Views.UI.HUD;
 using UnityEngine;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.HUD)]
-    public class HUDUIHandler : AUIHandler {
+    public class HUDUIHandler : UIHandlerBase {
         private GameObject _interactionCpnt;
 
         private void Awake() {

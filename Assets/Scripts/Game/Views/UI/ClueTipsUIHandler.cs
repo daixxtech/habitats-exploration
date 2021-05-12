@@ -1,13 +1,13 @@
-﻿using FrameworkRuntime.Modules;
-using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using Game.Config;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.CLUE_TIPS)]
-    public class ClueTipsUIHandler : AUIHandler {
+    public class ClueTipsUIHandler : UIHandlerBase {
         private Text _nameTxt;
         private Text _descriptionTxt;
 

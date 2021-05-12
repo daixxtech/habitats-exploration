@@ -1,11 +1,11 @@
-﻿using FrameworkRuntime.Modules.Resource;
+﻿using Frame.Runtime.Modules.Resource;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace FrameworkEditor.Utils {
+namespace Frame.Editor.Utils {
     public static class ResourceUtil {
         [MenuItem("Tools/Resources/Build AssetBundle")]
         public static void BuildAssetBundle() {

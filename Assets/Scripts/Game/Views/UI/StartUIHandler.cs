@@ -1,12 +1,12 @@
-﻿using FrameworkRuntime.Modules;
-using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.START)]
-    public class StartUIHandler : AUIHandler {
+    public class StartUIHandler : UIHandlerBase {
         private GameObject _guideCpnt;
 
         private void Awake() {

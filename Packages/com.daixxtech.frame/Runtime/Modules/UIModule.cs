@@ -1,11 +1,12 @@
-﻿using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules.Base;
+using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-namespace FrameworkRuntime.Modules {
+namespace Frame.Runtime.Modules {
     public class UIModule : IModule {
         private const int DESTROY_TIME = 10;
 
@@ -15,7 +16,7 @@ namespace FrameworkRuntime.Modules {
         private Transform _root;
         private Camera _camera;
         private Dictionary<string, Type> _typeDict;
-        private Dictionary<string, AUIHandler> _handlerDict;
+        private Dictionary<string, UIHandlerBase> _handlerDict;
         private List<string> _destroyList;
 
         public bool NeedUpdate { get; } = true;
@@ -27,11 +28,11 @@ namespace FrameworkRuntime.Modules {
             UnityEngine.Object.DontDestroyOnLoad(_root);
 
             _typeDict = new Dictionary<string, Type>();
-            _handlerDict = new Dictionary<string, AUIHandler>();
+            _handlerDict = new Dictionary<string, UIHandlerBase>();
             _destroyList = new List<string>();
 
             Type[] types = Assembly.GetCallingAssembly().GetExportedTypes();
-            Type baseType = typeof(AUIHandler);
+            Type baseType = typeof(UIHandlerBase);
             for (int i = 0, count = types.Length; i < count; i++) {
                 if (types[i].IsClass && types[i].BaseType == baseType) {
                     var bind = types[i].GetCustomAttribute<UIBindAttribute>();
@@ -51,7 +52,7 @@ namespace FrameworkRuntime.Modules {
         public void Update() {
             _destroyList.Clear();
             foreach (var pair in _handlerDict) {
-                AUIHandler handler = pair.Value;
+                UIHandlerBase handler = pair.Value;
                 if (!handler.gameObject.activeSelf && (handler.DestroyTimer -= Time.deltaTime) <= 0) {
                     _destroyList.Add(pair.Key);
                 }
@@ -70,7 +71,7 @@ namespace FrameworkRuntime.Modules {
                 if (_typeDict.TryGetValue(name, out var type)) {
                     GameObject prefab = ResourceModule.Instance.LoadRes<GameObject>(name);
                     GameObject ui = UnityEngine.Object.Instantiate(prefab, _root);
-                    handler = (AUIHandler) ui.AddComponent(type);
+                    handler = (UIHandlerBase) ui.AddComponent(type);
                     _handlerDict.Add(name, handler);
                     handler.GetComponent<Canvas>().worldCamera = _camera;
                 } else {

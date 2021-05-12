@@ -1,6 +1,6 @@
-﻿using FrameworkRuntime.Modules;
-using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using Game.Config;
 using Game.Utils;
 using System.Collections;
@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.LOADING)]
-    public class LoadingUIHandler : AUIHandler {
+    public class LoadingUIHandler : UIHandlerBase {
         private Text _tipsTxt;
         private Image _progressBarImg;
 

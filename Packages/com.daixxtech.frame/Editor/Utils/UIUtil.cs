@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Editor {
+namespace Frame.Editor.Utils {
     public static class UIUtil {
         private static readonly StringBuilder Builder = new StringBuilder();
 

@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.daixxtech.framework": {
-      "version": "file:com.daixxtech.framework",
+    "com.daixxtech.frame": {
+      "version": "file:com.daixxtech.frame",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

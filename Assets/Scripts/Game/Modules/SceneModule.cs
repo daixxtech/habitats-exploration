@@ -1,4 +1,5 @@
-﻿using FrameworkRuntime.Modules;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.Base;
 using Game.Config;
 using Game.Views.UI;
 using UnityEngine;

@@ -1,9 +1,7 @@
 {
-    "name": "DaixxTech.Framework.Editor",
-    "rootNamespace": "FrameworkEditor",
-    "references": [
-        "GUID:c62024ed78df41a418f35e659f3188b4"
-    ],
+    "name": "DaixxTech.Frame.Runtime",
+    "rootNamespace": "Frame",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

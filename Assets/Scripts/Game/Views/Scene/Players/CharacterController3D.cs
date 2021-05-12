@@ -1,4 +1,4 @@
-﻿using FrameworkRuntime.Utils;
+﻿using Frame.Runtime.Utils;
 using Game.Config;
 using UnityEngine;
 

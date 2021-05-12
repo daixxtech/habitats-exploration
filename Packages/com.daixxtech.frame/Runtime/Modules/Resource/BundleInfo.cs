@@ -1,4 +1,4 @@
-namespace FrameworkRuntime.Modules.Resource {
+namespace Frame.Runtime.Modules.Resource {
     public class BundleInfo {
         public string Name { get; }
         public string[] Assets { get; }

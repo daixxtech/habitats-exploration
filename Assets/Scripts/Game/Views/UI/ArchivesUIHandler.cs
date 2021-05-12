@@ -1,6 +1,6 @@
-﻿using FrameworkRuntime.Modules;
-using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using Game.Config;
 using Game.Modules;
 using Game.Views.UI.Archives;
@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.ARCHIVE)]
-    public class ArchivesUIHandler : AUIHandler {
+    public class ArchivesUIHandler : UIHandlerBase {
         private ArchiveCtnrElem[] _archiveCtnrElems;
         private GameObject _detailsCpnt, _lockedCpnt;
         private Text _nameTxt;

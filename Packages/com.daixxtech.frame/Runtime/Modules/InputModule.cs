@@ -1,9 +1,10 @@
-using FrameworkRuntime.Modules.Input;
+using Frame.Runtime.Modules.Base;
+using Frame.Runtime.Modules.Input;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace FrameworkRuntime.Modules {
+namespace Frame.Runtime.Modules {
     public class InputModule : IModule {
         private static InputModule _Instance;
         public static InputModule Instance => _Instance ??= new InputModule();

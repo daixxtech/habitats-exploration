@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace FrameworkRuntime.Utils {
+namespace Frame.Runtime.Utils {
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class InspectorReadOnlyAttribute : PropertyAttribute { }
 }

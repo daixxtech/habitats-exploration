@@ -1,8 +1,8 @@
-using FrameworkRuntime.Utils;
+using Frame.Runtime.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace FrameworkEditor.Utils {
+namespace Frame.Editor.Utils {
     [CustomPropertyDrawer(typeof(InspectorReadOnlyAttribute))]
     public class InspectorReadOnlyDrawer : PropertyDrawer {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {

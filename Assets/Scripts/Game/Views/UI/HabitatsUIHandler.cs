@@ -1,5 +1,5 @@
-﻿using FrameworkRuntime.Modules.UI;
-using FrameworkRuntime.Views.UI;
+﻿using Frame.Runtime.Modules.UI;
+using Frame.Runtime.Views.UI;
 using Game.Config;
 using Game.Modules;
 using Game.Views.UI.Habitats;
@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Game.Views.UI {
     [UIBind(UIDef.HABITATS)]
-    public class HabitatsUIHandler : AUIHandler {
+    public class HabitatsUIHandler : UIHandlerBase {
         private HabitatCtnrElem[] _habitatCtnrElems;
         private GameObject _notAvailableTipsCpnt;
 

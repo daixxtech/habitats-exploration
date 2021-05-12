@@ -17,12 +17,12 @@ namespace Game.Views.UI.HUD {
             float radius = Mathf.Clamp(offset.magnitude, 0, GameConfig.JoystickDragRadius);
             Vector2 direction = offset.normalized;
             _centerTrans.anchoredPosition = direction * radius;
-            FrameworkRuntime.Facade.Input.OnJoystickDragged?.Invoke(direction * radius / GameConfig.JoystickDragRadius);
+            Frame.Runtime.Facade.Input.OnJoystickDragged?.Invoke(direction * radius / GameConfig.JoystickDragRadius);
         }
 
         public void OnEndDrag(PointerEventData eventData) {
             _centerTrans.anchoredPosition = Vector2.zero;
-            FrameworkRuntime.Facade.Input.OnJoystickDragged?.Invoke(Vector2.zero);
+            Frame.Runtime.Facade.Input.OnJoystickDragged?.Invoke(Vector2.zero);
         }
     }
 }

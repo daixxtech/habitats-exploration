@@ -1,11 +1,12 @@
-﻿using FrameworkRuntime.Modules.Resource;
+﻿using Frame.Runtime.Modules.Base;
+using Frame.Runtime.Modules.Resource;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace FrameworkRuntime.Modules {
+namespace Frame.Runtime.Modules {
     public class ResourceModule : IModule {
         private static ResourceModule _Instance;
         public static ResourceModule Instance => _Instance ??= new ResourceModule();
