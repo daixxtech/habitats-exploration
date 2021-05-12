@@ -1,4 +1,4 @@
-﻿using Frame.Runtime.Modules.Base;
+﻿using Frame.Runtime.Modules;
 using Game.Config;
 using System.Collections.Generic;
 

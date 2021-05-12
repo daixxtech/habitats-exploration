@@ -1,4 +1,4 @@
-﻿namespace Frame.Runtime.Modules.Base {
+﻿namespace Frame.Runtime.Modules {
     public interface IModule {
         bool NeedUpdate { get; }
 

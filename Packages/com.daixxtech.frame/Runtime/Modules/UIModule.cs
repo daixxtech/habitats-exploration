@@ -1,5 +1,4 @@
-﻿using Frame.Runtime.Modules.Base;
-using Frame.Runtime.Modules.UI;
+﻿using Frame.Runtime.Modules.UI;
 using Frame.Runtime.Views.UI;
 using System;
 using System.Collections.Generic;

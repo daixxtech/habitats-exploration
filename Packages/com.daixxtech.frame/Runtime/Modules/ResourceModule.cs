@@ -1,5 +1,4 @@
-﻿using Frame.Runtime.Modules.Base;
-using Frame.Runtime.Modules.Resource;
+﻿using Frame.Runtime.Modules.Resource;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
