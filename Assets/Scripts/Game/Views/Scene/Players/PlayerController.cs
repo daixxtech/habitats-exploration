@@ -26,11 +26,11 @@ namespace Game.Views.Scene {
         }
 
         private void OnEnable() {
-            Frame.Runtime.Facade.Input.OnJoystickDragged += OnJoystickDragged;
+            Facade.Input.OnJoystickDragged += OnJoystickDragged;
         }
 
         private void OnDisable() {
-            Frame.Runtime.Facade.Input.OnJoystickDragged -= OnJoystickDragged;
+            Facade.Input.OnJoystickDragged -= OnJoystickDragged;
         }
 
         private void Update() {
