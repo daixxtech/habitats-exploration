@@ -32,7 +32,7 @@ namespace Game.Views.UI {
             if (UIModule.Instance.Parameter is AsyncOperation operation) {
                 StartCoroutine(RefreshProgress(operation));
             } else {
-                Debug.LogError($"[{nameof(LoadingUIHandler)}] OnEnable: UI Param is null");
+                Debug.LogError("[LoadingUIHandler] OnEnable: UI Param is null");
             }
         }
 

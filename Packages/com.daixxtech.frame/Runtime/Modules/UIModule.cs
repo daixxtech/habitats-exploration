@@ -69,12 +69,12 @@ namespace Frame.Runtime.Modules {
             } else {
                 if (_typeDict.TryGetValue(name, out var type)) {
                     GameObject prefab = AssetModule.Instance.LoadAsset<GameObject>(name);
-                    GameObject ui = UnityEngine.Object.Instantiate(prefab, _root);
-                    handler = (UIHandlerBase) ui.AddComponent(type);
+                    GameObject instance = UnityEngine.Object.Instantiate(prefab, _root);
+                    handler = (UIHandlerBase) instance.AddComponent(type);
                     _handlerDict.Add(name, handler);
                     handler.GetComponent<Canvas>().worldCamera = UICamera;
                 } else {
-                    throw new Exception($"[{nameof(UIModule)}] ShowUI: Cannot find script bound with {name}");
+                    throw new Exception($"[UIModule] ShowUI: Cannot find script bound with {name}");
                 }
             }
             handler.DestroyTimer = DESTROY_TIME;

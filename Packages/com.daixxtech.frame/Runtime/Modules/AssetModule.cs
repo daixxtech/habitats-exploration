@@ -10,15 +10,15 @@ namespace Frame.Runtime.Modules {
         private static AssetModule _Instance;
         public static AssetModule Instance => _Instance ??= new AssetModule();
 
-        private Dictionary<string, BundleInfo> _infoDict;
-        private Dictionary<string, string> _resDict;
+        private Dictionary<string, string[]> _dependenciesDict;
+        private Dictionary<string, string> _assetDict;
         private Dictionary<string, AssetBundle> _bundleDict;
 
         public bool NeedUpdate { get; } = false;
 
         public void Init() {
-            _infoDict = new Dictionary<string, BundleInfo>();
-            _resDict = new Dictionary<string, string>();
+            _dependenciesDict = new Dictionary<string, string[]>();
+            _assetDict = new Dictionary<string, string>();
             _bundleDict = new Dictionary<string, AssetBundle>();
 
             string infoPath = Path.Combine(Application.streamingAssetsPath, "BundleInfos.json");
@@ -28,13 +28,13 @@ namespace Frame.Runtime.Modules {
 
             string content = request.downloadHandler.text;
             BundleInfo[] bundleInfos = JsonConvert.DeserializeObject<BundleInfo[]>(content);
-            _resDict = new Dictionary<string, string>(3);
+            _assetDict = new Dictionary<string, string>(3);
             for (int i = 0, count = bundleInfos.Length; i < count; i++) {
                 BundleInfo bundleInfo = bundleInfos[i];
-                _infoDict.Add(bundleInfo.Name, bundleInfo);
-                int assetLength = bundleInfo.Assets.Length;
+                _dependenciesDict.Add(bundleInfo.name, bundleInfo.dependencies);
+                int assetLength = bundleInfo.assets.Length;
                 for (int j = 0; j < assetLength; j++) {
-                    _resDict.Add(bundleInfo.Assets[j], bundleInfo.Name);
+                    _assetDict.Add(bundleInfo.assets[j], bundleInfo.name);
                 }
             }
         }
@@ -47,34 +47,33 @@ namespace Frame.Runtime.Modules {
 
         public void Update() { }
 
-        public T LoadAsset<T>(string assetName) where T : Object {
-            assetName = assetName.ToLower();
-            if (!_resDict.TryGetValue(assetName, out string bundleName)) {
+        public T LoadAsset<T>(string name) where T : Object {
+            name = name.ToLower();
+            if (!_assetDict.TryGetValue(name, out string bundleName)) {
                 return null;
             }
             if (!_bundleDict.TryGetValue(bundleName, out var bundle)) {
                 bundle = LoadBundle(bundleName);
             }
-            return bundle ? bundle.LoadAsset<T>(assetName) : null;
+            return bundle ? bundle.LoadAsset<T>(name) : null;
         }
 
-        private AssetBundle LoadBundle(string bundleName) {
-            string path = Path.Combine(Application.streamingAssetsPath, bundleName);
+        private AssetBundle LoadBundle(string name) {
+            string path = Path.Combine(Application.streamingAssetsPath, name);
             UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(path);
             UnityWebRequestAsyncOperation operation = request.SendWebRequest();
             while (!operation.isDone) { }
 
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
             if (bundle) {
-                BundleInfo bundleInfo = _infoDict[bundleName];
-                string[] dependencies = bundleInfo.Dependencies;
+                string[] dependencies = _dependenciesDict[name];
                 if (dependencies != null) {
                     int length = dependencies.Length;
                     for (int i = 0; i < length; i++) {
                         LoadBundle(dependencies[i]);
                     }
                 }
-                _bundleDict.Add(bundleName, bundle);
+                _bundleDict.Add(name, bundle);
             }
             return bundle;
         }

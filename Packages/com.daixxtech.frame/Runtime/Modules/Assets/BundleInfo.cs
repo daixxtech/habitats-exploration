@@ -1,13 +1,13 @@
 namespace Frame.Runtime.Modules.Assets {
     public class BundleInfo {
-        public string Name { get; }
-        public string[] Assets { get; }
-        public string[] Dependencies { get; }
+        public readonly string name;
+        public readonly string[] assets;
+        public readonly string[] dependencies;
 
         public BundleInfo(string name, string[] assets, string[] dependencies) {
-            Name = name;
-            Assets = assets;
-            Dependencies = dependencies;
+            this.name = name;
+            this.assets = assets;
+            this.dependencies = dependencies;
         }
     }
 }
