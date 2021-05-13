@@ -1,7 +1,6 @@
 ﻿using Frame.Runtime.Modules;
 using Game.Config;
 using Game.Modules;
-using Game.Views.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,9 +32,6 @@ namespace Game {
                 if (module.NeedUpdate) {
                     module.Update();
                 }
-            }
-            if (Input.GetButtonDown("Cancel") && SceneModule.Instance.CurScene.canPause) {
-                UIModule.Instance.ShowUI(UIDef.PAUSE);
             }
         }
 
