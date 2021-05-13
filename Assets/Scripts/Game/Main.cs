@@ -1,8 +1,9 @@
 ﻿using Frame.Runtime.Modules;
-using Game.Config;
 using Game.Modules;
+using Game.Views.Scene;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game {
     public class Main : MonoBehaviour {
@@ -23,7 +24,7 @@ namespace Game {
                 module.Init();
             }
             /* 进入 Start 场景 */
-            SceneModule.Instance.LoadScene((int) ESceneDef.Start);
+            SceneManager.LoadScene(SceneDef.START);
             Application.targetFrameRate = 60;
         }
 

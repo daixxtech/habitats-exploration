@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 453167926
+CRC: 1153703234
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c968c73c298d9ff443039e94cf031675
+    Hash: 1622edf5ae6ab4d702e8406e2dae717f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -17,6 +17,5 @@ Assets:
 - Assets/Res/Config/ConfScene.json
 - Assets/Res/Config/ConfAnimal.json
 - Assets/Res/Config/ConfClue.json
-- Assets/Res/Config/ConfSceneDef.json
 - Assets/Res/Config/ConfHabitat.json
 Dependencies: []

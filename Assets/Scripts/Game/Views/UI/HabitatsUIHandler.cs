@@ -1,11 +1,12 @@
-﻿using Frame.Runtime.Modules.UI;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.UI;
 using Frame.Runtime.Views.UI;
 using Game.Config;
-using Game.Modules;
 using Game.Views.UI.Habitats;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
@@ -45,7 +46,11 @@ namespace Game.Views.UI {
 
         private void LoadHabitatScene(ConfHabitat conf) {
             if (conf.isAvailable) {
-                SceneModule.Instance.LoadSceneAsync(conf.sceneID);
+                string sceneName = ConfScene.Get(conf.sceneID).name;
+                AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+                operation.allowSceneActivation = false;
+                UIModule.Instance.HideUIAll();
+                UIModule.Instance.ShowUI(UIDef.LOADING, operation);
             } else {
                 _notAvailableTipsCpnt.SetActive(true);
             }

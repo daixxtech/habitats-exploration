@@ -11,24 +11,21 @@ namespace Game.Config {
         public readonly int id;
         /// <summary> 名称 </summary>
         public readonly string name;
-        /// <summary> 场景是否可暂停 </summary>
-        public readonly bool canPause;
 
-        public ConfScene(int id, string name, bool canPause) {
+        public ConfScene(int id, string name) {
             this.id = id;
             this.name = name;
-            this.canPause = canPause;
         }
 
         private static Dictionary<int, ConfScene> _Dict;
         private static ConfScene[] _Array;
 
         public static ConfScene Get(int id) {
-            return (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfScene>())).TryGetValue(id, out var conf) ? conf : null;
+            return (_Dict ??= ConfUtil.LoadFromJSON<ConfScene>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
         public static ConfScene[] GetArray() {
-            return _Array ?? (_Array = (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfScene>())).Values.ToArray());
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfScene>()).Values.ToArray();
         }
     }
 }

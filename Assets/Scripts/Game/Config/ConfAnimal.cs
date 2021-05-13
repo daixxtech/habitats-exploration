@@ -33,11 +33,11 @@ namespace Game.Config {
         private static ConfAnimal[] _Array;
 
         public static ConfAnimal Get(int id) {
-            return (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfAnimal>())).TryGetValue(id, out var conf) ? conf : null;
+            return (_Dict ??= ConfUtil.LoadFromJSON<ConfAnimal>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
         public static ConfAnimal[] GetArray() {
-            return _Array ?? (_Array = (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfAnimal>())).Values.ToArray());
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfAnimal>()).Values.ToArray();
         }
     }
 }

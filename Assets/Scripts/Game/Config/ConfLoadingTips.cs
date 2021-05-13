@@ -21,11 +21,11 @@ namespace Game.Config {
         private static ConfLoadingTips[] _Array;
 
         public static ConfLoadingTips Get(int id) {
-            return (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfLoadingTips>())).TryGetValue(id, out var conf) ? conf : null;
+            return (_Dict ??= ConfUtil.LoadFromJSON<ConfLoadingTips>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
         public static ConfLoadingTips[] GetArray() {
-            return _Array ?? (_Array = (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfLoadingTips>())).Values.ToArray());
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfLoadingTips>()).Values.ToArray();
         }
     }
 }

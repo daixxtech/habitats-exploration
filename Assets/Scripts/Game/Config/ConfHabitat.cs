@@ -30,11 +30,11 @@ namespace Game.Config {
         private static ConfHabitat[] _Array;
 
         public static ConfHabitat Get(int id) {
-            return (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfHabitat>())).TryGetValue(id, out var conf) ? conf : null;
+            return (_Dict ??= ConfUtil.LoadFromJSON<ConfHabitat>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
         public static ConfHabitat[] GetArray() {
-            return _Array ?? (_Array = (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfHabitat>())).Values.ToArray());
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfHabitat>()).Values.ToArray();
         }
     }
 }

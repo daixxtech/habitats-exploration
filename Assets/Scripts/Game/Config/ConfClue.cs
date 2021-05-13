@@ -27,11 +27,11 @@ namespace Game.Config {
         private static ConfClue[] _Array;
 
         public static ConfClue Get(int id) {
-            return (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfClue>())).TryGetValue(id, out var conf) ? conf : null;
+            return (_Dict ??= ConfUtil.LoadFromJSON<ConfClue>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
         public static ConfClue[] GetArray() {
-            return _Array ?? (_Array = (_Dict ?? (_Dict = ConfUtil.LoadFromJSON<ConfClue>())).Values.ToArray());
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfClue>()).Values.ToArray();
         }
     }
 }
