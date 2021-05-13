@@ -6,15 +6,15 @@ using UnityEditor;
 using UnityEngine;
 
 namespace Frame.Editor.Utils {
-    public static class ResourceUtil {
-        [MenuItem("Tools/Resources/Build AssetBundle")]
+    public static class AssetUtil {
+        [MenuItem("Tools/Assets/Build AssetBundle")]
         public static void BuildAssetBundle() {
             if (!Directory.Exists(Application.streamingAssetsPath)) {
                 Directory.CreateDirectory(Application.streamingAssetsPath);
             }
             var manifest = BuildPipeline.BuildAssetBundles(Application.streamingAssetsPath, BuildAssetBundleOptions.None, BuildTarget.Android);
             if (manifest == null) {
-                Debug.LogError($"[{nameof(ResourceUtil)}] BuildAssetBundle: No AssetBundle found");
+                Debug.LogError($"[{nameof(AssetUtil)}] BuildAssetBundle: No AssetBundle found");
                 return;
             }
             string[] bundleNames = manifest.GetAllAssetBundles();
@@ -26,7 +26,7 @@ namespace Frame.Editor.Utils {
                 string[] bundleDependencies = manifest.GetAllDependencies(bundleName);
                 bundleInfos[i] = new BundleInfo(bundleName, bundleAssets, bundleDependencies);
                 bundle.Unload(true);
-                Debug.Log($"[{nameof(ResourceUtil)}] BuildAssetBundle: Build {bundleName}");
+                Debug.Log($"[{nameof(AssetUtil)}] BuildAssetBundle: Build {bundleName}");
             }
             string infoPath = Path.Combine(Application.streamingAssetsPath, "BundleInfos.json");
             File.WriteAllText(infoPath, JsonConvert.SerializeObject(bundleInfos));
