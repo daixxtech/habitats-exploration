@@ -43,7 +43,7 @@ namespace Game.Views.UI {
             while (operation.progress < 0.9F) {
                 targetValue = (int) (operation.progress * 100);
                 while (curValue < targetValue) {
-                    _progressBarImg.fillAmount = (curValue += 0.5F) / 100.0F;
+                    _progressBarImg.fillAmount = ++curValue / 100.0F;
                     yield return CoroutineUtil.EndOfFrame;
                 }
                 yield return CoroutineUtil.EndOfFrame;
@@ -51,7 +51,7 @@ namespace Game.Views.UI {
             // 当异步加载至 90% 时，平滑加载剩余 10%
             targetValue = 100;
             while (curValue < targetValue) {
-                _progressBarImg.fillAmount = (curValue += 0.5F) / 100.0F;
+                _progressBarImg.fillAmount = ++curValue / 100.0F;
                 yield return CoroutineUtil.EndOfFrame;
             }
             yield return new WaitForSeconds(0.5F);

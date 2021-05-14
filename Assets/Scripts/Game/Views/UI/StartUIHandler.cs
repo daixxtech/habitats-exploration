@@ -10,6 +10,8 @@ namespace Game.Views.UI {
         private GameObject _guideCpnt;
 
         private void Awake() {
+            _guideCpnt = transform.Find("Root/Guide").gameObject;
+            
             Button startBtn = transform.Find("Root/Options/StartBtn").GetComponent<Button>();
             startBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.HABITATS));
             Button guideBtn = transform.Find("Root/Options/GuideBtn").GetComponent<Button>();
@@ -20,8 +22,6 @@ namespace Game.Views.UI {
             archiveBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.ARCHIVE));
             Button quitBtn = transform.Find("Root/Options/QuitBtn").GetComponent<Button>();
             quitBtn.onClick.AddListener(Application.Quit);
-
-            _guideCpnt = transform.Find("Root/Guide").gameObject;
         }
     }
 }

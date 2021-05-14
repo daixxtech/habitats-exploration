@@ -11,11 +11,11 @@ namespace Game.Views.UI {
         private Text _descriptionTxt;
 
         private void Awake() {
-            Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
-            closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
-
             _nameTxt = transform.Find("Root/Tips/NameTxt").GetComponent<Text>();
             _descriptionTxt = transform.Find("Root/Tips/DescTxt").GetComponent<Text>();
+
+            Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
+            closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
         }
 
         public void OnEnable() {
