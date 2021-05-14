@@ -64,7 +64,8 @@ namespace Game.Views.Scene {
             // 计算相机与角色的实际距离（地形碰撞检测）
             Vector3 playerPos = _playerTrans.position + _playerPosOffset;
             Ray cameraRay = new Ray(playerPos, Vector3.Normalize(transform.position - playerPos));
-            _actualDistance = Physics.Raycast(cameraRay, out var hitInfo, _distance, GameConfig.GroundLayer) ? hitInfo.distance : _distance;
+            bool hitGround = Physics.Raycast(cameraRay, out var hitInfo, _distance, GameConfig.GroundLayer);
+            _actualDistance = hitGround ? hitInfo.distance : _distance;
             // 计算相机与角色的位置偏移
             float newRadius = _actualDistance * Mathf.Cos(_rotateRadX);
             _offsetPos.x = newRadius * Mathf.Sin(_rotateRadY);
