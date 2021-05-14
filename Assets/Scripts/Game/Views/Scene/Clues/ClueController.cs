@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Game.Views.Scene {
     public class ClueController : MonoBehaviour {
-        public ConfClue Conf { get; set; }
+        public ConfClue Conf { get; private set; }
 
-        private void Awake() {
-            Conf = ConfClue.Get(1);
+        public void SetInfo(ConfClue conf) {
+            Conf = conf;
         }
     }
 }

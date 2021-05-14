@@ -8,6 +8,7 @@
 
         public const string HUD = "UI_HUD.prefab";
         public const string CLUE_TIPS = "UI_ClueTips.prefab";
+        public const string COMPLETION = "UI_Completion.prefab";
         public const string PAUSE = "UI_Pause.prefab";
     }
 }

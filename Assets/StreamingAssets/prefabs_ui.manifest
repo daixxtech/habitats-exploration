@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3433292495
+CRC: 3994860746
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8f18016caf6de2dd3e43c8d582b55d78
+    Hash: 2b1de04f0955c9b4ff34ba8fcc73bc40
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9f56fdbc4fec3d7ac29763d896079774
@@ -63,4 +63,4 @@ Assets:
 - Assets/Res/Prefabs/UI/UI_Loading.prefab
 Dependencies:
 - D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/fonts
-- D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/textures.ui
+- D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/textures_ui

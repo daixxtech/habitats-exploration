@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 283842980
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 379c1533ab6631dd5dcf8e8727106712
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Textures/UI/ui_back.png
+- Assets/Res/Textures/UI/ui_quit.png
+- Assets/Res/Textures/UI/ui_archive.png
+- Assets/Res/Textures/UI/ui_joystick.png
+- Assets/Res/Textures/UI/ui_settings.png
+- Assets/Res/Textures/UI/ui_circle.png
+- Assets/Res/Textures/UI/ui_guide.png
+Dependencies: []
