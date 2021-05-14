@@ -11,7 +11,7 @@ namespace Game.Views.UI {
 
         private void Awake() {
             _guideCpnt = transform.Find("Root/Guide").gameObject;
-            
+
             Button startBtn = transform.Find("Root/Options/StartBtn").GetComponent<Button>();
             startBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.HABITATS));
             Button guideBtn = transform.Find("Root/Options/GuideBtn").GetComponent<Button>();

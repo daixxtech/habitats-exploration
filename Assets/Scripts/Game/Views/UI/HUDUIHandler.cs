@@ -2,12 +2,11 @@
 using Frame.Runtime.Modules.UI;
 using Frame.Runtime.Views.UI;
 using Game.Config;
+using Game.Modules;
 using Game.Views.Scene;
 using Game.Views.UI.HUD;
 using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
@@ -31,8 +30,7 @@ namespace Game.Views.UI {
         public void OnEnable() {
             _interactBtn.gameObject.SetActive(false);
 
-            string sceneName = SceneManager.GetActiveScene().name;
-            ConfClue[] confArr = ConfClue.GetArray().Where(clue => ConfScene.Get(ConfHabitat.Get(clue.habitatID).sceneID).name == sceneName).ToArray();
+            ConfClue[] confArr = ClueModule.Instance.GetCurSceneClueConfs();
             int count = confArr.Length;
             _clueCtnr.SetCount<ClueCtnrElem>(count);
             Action<ConfClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
