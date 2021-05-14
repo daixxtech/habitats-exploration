@@ -78,6 +78,9 @@ namespace Game.Views.Scene {
         /// <summary> 转向 </summary>
         private void Rotate() {
             float rotateAngle = Quaternion.FromToRotation(transform.forward, _direction).eulerAngles.y;
+            if (rotateAngle == 0) {
+                return;
+            }
             if (rotateAngle > 180) {
                 rotateAngle -= 360;
             }
@@ -93,8 +96,8 @@ namespace Game.Views.Scene {
             _preIsGrounded = _isGrounded; // 更新上次检测时是否落地
             _isGrounded = false;
             Vector3 position = transform.position;
-            Vector3 pointTop = position + new Vector3(0, 0.15F, 0);
-            Vector3 pointBtm = position + new Vector3(0, 1.33F, 0);
+            Vector3 pointTop = position + new Vector3(0, 1.33F, 0);
+            Vector3 pointBtm = position + new Vector3(0, 0.15F, 0);
             int colliderCount = Physics.OverlapCapsuleNonAlloc(pointTop, pointBtm, 0.17F, Colliders, GameConfig.GroundLayer);
             _isGrounded = colliderCount > 0;
         }
