@@ -15,7 +15,7 @@ namespace Game.Views.UI.Archives {
         private ConfAnimal _conf;
         private bool _pointerEnter;
         private bool _pointerDown;
-        public event Action<ConfAnimal> Clicked;
+        public Action<ConfAnimal> onClicked;
 
         private void Awake() {
             _iconImg = transform.Find("Icon/IconImg").GetComponent<Image>();
@@ -62,7 +62,7 @@ namespace Game.Views.UI.Archives {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            Clicked?.Invoke(_conf);
+            onClicked?.Invoke(_conf);
         }
     }
 }

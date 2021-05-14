@@ -12,37 +12,31 @@ using UnityEngine.UI;
 namespace Game.Views.UI {
     [UIBind(UIDef.HABITATS)]
     public class HabitatsUIHandler : UIHandlerBase {
-        private HabitatCtnrElem[] _habitatCtnrElems;
+        private UIContainer _habitatCtnr;
         private GameObject _notAvailableTipsCpnt;
 
         private void Awake() {
-            Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
-            closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
-
             _notAvailableTipsCpnt = transform.Find("Root/NotAvailableTips").gameObject;
+            _habitatCtnr = transform.Find("Root/Habitats/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
+
+            Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
+            closeBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.HABITATS));
             UnityAction closeTips = () => _notAvailableTipsCpnt.SetActive(false);
             Button background = _notAvailableTipsCpnt.GetComponent<Button>();
             background.onClick.AddListener(closeTips);
             Button confirmBtn = _notAvailableTipsCpnt.transform.Find("Content/ConfirmBtn").GetComponent<Button>();
             confirmBtn.onClick.AddListener(closeTips);
-
-            Transform ctnr = transform.Find("Root/Habitats/Ctnr/Viewport/Content");
-            GameObject template = ctnr.Find("Template").gameObject;
-            ConfHabitat[] confArr = ConfHabitat.GetArray();
-            _habitatCtnrElems = new HabitatCtnrElem[confArr.Length];
-            Action<ConfHabitat> onClicked = LoadHabitatScene;
-            for (int i = 0, count = confArr.Length; i < count; i++) {
-                _habitatCtnrElems[i] = Instantiate(template, ctnr).AddComponent<HabitatCtnrElem>();
-                _habitatCtnrElems[i].Clicked += onClicked;
-            }
-            template.SetActive(false);
         }
 
         public void OnEnable() {
-            ConfHabitat[] confArr = ConfHabitat.GetArray();
-            int length = _habitatCtnrElems.Length;
-            for (int i = 0; i < length; i++) {
-                _habitatCtnrElems[i].SetInfo(confArr[i]);
+            ConfHabitat[] confs = ConfHabitat.GetArray();
+            int count = confs.Length;
+            _habitatCtnr.SetCount<HabitatCtnrElem>(count);
+            Action<ConfHabitat> onClicked = LoadHabitatScene;
+            for (int i = 0; i < count; i++) {
+                var elem = (HabitatCtnrElem) _habitatCtnr.Children[i];
+                elem.SetInfo(confs[i]);
+                elem.onClicked = onClicked;
             }
         }
 

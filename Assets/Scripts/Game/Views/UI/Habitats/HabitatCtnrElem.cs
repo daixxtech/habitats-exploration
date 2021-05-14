@@ -11,7 +11,7 @@ namespace Game.Views.UI.Habitats {
         private Text _nameTxt;
 
         private ConfHabitat _conf;
-        public event Action<ConfHabitat> Clicked;
+        public Action<ConfHabitat> onClicked;
 
         public void SetInfo(ConfHabitat conf) {
             _conf = conf;
@@ -25,7 +25,7 @@ namespace Game.Views.UI.Habitats {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            Clicked?.Invoke(_conf);
+            onClicked?.Invoke(_conf);
         }
     }
 }

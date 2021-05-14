@@ -14,27 +14,18 @@ namespace Game.Views.UI {
     [UIBind(UIDef.HUD)]
     public class HUDUIHandler : UIHandlerBase {
         private Button _interactBtn;
-        private ClueCtnrElem[] _clueCtnrElems;
+        private UIContainer _clueCtnr;
 
         private ConfClue _clueConf;
 
         private void Awake() {
+            _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
+            _interactBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, _clueConf));
+            _clueCtnr = transform.Find("Root/CluesPanel/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
+
             transform.Find("Root/Joystick").gameObject.AddComponent<JoystickElem>();
             Button pauseBtn = transform.Find("Root/PauseBtn").GetComponent<Button>();
             pauseBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.PAUSE));
-
-            _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
-            _interactBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, _clueConf));
-
-            Transform ctnr = transform.Find("Root/CluesPanel/Ctnr/Viewport/Content");
-            GameObject template = ctnr.Find("Template").gameObject;
-            _clueCtnrElems = new ClueCtnrElem[4];
-            Action<ConfClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
-            for (int i = 0; i < 4; i++) {
-                _clueCtnrElems[i] = Instantiate(template, ctnr).AddComponent<ClueCtnrElem>();
-                _clueCtnrElems[i].Clicked += onClicked;
-            }
-            template.SetActive(false);
         }
 
         public void OnEnable() {
@@ -43,12 +34,12 @@ namespace Game.Views.UI {
             string sceneName = SceneManager.GetActiveScene().name;
             ConfClue[] confArr = ConfClue.GetArray().Where(clue => ConfScene.Get(ConfHabitat.Get(clue.habitatID).sceneID).name == sceneName).ToArray();
             int count = confArr.Length;
+            _clueCtnr.SetCount<ClueCtnrElem>(count);
+            Action<ConfClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
             for (int i = 0; i < count; i++) {
-                _clueCtnrElems[i].gameObject.SetActive(true);
-                _clueCtnrElems[i].SetInfo(confArr[i]);
-            }
-            for (int i = count; i < 4; i++) {
-                _clueCtnrElems[i].gameObject.SetActive(false);
+                var elem = (ClueCtnrElem) _clueCtnr.Children[i];
+                elem.SetInfo(confArr[i]);
+                elem.onClicked = onClicked;
             }
 
             Facade.Player.OnTriggeredClue += OnPlayerTriggeredClue;

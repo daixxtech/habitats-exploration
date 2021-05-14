@@ -11,7 +11,7 @@ namespace Game.Views.UI.HUD {
 
         private ConfClue _conf;
         private bool _unlocked;
-        public event Action<ConfClue> Clicked;
+        public Action<ConfClue> onClicked;
 
         private void Awake() {
             _button = transform.GetComponent<Button>();
@@ -43,7 +43,7 @@ namespace Game.Views.UI.HUD {
 
         private void OnClicked() {
             if (_unlocked) {
-                Clicked?.Invoke(_conf);
+                onClicked?.Invoke(_conf);
             }
         }
     }
