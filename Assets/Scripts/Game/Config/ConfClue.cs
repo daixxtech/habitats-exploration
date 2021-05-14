@@ -11,15 +11,15 @@ namespace Game.Config {
         public readonly int id;
         /// <summary> 名称 </summary>
         public readonly string name;
-        /// <summary> 动物 ID </summary>
-        public readonly int animalID;
+        /// <summary> 所属栖息地 ID </summary>
+        public readonly int habitatID;
         /// <summary> 线索描述 </summary>
         public readonly string description;
 
-        public ConfClue(int id, string name, int animalID, string description) {
+        public ConfClue(int id, string name, int habitatID, string description) {
             this.id = id;
             this.name = name;
-            this.animalID = animalID;
+            this.habitatID = habitatID;
             this.description = description;
         }
 

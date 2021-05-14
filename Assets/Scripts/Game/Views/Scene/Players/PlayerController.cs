@@ -1,7 +1,4 @@
-﻿using Frame.Runtime.Modules;
-using Frame.Runtime.Utils;
-using Game.Config;
-using Game.Views.UI;
+﻿using Frame.Runtime.Utils;
 using UnityEngine;
 
 namespace Game.Views.Scene {
@@ -17,8 +14,6 @@ namespace Game.Views.Scene {
         [SerializeField] [InspectorReadOnly] private Animator _animator;
         [SerializeField] [InspectorReadOnly] private Transform _cameraTrans;
 
-        private ConfClue _confClue;
-
         private void Awake() {
             _controller = GetComponent<CharacterController3D>();
             _animator = GetComponent<Animator>();
@@ -33,13 +28,6 @@ namespace Game.Views.Scene {
             Facade.Input.OnJoystickDragged -= OnJoystickDragged;
         }
 
-        private void Update() {
-            // 判断线索交互
-            if (Input.GetKeyDown(KeyCode.F) && _confClue != null) {
-                UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, _confClue);
-            }
-        }
-
         private void FixedUpdate() {
             // 更新动画控制器状态
             UpdateAnimatorState();
@@ -51,15 +39,13 @@ namespace Game.Views.Scene {
 
         private void OnTriggerEnter(Collider other) {
             if (other.CompareTag("Clue")) {
-                Facade.Player.TriggeredClue?.Invoke(other, true);
-                _confClue = other.GetComponent<ClueController>().Conf;
+                Facade.Player.OnTriggeredClue?.Invoke(other, true);
             }
         }
 
         private void OnTriggerExit(Collider other) {
             if (other.CompareTag("Clue")) {
-                Facade.Player.TriggeredClue?.Invoke(other, false);
-                _confClue = null;
+                Facade.Player.OnTriggeredClue?.Invoke(other, false);
             }
         }
 

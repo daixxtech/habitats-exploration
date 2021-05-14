@@ -2,7 +2,6 @@
 using Frame.Runtime.Modules.UI;
 using Frame.Runtime.Views.UI;
 using Game.Config;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
@@ -12,20 +11,18 @@ namespace Game.Views.UI {
         private Text _descriptionTxt;
 
         private void Awake() {
-            UnityAction closeTips = () => gameObject.SetActive(false);
-            Button background = transform.Find("Background").GetComponent<Button>();
-            background.onClick.AddListener(closeTips);
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
-            closeBtn.onClick.AddListener(closeTips);
+            closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
 
             _nameTxt = transform.Find("Root/Tips/NameTxt").GetComponent<Text>();
             _descriptionTxt = transform.Find("Root/Tips/DescTxt").GetComponent<Text>();
         }
 
         public void OnEnable() {
-            if (UIModule.Instance.Parameter is ConfClue confClue) {
-                _nameTxt.text = confClue.name;
-                _descriptionTxt.text = confClue.description;
+            if (UIModule.Instance.Parameter is ConfClue conf) {
+                _nameTxt.text = conf.name;
+                _descriptionTxt.text = conf.description;
+                Facade.Clue.OnClueUnlocked?.Invoke(conf.id);
             }
         }
     }

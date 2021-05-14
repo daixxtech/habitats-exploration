@@ -31,13 +31,13 @@ namespace Game.Views.UI {
             _latinNameTxt = transform.Find("Root/Archive/Details/Content/LatinNameTxt").GetComponent<Text>();
             _descriptionTxt = transform.Find("Root/Archive/Details/Content/Description/Viewport/Content").GetComponent<Text>();
 
-            Transform archiveCtnr = transform.Find("Root/Archive/Ctnr/Viewport/Content");
-            GameObject template = archiveCtnr.Find("Template").gameObject;
+            Transform ctnr = transform.Find("Root/Archive/Ctnr/Viewport/Content");
+            GameObject template = ctnr.Find("Template").gameObject;
             ConfAnimal[] confArr = ConfAnimal.GetArray();
             _archiveCtnrElems = new ArchiveCtnrElem[confArr.Length];
             Action<ConfAnimal> onClicked = ShowDetails;
             for (int i = 0, count = confArr.Length; i < count; i++) {
-                _archiveCtnrElems[i] = Instantiate(template, archiveCtnr).AddComponent<ArchiveCtnrElem>();
+                _archiveCtnrElems[i] = Instantiate(template, ctnr).AddComponent<ArchiveCtnrElem>();
                 _archiveCtnrElems[i].Clicked += onClicked;
             }
             template.SetActive(false);
