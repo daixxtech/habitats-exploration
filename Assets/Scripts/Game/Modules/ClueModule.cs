@@ -1,5 +1,6 @@
 using Frame.Runtime.Modules;
 using Game.Config;
+using Game.Views.UI;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.SceneManagement;
@@ -16,12 +17,12 @@ namespace Game.Modules {
         public void Init() {
             _clueStateDict = new Dictionary<int, bool>();
             SceneManager.sceneLoaded += OnSceneLoaded;
-            Facade.Clue.OnClueUnlocked += OnClueUnlocked;
+            Facade.Player.OnInteractedClue += UnlockClue;
         }
 
         public void Dispose() {
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            Facade.Clue.OnClueUnlocked -= OnClueUnlocked;
+            Facade.Player.OnInteractedClue -= UnlockClue;
         }
 
         public void Update() { }
@@ -33,9 +34,11 @@ namespace Game.Modules {
             }
         }
 
-        private void OnClueUnlocked(int id) {
+        private void UnlockClue(int id) {
             if (_clueStateDict.TryGetValue(id, out var _)) {
                 _clueStateDict[id] = true;
+                Facade.Clue.OnClueUnlocked?.Invoke(id);
+                UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, ConfClue.Get(id));
             }
         }
 

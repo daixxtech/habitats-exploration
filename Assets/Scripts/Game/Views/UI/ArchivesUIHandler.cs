@@ -28,7 +28,7 @@ namespace Game.Views.UI {
             _archiveCtnr = transform.Find("Root/Archive/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
 
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
-            closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
+            closeBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.ARCHIVE));
         }
 
         public void OnEnable() {

@@ -20,7 +20,7 @@ namespace Game.Views.UI {
 
         private void Awake() {
             _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
-            _interactBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, _clueConf));
+            _interactBtn.onClick.AddListener(() => Facade.Player.OnInteractedClue?.Invoke(_clueConf.id));
             _clueCtnr = transform.Find("Root/CluesPanel/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
 
             transform.Find("Root/Joystick").gameObject.AddComponent<JoystickElem>();

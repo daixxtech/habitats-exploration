@@ -15,14 +15,13 @@ namespace Game.Views.UI {
             _descriptionTxt = transform.Find("Root/Tips/DescTxt").GetComponent<Text>();
 
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
-            closeBtn.onClick.AddListener(() => gameObject.SetActive(false));
+            closeBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.CLUE_TIPS));
         }
 
         public void OnEnable() {
             if (UIModule.Instance.Parameter is ConfClue conf) {
                 _nameTxt.text = conf.name;
                 _descriptionTxt.text = conf.description;
-                Facade.Clue.OnClueUnlocked?.Invoke(conf.id);
             }
         }
     }
