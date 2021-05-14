@@ -9,8 +9,9 @@ namespace Frame.Runtime.Views.UI {
         public List<MonoBehaviour> Children { get; private set; }
 
         private void Awake() {
-            _pool = Instantiate(new GameObject("Pool"), transform).transform;
+            _pool = new GameObject("Pool").AddComponent<RectTransform>();
             _pool.gameObject.SetActive(false);
+            _pool.SetParent(transform, false);
             _template = transform.Find("Template").gameObject;
             _template.SetActive(false);
 
