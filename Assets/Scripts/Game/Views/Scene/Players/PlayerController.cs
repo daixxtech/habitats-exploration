@@ -77,7 +77,7 @@ namespace Game.Views.Scene {
             _controller.Move(direction);
             // 输入都为 0 不要调用，保证无输入的情况下，主角朝向不会变化
             if (_inputV != 0 || _inputH != 0) {
-                _controller.Rotate(direction);
+                _controller.Direction = direction;
             }
             // 检测 Update 中是否有跳跃输入
             if (_isJumpPressed) {

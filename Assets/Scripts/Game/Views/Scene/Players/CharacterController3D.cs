@@ -14,6 +14,7 @@ namespace Game.Views.Scene {
     #if UNITY_EDITOR
         [SerializeField] [InspectorReadOnly] private Vector3 _curVelocity; // 当前计算的速度（用于在 Inspector 中进行观测，对实际代码无影响，可删除）
     #endif
+        [SerializeField] [InspectorReadOnly] private Vector3 _direction;
 
         [Header("Character Jumping")]
         [SerializeField] private float _jumpForce; // 跳跃力度
@@ -30,6 +31,8 @@ namespace Game.Views.Scene {
         public bool IsFalling => _isFalling;
         /// <summary> 是否可跳跃 </summary>
         public bool CanJump => _remainingJumpCount > 0;
+        /// <summary> 人物朝向 </summary>
+        public Vector3 Direction { get => _direction; set => _direction = value; }
 
         /// <summary> 移动 </summary>
         public void Move(Vector3 direction) {
@@ -39,19 +42,6 @@ namespace Game.Views.Scene {
             // 计算角色的速度 
             Vector3 targetVelocity = new Vector3(direction.x * _moveSpeed, _rig3D.velocity.y, direction.z * _moveSpeed);
             _rig3D.velocity = Vector3.SmoothDamp(_rig3D.velocity, targetVelocity, ref _preVelocity, 0.1F, float.PositiveInfinity, Time.fixedDeltaTime);
-        }
-
-        /// <summary> 转向 </summary>
-        public void Rotate(Vector3 direction) {
-            float rotateAngle = Quaternion.FromToRotation(transform.forward, direction).eulerAngles.y;
-            if (rotateAngle > 180) {
-                rotateAngle -= 360;
-            }
-            const int ROTATE_THRESHOLD = 15;
-            if (Mathf.Abs(rotateAngle) > ROTATE_THRESHOLD) {
-                rotateAngle = rotateAngle > 0 ? ROTATE_THRESHOLD : -ROTATE_THRESHOLD;
-            }
-            transform.Rotate(transform.up, rotateAngle);
         }
 
         /// <summary> 跳跃 </summary>
@@ -79,12 +69,23 @@ namespace Game.Views.Scene {
     #endif
 
         private void FixedUpdate() {
-            // 检查人物是否落地
+            Rotate();
             CheckGrounded();
-            // 检查人物是否处于下落状态
             CheckFalling();
-            // 修正剩余跳跃次数
             CorrectRemainingJumpCount();
+        }
+
+        /// <summary> 转向 </summary>
+        private void Rotate() {
+            float rotateAngle = Quaternion.FromToRotation(transform.forward, _direction).eulerAngles.y;
+            if (rotateAngle > 180) {
+                rotateAngle -= 360;
+            }
+            const int ROTATE_THRESHOLD = 10;
+            if (Mathf.Abs(rotateAngle) > ROTATE_THRESHOLD) {
+                rotateAngle = rotateAngle > 0 ? ROTATE_THRESHOLD : -ROTATE_THRESHOLD;
+            }
+            transform.Rotate(transform.up, rotateAngle);
         }
 
         /// <summary> 检查人物是否落地 </summary>
