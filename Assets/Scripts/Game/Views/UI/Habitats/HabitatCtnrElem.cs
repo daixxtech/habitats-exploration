@@ -13,15 +13,15 @@ namespace Game.Views.UI.Habitats {
         private ConfHabitat _conf;
         public Action<ConfHabitat> onClicked;
 
+        private void Awake() {
+            _iconImg = transform.Find("IconImg").GetComponent<Image>();
+            _nameTxt = transform.Find("NameTxt").GetComponent<Text>();
+        }
+
         public void SetInfo(ConfHabitat conf) {
             _conf = conf;
             _iconImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(_conf.icon);
             _nameTxt.text = _conf.name;
-        }
-
-        private void Awake() {
-            _iconImg = transform.Find("IconImg").GetComponent<Image>();
-            _nameTxt = transform.Find("NameTxt").GetComponent<Text>();
         }
 
         public void OnPointerClick(PointerEventData eventData) {

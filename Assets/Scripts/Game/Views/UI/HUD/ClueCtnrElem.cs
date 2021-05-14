@@ -15,9 +15,8 @@ namespace Game.Views.UI.HUD {
 
         private void Awake() {
             _button = transform.GetComponent<Button>();
+            _button.onClick.AddListener(() => onClicked?.Invoke(_conf));
             _nameTxt = transform.Find("Text").GetComponent<Text>();
-
-            _button.onClick.AddListener(OnClicked);
         }
 
         private void OnEnable() {
@@ -38,12 +37,6 @@ namespace Game.Views.UI.HUD {
         private void RefreshInfo(int id) {
             if (_conf.id == id) {
                 SetInfo(_conf);
-            }
-        }
-
-        private void OnClicked() {
-            if (_unlocked) {
-                onClicked?.Invoke(_conf);
             }
         }
     }
