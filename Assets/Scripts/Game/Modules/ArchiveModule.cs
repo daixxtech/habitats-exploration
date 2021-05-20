@@ -12,7 +12,7 @@ namespace Game.Modules {
         public bool NeedUpdate { get; } = false;
 
         public void Init() {
-            var confArr = ConfAnimal.GetArray();
+            var confArr = CAnimal.GetArray();
             _archive = new Dictionary<int, bool>(confArr.Length);
             bool flag = false;
             foreach (var conf in confArr) {

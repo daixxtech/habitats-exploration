@@ -17,7 +17,7 @@ namespace Game.Views.UI {
         private UIContainer _clueCtnr;
 
         private int _clueCount;
-        private ConfClue _clueConf;
+        private CClue _clueConf;
 
         private void Awake() {
             _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
@@ -33,10 +33,10 @@ namespace Game.Views.UI {
         public void OnEnable() {
             _interactBtn.gameObject.SetActive(false);
 
-            ConfClue[] confs = ClueModule.Instance.GetCurSceneClueConfs();
+            CClue[] confs = ClueModule.Instance.GetCurSceneClueConfs();
             _clueCount = confs.Length;
             _clueCtnr.SetCount<ClueCtnrElem>(_clueCount);
-            Action<ConfClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
+            Action<CClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
             for (int i = 0; i < _clueCount; i++) {
                 var elem = (ClueCtnrElem) _clueCtnr.Children[i];
                 elem.SetInfo(confs[i]);

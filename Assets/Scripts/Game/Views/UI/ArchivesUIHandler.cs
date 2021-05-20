@@ -32,10 +32,10 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
-            ConfAnimal[] confs = ConfAnimal.GetArray();
+            CAnimal[] confs = CAnimal.GetArray();
             int count = confs.Length;
             _archiveCtnr.SetCount<ArchiveCtnrElem>(count);
-            Action<ConfAnimal> onClicked = ShowDetails;
+            Action<CAnimal> onClicked = ShowDetails;
             for (int i = 0; i < count; i++) {
                 var elem = (ArchiveCtnrElem) _archiveCtnr.Children[i];
                 elem.SetInfo(confs[i]);
@@ -45,7 +45,7 @@ namespace Game.Views.UI {
             ShowDetails(confs[0]);
         }
 
-        private void ShowDetails(ConfAnimal conf) {
+        private void ShowDetails(CAnimal conf) {
             bool unlocked = ArchiveModule.Instance.GetArchiveState(conf.id);
             _detailsCpnt.SetActive(unlocked);
             _lockedCpnt.SetActive(!unlocked);

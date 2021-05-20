@@ -1,12 +1,12 @@
 ﻿/* Auto generated code */
 
+using Game.Utils;
 using System.Collections.Generic;
 using System.Linq;
-using Game.Utils;
 
 namespace Game.Config {
     /// <summary> Generate From Animals.xlsx </summary>
-    public class ConfAnimal {
+    public class CAnimal {
         /// <summary> ID </summary>
         public readonly int id;
         /// <summary> 名称 </summary>
@@ -20,7 +20,7 @@ namespace Game.Config {
         /// <summary> 描述 </summary>
         public readonly string description;
 
-        public ConfAnimal(int id, string name, string icon, string latinName, string distribution, string description) {
+        public CAnimal(int id, string name, string icon, string latinName, string distribution, string description){
             this.id = id;
             this.name = name;
             this.icon = icon;
@@ -29,15 +29,15 @@ namespace Game.Config {
             this.description = description;
         }
 
-        private static Dictionary<int, ConfAnimal> _Dict;
-        private static ConfAnimal[] _Array;
+        private static Dictionary<int, CAnimal> _Dict;
+        private static CAnimal[] _Array;
 
-        public static ConfAnimal Get(int id) {
-            return (_Dict ??= ConfUtil.LoadFromJSON<ConfAnimal>()).TryGetValue(id, out var conf) ? conf : null;
+        public static CAnimal Get(int id) {
+            return (_Dict ??= ConfUtil.LoadFromJSON<CAnimal>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
-        public static ConfAnimal[] GetArray() {
-            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfAnimal>()).Values.ToArray();
+        public static CAnimal[] GetArray() {
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<CAnimal>()).Values.ToArray();
         }
     }
 }

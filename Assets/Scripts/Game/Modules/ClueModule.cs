@@ -9,7 +9,7 @@ namespace Game.Modules {
         private static ClueModule _Instance;
         public static ClueModule Instance => _Instance ??= new ClueModule();
 
-        private ConfClue[] _clueConfs;
+        private CClue[] _clueConfs;
         private Dictionary<int, bool> _clueStateDict;
 
         public bool NeedUpdate { get; } = false;
@@ -30,7 +30,7 @@ namespace Game.Modules {
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
             _clueStateDict.Clear();
-            _clueConfs = ConfClue.GetArray().Where(clue => ConfScene.Get(ConfHabitat.Get(clue.habitatID).sceneID).name == scene.name).ToArray();
+            _clueConfs = CClue.GetArray().Where(clue => CScene.Get(CHabitat.Get(clue.habitatID).sceneID).name == scene.name).ToArray();
             LeftLockedClueCount = _clueConfs.Length;
             foreach (var conf in _clueConfs) {
                 _clueStateDict.Add(conf.id, false);
@@ -47,7 +47,7 @@ namespace Game.Modules {
             }
         }
 
-        public ConfClue[] GetCurSceneClueConfs() {
+        public CClue[] GetCurSceneClueConfs() {
             return _clueConfs;
         }
 

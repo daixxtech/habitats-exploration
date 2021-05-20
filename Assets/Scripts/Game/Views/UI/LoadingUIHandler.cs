@@ -21,7 +21,7 @@ namespace Game.Views.UI {
         public void OnEnable() {
             _tipsTxt.gameObject.SetActive(false);
             _progressBarImg.gameObject.SetActive(false);
-            ConfLoadingTips[] tips = ConfLoadingTips.GetArray();
+            CLoadingTips[] tips = CLoadingTips.GetArray();
             if (tips.Length != 0) {
                 int randomIndex = Random.Range(0, tips.Length);
                 _tipsTxt.text = tips[randomIndex].content;

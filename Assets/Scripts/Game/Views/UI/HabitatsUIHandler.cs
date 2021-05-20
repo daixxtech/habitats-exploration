@@ -29,10 +29,10 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
-            ConfHabitat[] confs = ConfHabitat.GetArray();
+            CHabitat[] confs = CHabitat.GetArray();
             int count = confs.Length;
             _habitatCtnr.SetCount<HabitatCtnrElem>(count);
-            Action<ConfHabitat> onClicked = LoadHabitatScene;
+            Action<CHabitat> onClicked = LoadHabitatScene;
             for (int i = 0; i < count; i++) {
                 var elem = (HabitatCtnrElem) _habitatCtnr.Children[i];
                 elem.SetInfo(confs[i]);
@@ -40,9 +40,9 @@ namespace Game.Views.UI {
             }
         }
 
-        private void LoadHabitatScene(ConfHabitat conf) {
+        private void LoadHabitatScene(CHabitat conf) {
             if (conf.isAvailable) {
-                string sceneName = ConfScene.Get(conf.sceneID).name;
+                string sceneName = CScene.Get(conf.sceneID).name;
                 AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
                 operation.allowSceneActivation = false;
                 UIModule.Instance.HideUIAll();

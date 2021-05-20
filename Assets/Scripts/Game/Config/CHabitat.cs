@@ -1,12 +1,12 @@
 ﻿/* Auto generated code */
 
+using Game.Utils;
 using System.Collections.Generic;
 using System.Linq;
-using Game.Utils;
 
 namespace Game.Config {
     /// <summary> Generate From Habitats.xlsx </summary>
-    public class ConfHabitat {
+    public class CHabitat {
         /// <summary> ID </summary>
         public readonly int id;
         /// <summary> 名称 </summary>
@@ -18,7 +18,7 @@ namespace Game.Config {
         /// <summary> 是否可用 </summary>
         public readonly bool isAvailable;
 
-        public ConfHabitat(int id, string name, string icon, int sceneID, bool isAvailable) {
+        public CHabitat(int id, string name, string icon, int sceneID, bool isAvailable){
             this.id = id;
             this.name = name;
             this.icon = icon;
@@ -26,15 +26,15 @@ namespace Game.Config {
             this.isAvailable = isAvailable;
         }
 
-        private static Dictionary<int, ConfHabitat> _Dict;
-        private static ConfHabitat[] _Array;
+        private static Dictionary<int, CHabitat> _Dict;
+        private static CHabitat[] _Array;
 
-        public static ConfHabitat Get(int id) {
-            return (_Dict ??= ConfUtil.LoadFromJSON<ConfHabitat>()).TryGetValue(id, out var conf) ? conf : null;
+        public static CHabitat Get(int id) {
+            return (_Dict ??= ConfUtil.LoadFromJSON<CHabitat>()).TryGetValue(id, out var conf) ? conf : null;
         }
 
-        public static ConfHabitat[] GetArray() {
-            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<ConfHabitat>()).Values.ToArray();
+        public static CHabitat[] GetArray() {
+            return _Array ??= (_Dict ??= ConfUtil.LoadFromJSON<CHabitat>()).Values.ToArray();
         }
     }
 }

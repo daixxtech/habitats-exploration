@@ -9,9 +9,9 @@ namespace Game.Views.UI.HUD {
         private Button _button;
         private Text _nameTxt;
 
-        private ConfClue _conf;
+        private CClue _conf;
         private bool _unlocked;
-        public Action<ConfClue> onClicked;
+        public Action<CClue> onClicked;
 
         private void Awake() {
             _button = transform.GetComponent<Button>();
@@ -27,7 +27,7 @@ namespace Game.Views.UI.HUD {
             Facade.Clue.OnClueUnlocked -= RefreshInfo;
         }
 
-        public void SetInfo(ConfClue conf) {
+        public void SetInfo(CClue conf) {
             _conf = conf;
             _unlocked = ClueModule.Instance.GetClueUnlocked(_conf.id);
             _button.interactable = _unlocked;

@@ -10,15 +10,15 @@ namespace Game.Views.UI.Habitats {
         private Image _iconImg;
         private Text _nameTxt;
 
-        private ConfHabitat _conf;
-        public Action<ConfHabitat> onClicked;
+        private CHabitat _conf;
+        public Action<CHabitat> onClicked;
 
         private void Awake() {
             _iconImg = transform.Find("IconImg").GetComponent<Image>();
             _nameTxt = transform.Find("NameTxt").GetComponent<Text>();
         }
 
-        public void SetInfo(ConfHabitat conf) {
+        public void SetInfo(CHabitat conf) {
             _conf = conf;
             _iconImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(_conf.icon);
             _nameTxt.text = _conf.name;

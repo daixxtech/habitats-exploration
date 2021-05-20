@@ -12,10 +12,10 @@ namespace Game.Views.UI.Archives {
         private Text _nameTxt;
         private GameObject _lockedCpnt;
 
-        private ConfAnimal _conf;
+        private CAnimal _conf;
         private bool _pointerEnter;
         private bool _pointerDown;
-        public Action<ConfAnimal> onClicked;
+        public Action<CAnimal> onClicked;
 
         private void Awake() {
             _iconImg = transform.Find("Icon/IconImg").GetComponent<Image>();
@@ -38,7 +38,7 @@ namespace Game.Views.UI.Archives {
             }
         }
 
-        public void SetInfo(ConfAnimal conf) {
+        public void SetInfo(CAnimal conf) {
             _conf = conf;
             _iconImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(_conf.icon);
             _nameTxt.text = _conf.name;

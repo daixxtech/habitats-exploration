@@ -26,7 +26,7 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
-            if (UIModule.Instance.Parameter is ConfClue conf) {
+            if (UIModule.Instance.Parameter is CClue conf) {
                 _nameTxt.text = conf.name;
                 _descriptionTxt.text = conf.description;
             }
