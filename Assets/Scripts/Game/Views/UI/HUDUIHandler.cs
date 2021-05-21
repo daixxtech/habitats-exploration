@@ -59,7 +59,7 @@ namespace Game.Views.UI {
         }
 
         private void RefreshClueCount(int clueID) {
-            _clueCountTxt.text = $"{_clueCount - ClueModule.Instance.LeftLockedClueCount} / {_clueCount}";
+            _clueCountTxt.text = string.Format("{0} / {1}", _clueCount - ClueModule.Instance.LeftLockedClueCount, _clueCount);
         }
     }
 }

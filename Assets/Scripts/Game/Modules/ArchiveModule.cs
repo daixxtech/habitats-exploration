@@ -12,10 +12,10 @@ namespace Game.Modules {
         public bool NeedUpdate { get; } = false;
 
         public void Init() {
-            var confArr = CAnimal.GetArray();
-            _archive = new Dictionary<int, bool>(confArr.Length);
+            var animalConf = CAnimal.GetArray();
+            _archive = new Dictionary<int, bool>(animalConf.Length);
             bool flag = false;
-            foreach (var conf in confArr) {
+            foreach (var conf in animalConf) {
                 _archive.Add(conf.id, flag = !flag);
             }
         }

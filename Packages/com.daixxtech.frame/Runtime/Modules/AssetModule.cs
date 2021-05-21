@@ -28,14 +28,13 @@ namespace Frame.Runtime.Modules {
 
             string content = request.downloadHandler.text;
             BundleInfo[] bundleInfos = JsonConvert.DeserializeObject<BundleInfo[]>(content);
-            _assetDict = new Dictionary<string, string>(3);
-            for (int i = 0, count = bundleInfos.Length; i < count; i++) {
+            _assetDict = new Dictionary<string, string>();
+            for (int i = 0, infoCount = bundleInfos.Length; i < infoCount; i++) {
                 BundleInfo bundleInfo = bundleInfos[i];
-                _dependenciesDict.Add(bundleInfo.name, bundleInfo.dependencies);
-                int assetLength = bundleInfo.assets.Length;
-                for (int j = 0; j < assetLength; j++) {
+                for (int j = 0, assetLength = bundleInfo.assets.Length; j < assetLength; j++) {
                     _assetDict.Add(bundleInfo.assets[j], bundleInfo.name);
                 }
+                _dependenciesDict.Add(bundleInfo.name, bundleInfo.dependencies);
             }
         }
 

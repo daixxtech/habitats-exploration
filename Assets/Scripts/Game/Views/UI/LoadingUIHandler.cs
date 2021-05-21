@@ -21,10 +21,10 @@ namespace Game.Views.UI {
         public void OnEnable() {
             _tipsTxt.gameObject.SetActive(false);
             _progressBarImg.gameObject.SetActive(false);
-            CLoadingTips[] tips = CLoadingTips.GetArray();
-            if (tips.Length != 0) {
-                int randomIndex = Random.Range(0, tips.Length);
-                _tipsTxt.text = tips[randomIndex].content;
+            var tipsConfs = CLoadingTips.GetArray();
+            if (tipsConfs.Length != 0) {
+                int randomIndex = Random.Range(0, tipsConfs.Length);
+                _tipsTxt.text = tipsConfs[randomIndex].content;
             }
             _tipsTxt.gameObject.SetActive(true);
             _progressBarImg.gameObject.SetActive(true);

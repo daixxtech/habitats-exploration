@@ -32,7 +32,7 @@ namespace Frame.Runtime.Modules {
 
             Type[] types = Assembly.GetCallingAssembly().GetExportedTypes();
             Type baseType = typeof(UIHandlerBase);
-            for (int i = 0, count = types.Length; i < count; i++) {
+            for (int i = 0, typeCount = types.Length; i < typeCount; i++) {
                 if (types[i].IsClass && types[i].BaseType == baseType) {
                     var bind = types[i].GetCustomAttribute<UIBindAttribute>();
                     if (bind != null) {

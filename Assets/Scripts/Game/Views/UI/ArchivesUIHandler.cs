@@ -32,17 +32,17 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
-            CAnimal[] confs = CAnimal.GetArray();
-            int count = confs.Length;
-            _archiveCtnr.SetCount<ArchiveCtnrElem>(count);
+            var animalConfs = CAnimal.GetArray();
+            int animalCount = animalConfs.Length;
+            _archiveCtnr.SetCount<ArchiveCtnrElem>(animalCount);
             Action<CAnimal> onClicked = ShowDetails;
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < animalCount; i++) {
                 var elem = (ArchiveCtnrElem) _archiveCtnr.Children[i];
-                elem.SetInfo(confs[i]);
+                elem.SetInfo(animalConfs[i]);
                 elem.onClicked = onClicked;
             }
             _archiveCtnr.Children[0].GetComponent<Toggle>().isOn = true;
-            ShowDetails(confs[0]);
+            ShowDetails(animalConfs[0]);
         }
 
         private void ShowDetails(CAnimal conf) {

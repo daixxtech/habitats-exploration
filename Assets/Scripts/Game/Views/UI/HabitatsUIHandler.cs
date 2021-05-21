@@ -29,13 +29,13 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
-            CHabitat[] confs = CHabitat.GetArray();
-            int count = confs.Length;
-            _habitatCtnr.SetCount<HabitatCtnrElem>(count);
+            var habitatConfs = CHabitat.GetArray();
+            int habitatCount = habitatConfs.Length;
+            _habitatCtnr.SetCount<HabitatCtnrElem>(habitatCount);
             Action<CHabitat> onClicked = LoadHabitatScene;
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < habitatCount; i++) {
                 var elem = (HabitatCtnrElem) _habitatCtnr.Children[i];
-                elem.SetInfo(confs[i]);
+                elem.SetInfo(habitatConfs[i]);
                 elem.onClicked = onClicked;
             }
         }
