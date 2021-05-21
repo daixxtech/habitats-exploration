@@ -1,1 +1,1 @@
-﻿{"1":{"id":1,"name":"大熊猫栖息地","icon":"tex_habitats_大熊猫栖息地.png","sceneID":2,"isAvailable":"true"},"2":{"id":2,"name":"金丝猴栖息地","icon":"tex_habitats_金丝猴栖息地.png","sceneID":3,"isAvailable":"false"},"3":{"id":3,"name":"白鳍豚栖息地","icon":"tex_habitats_白鳍豚栖息地.png","sceneID":4,"isAvailable":"false"}}
+﻿{"1":{"id":1,"name":"山谷","icon":"tex_habitats_山谷.png","sceneID":2,"isAvailable":true},"2":{"id":2,"name":"密林","icon":"tex_habitats_密林.png","sceneID":3,"isAvailable":false},"3":{"id":3,"name":"沼泽","icon":"tex_habitats_沼泽.png","sceneID":4,"isAvailable":false}}

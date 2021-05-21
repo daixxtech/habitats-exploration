@@ -6,8 +6,8 @@ using Game.Views.UI;
 using UnityEngine;
 
 namespace Game.Views.Scene {
-    [SceneBind(SceneDef.HABITAT_PANDA)]
-    public class HabitatPandaSceneHandler : MonoBehaviour {
+    [SceneBind(SceneDef.HABITAT_01)]
+    public class Habitat01SceneHandler : MonoBehaviour {
         public void Awake() {
             Facade.Player.OnInteractedClue += ShowClueTips;
         }
