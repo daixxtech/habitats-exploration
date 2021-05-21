@@ -15,12 +15,15 @@ namespace Game.Config {
         public readonly int habitatID;
         /// <summary> 线索描述 </summary>
         public readonly string description;
+        /// <summary> 位置 </summary>
+        public readonly float[] position;
 
-        public CClue(int id, string name, int habitatID, string description){
+        public CClue(int id, string name, int habitatID, string description, float[] position){
             this.id = id;
             this.name = name;
             this.habitatID = habitatID;
             this.description = description;
+            this.position = position;
         }
 
         private static Dictionary<int, CClue> _Dict;

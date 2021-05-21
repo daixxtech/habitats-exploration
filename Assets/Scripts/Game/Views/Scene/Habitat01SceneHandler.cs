@@ -26,7 +26,7 @@ namespace Game.Views.Scene {
             GameObject cluePrefab = AssetModule.Instance.LoadAsset<GameObject>("Scene_Clue.prefab");
             for (int i = 0; i < clueCount; i++) {
                 GameObject clueInstance = Instantiate(cluePrefab, clueRoot);
-                clueInstance.transform.localPosition = new Vector3(Random.Range(4, 16), 1, Random.Range(4, 16));
+                clueInstance.transform.localPosition = new Vector3(clueConfs[i].position[0], clueConfs[i].position[1], clueConfs[i].position[2]);
                 ClueController clueController = clueInstance.AddComponent<ClueController>();
                 clueController.SetInfo(clueConfs[i]);
             }
