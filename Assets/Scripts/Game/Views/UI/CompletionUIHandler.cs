@@ -3,7 +3,6 @@ using Frame.Runtime.Modules.UI;
 using Frame.Runtime.Views.UI;
 using Game.Views.Scene;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
@@ -14,10 +13,8 @@ namespace Game.Views.UI {
             continueBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.COMPLETION));
             Button backBtn = transform.Find("Root/Content/BackBtn").GetComponent<Button>();
             backBtn.onClick.AddListener(() => {
-                AsyncOperation operation = SceneManager.LoadSceneAsync(SceneDef.START);
-                operation.allowSceneActivation = false;
                 UIModule.Instance.HideUIAll();
-                UIModule.Instance.ShowUI(UIDef.LOADING, operation);
+                UIModule.Instance.ShowUI(UIDef.LOADING, SceneDef.START);
             });
         }
 

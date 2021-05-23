@@ -6,7 +6,6 @@ using Game.Views.UI.Habitats;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
@@ -43,10 +42,8 @@ namespace Game.Views.UI {
         private void LoadHabitatScene(CHabitat conf) {
             if (conf.isAvailable) {
                 string sceneName = CScene.Get(conf.sceneID).name;
-                AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
-                operation.allowSceneActivation = false;
                 UIModule.Instance.HideUIAll();
-                UIModule.Instance.ShowUI(UIDef.LOADING, operation);
+                UIModule.Instance.ShowUI(UIDef.LOADING, sceneName);
             } else {
                 _notAvailableTipsCpnt.SetActive(true);
             }

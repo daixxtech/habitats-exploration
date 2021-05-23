@@ -5,6 +5,7 @@ using Game.Config;
 using Game.Utils;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Views.UI {
@@ -29,7 +30,8 @@ namespace Game.Views.UI {
             _tipsTxt.gameObject.SetActive(true);
             _progressBarImg.gameObject.SetActive(true);
 
-            if (UIModule.Instance.Parameter is AsyncOperation operation) {
+            if (UIModule.Instance.Parameter is string sceneName) {
+                AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
                 StartCoroutine(RefreshProgress(operation));
             } else {
                 Debug.LogError("[LoadingUIHandler] OnEnable: UI Param is null");
@@ -37,8 +39,9 @@ namespace Game.Views.UI {
         }
 
         private IEnumerator RefreshProgress(AsyncOperation operation) {
-            float curValue, targetValue;
-            _progressBarImg.fillAmount = curValue = 0;
+            operation.allowSceneActivation = false;
+            float curValue = 0, targetValue;
+            _progressBarImg.fillAmount = 0;
             // 进度条平滑加载至当前异步操作的进度值
             while (operation.progress < 0.9F) {
                 targetValue = (int) (operation.progress * 100);
