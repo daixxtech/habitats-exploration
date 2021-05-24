@@ -14,8 +14,10 @@ namespace Game.Views.Scene {
         private float _rotateRadXUpperLimit;
         [SerializeField] [InspectorReadOnly] private float _rotateRadX;
         [SerializeField] [InspectorReadOnly] private float _rotateRadY;
+#if UNITY_ANDROID
         private Touch _preTouch0;
         private Touch _preTouch1;
+#endif
 
         [Header("Camera Position")]
         [SerializeField] private float _scaleSpeed;
@@ -41,12 +43,20 @@ namespace Game.Views.Scene {
         }
 
         private void Update() {
+            const float DOUBLE_PI = Mathf.PI * 2;
+#if UNITY_EDITOR
+            if (Input.GetMouseButton(0)) {
+                _rotateRadX = Mathf.Clamp(_rotateRadX - Input.GetAxis("Mouse Y") * _rotateSpeed * 20, _rotateRadXLowerLimit, _rotateRadXUpperLimit);
+                _rotateRadY = (_rotateRadY - Input.GetAxis("Mouse X") * _rotateSpeed * 20) % DOUBLE_PI;
+            }
+            _distance = Mathf.Clamp(_distance - Input.GetAxis("Mouse ScrollWheel") * _scaleSpeed, _distanceLowerLimit, _distanceUpperLimit);
+#endif
+#if UNITY_ANDROID
             List<Touch> sceneTouches = InputModule.Instance.SceneTouches;
             // 计算 X & Y 轴的旋转角度相机与角色的距离
             if (sceneTouches.Count == 1) {
                 Touch touch0 = sceneTouches[0];
                 if (touch0.phase == TouchPhase.Moved) {
-                    const float DOUBLE_PI = Mathf.PI * 2;
                     _rotateRadX = Mathf.Clamp(_rotateRadX - touch0.deltaPosition.y * _rotateSpeed, _rotateRadXLowerLimit, _rotateRadXUpperLimit);
                     _rotateRadY = (_rotateRadY - touch0.deltaPosition.x * _rotateSpeed) % DOUBLE_PI;
                 }
@@ -61,6 +71,7 @@ namespace Game.Views.Scene {
                 _preTouch0 = touch0;
                 _preTouch1 = touch1;
             }
+#endif
             // 计算相机与角色的实际距离（地形碰撞检测）
             Vector3 playerPos = _playerTrans.position + _playerPosOffset;
             Ray cameraRay = new Ray(playerPos, Vector3.Normalize(transform.position - playerPos));
