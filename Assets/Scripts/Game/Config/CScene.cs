@@ -11,10 +11,13 @@ namespace Game.Config {
         public readonly int id;
         /// <summary> 名称 </summary>
         public readonly string name;
+        /// <summary> 栖息地 ID </summary>
+        public readonly int habitatID;
 
-        public CScene(int id, string name){
+        public CScene(int id, string name, int habitatID){
             this.id = id;
             this.name = name;
+            this.habitatID = habitatID;
         }
 
         private static Dictionary<int, CScene> _Dict;

@@ -29,11 +29,18 @@ namespace Game.Modules {
         public void Update() { }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            _clueStateDict.Clear();
-            _clueConfs = CClue.GetArray().Where(clue => CScene.Get(CHabitat.Get(clue.habitatID).sceneID).name == scene.name).ToArray();
-            LeftLockedClueCount = _clueConfs.Length;
-            foreach (var conf in _clueConfs) {
-                _clueStateDict.Add(conf.id, false);
+            CHabitat habitatConf = HabitatModule.Instance.GetCurHabitatConf();
+            if (habitatConf == null) {
+                _clueConfs = null;
+                LeftLockedClueCount = 0;
+                _clueStateDict.Clear();
+            } else {
+                _clueConfs = CClue.GetArray().Where(clueConf => clueConf.habitatID == habitatConf.id).ToArray();
+                LeftLockedClueCount = _clueConfs.Length;
+                _clueStateDict.Clear();
+                foreach (var conf in _clueConfs) {
+                    _clueStateDict.Add(conf.id, false);
+                }
             }
         }
 
@@ -47,7 +54,7 @@ namespace Game.Modules {
             }
         }
 
-        public CClue[] GetCurSceneClueConfs() {
+        public CClue[] GetCurHabitatClueConfs() {
             return _clueConfs;
         }
 

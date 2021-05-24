@@ -12,9 +12,11 @@ using UnityEngine.UI;
 namespace Game.Views.UI {
     [UIBind(UIDef.HUD)]
     public class HUDUIHandler : UIHandlerBase {
-        private Button _interactBtn;
         private Text _clueCountTxt;
         private UIContainer _clueCtnr;
+        private Text _minimapTxt;
+        private Image _minimapImg;
+        private Button _interactBtn;
 
         private int _clueCount;
         private CClue _clueConf;
@@ -24,6 +26,8 @@ namespace Game.Views.UI {
             _interactBtn.onClick.AddListener(() => Facade.Player.OnInteractedClue?.Invoke(_clueConf.id));
             _clueCountTxt = transform.Find("Root/CluesPanel/Title/ClueCountTxt").GetComponent<Text>();
             _clueCtnr = transform.Find("Root/CluesPanel/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
+            _minimapTxt = transform.Find("Root/Minimap/Name/Text").GetComponent<Text>();
+            _minimapImg = transform.Find("Root/Minimap/Content/Image").GetComponent<Image>();
 
             transform.Find("Root/Joystick").gameObject.AddComponent<JoystickElem>();
             Button pauseBtn = transform.Find("Root/PauseBtn").GetComponent<Button>();
@@ -31,15 +35,20 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
+            CHabitat habitatConf = HabitatModule.Instance.GetCurHabitatConf();
+            if (habitatConf != null) {
+                _minimapTxt.text = habitatConf.name;
+                _minimapImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(habitatConf.minimap);
+            }
             _interactBtn.gameObject.SetActive(false);
 
-            CClue[] confs = ClueModule.Instance.GetCurSceneClueConfs();
-            _clueCount = confs.Length;
+            CClue[] clueConfs = ClueModule.Instance.GetCurHabitatClueConfs();
+            _clueCount = clueConfs?.Length ?? 0;
             _clueCtnr.SetCount<ClueCtnrElem>(_clueCount);
             Action<CClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
             for (int i = 0; i < _clueCount; i++) {
                 var elem = (ClueCtnrElem) _clueCtnr.Children[i];
-                elem.SetInfo(confs[i]);
+                elem.SetInfo(clueConfs[i]);
                 elem.onClicked = onClicked;
             }
             RefreshClueCount(0);

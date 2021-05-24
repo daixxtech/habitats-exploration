@@ -19,6 +19,7 @@ namespace Game {
             _moduleLs.Add(InputModule.Instance);
             // 功能模块
             _moduleLs.Add(ArchiveModule.Instance);
+            _moduleLs.Add(HabitatModule.Instance);
             _moduleLs.Add(ClueModule.Instance);
             // 模块初始化
             foreach (var module in _moduleLs) {

@@ -8,20 +8,12 @@ using UnityEngine;
 namespace Game.Views.Scene {
     [SceneBind(SceneDef.HABITAT_01)]
     public class Habitat01SceneHandler : MonoBehaviour {
-        public void Awake() {
-            Facade.Player.OnInteractedClue += ShowClueTips;
-        }
-
-        private void OnDestroy() {
-            Facade.Player.OnInteractedClue -= ShowClueTips;
-        }
-
         private void Start() {
             UIModule.Instance.HideUIAll();
             UIModule.Instance.ShowUI(UIDef.HUD);
 
             Transform clueRoot = transform.Find("Environment/Clues");
-            var clueConfs = ClueModule.Instance.GetCurSceneClueConfs();
+            var clueConfs = ClueModule.Instance.GetCurHabitatClueConfs();
             int clueCount = clueConfs.Length;
             GameObject cluePrefab = AssetModule.Instance.LoadAsset<GameObject>("Scene_Clue.prefab");
             for (int i = 0; i < clueCount; i++) {
@@ -30,6 +22,14 @@ namespace Game.Views.Scene {
                 ClueController clueController = clueInstance.AddComponent<ClueController>();
                 clueController.SetInfo(clueConfs[i]);
             }
+        }
+
+        private void OnEnable() {
+            Facade.Player.OnInteractedClue += ShowClueTips;
+        }
+
+        private void OnDisable() {
+            Facade.Player.OnInteractedClue -= ShowClueTips;
         }
 
         private static void ShowClueTips(int clueID) {

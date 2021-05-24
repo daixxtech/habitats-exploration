@@ -17,13 +17,16 @@ namespace Game.Config {
         public readonly int sceneID;
         /// <summary> 是否可用 </summary>
         public readonly bool isAvailable;
+        /// <summary> 小地图 </summary>
+        public readonly string minimap;
 
-        public CHabitat(int id, string name, string icon, int sceneID, bool isAvailable){
+        public CHabitat(int id, string name, string icon, int sceneID, bool isAvailable, string minimap){
             this.id = id;
             this.name = name;
             this.icon = icon;
             this.sceneID = sceneID;
             this.isAvailable = isAvailable;
+            this.minimap = minimap;
         }
 
         private static Dictionary<int, CHabitat> _Dict;

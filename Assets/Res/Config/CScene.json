@@ -1,1 +1,1 @@
-﻿{"1":{"id":1,"name":"Start"},"2":{"id":2,"name":"Habitat_01"},"3":{"id":3,"name":"Habitat_02"},"4":{"id":4,"name":"Habitat_03"}}
+﻿{"1":{"id":1,"name":"Start","habitatID":0},"2":{"id":2,"name":"Habitat_01","habitatID":1},"3":{"id":3,"name":"Habitat_02","habitatID":2},"4":{"id":4,"name":"Habitat_03","habitatID":3}}
