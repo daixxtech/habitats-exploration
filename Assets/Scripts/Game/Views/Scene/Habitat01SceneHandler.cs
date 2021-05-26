@@ -8,6 +8,11 @@ using UnityEngine;
 namespace Game.Views.Scene {
     [SceneBind(SceneDef.HABITAT_01)]
     public class Habitat01SceneHandler : MonoBehaviour {
+        private void Awake() {
+            GameObject.FindGameObjectWithTag("MainCamera").AddComponent<CameraController>();
+            GameObject.FindGameObjectWithTag("Player").AddComponent<PlayerController>();
+        }
+
         private void Start() {
             UIModule.Instance.HideUIAll();
             UIModule.Instance.ShowUI(UIDef.HUD);

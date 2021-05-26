@@ -1,4 +1,5 @@
 ﻿using Frame.Runtime.Utils;
+using Game.Config;
 using UnityEngine;
 
 namespace Game.Views.Scene {
@@ -9,13 +10,19 @@ namespace Game.Views.Scene {
         [SerializeField] [InspectorReadOnly] private float _inputH;
         [SerializeField] [InspectorReadOnly] private bool _isJumpPressed;
 
+        [Header("Player State")]
+        [SerializeField] [InspectorReadOnly] private bool _animatorJumping;
+
         [Header("Player Control")]
         [SerializeField] [InspectorReadOnly] private CharacterController3D _controller;
         [SerializeField] [InspectorReadOnly] private Animator _animator;
         [SerializeField] [InspectorReadOnly] private Transform _cameraTrans;
 
         private void Awake() {
-            _controller = GetComponent<CharacterController3D>();
+            _controller = gameObject.GetComponent<CharacterController3D>();
+            _controller.MoveSpeed = GameConfig.PlayerMoveSpeed;
+            _controller.JumpForce = GameConfig.PlayerJumpForce;
+            _controller.JumpCount = GameConfig.PlayerJumpCount;
             _animator = GetComponent<Animator>();
             _cameraTrans = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
@@ -29,6 +36,8 @@ namespace Game.Views.Scene {
         }
 
         private void FixedUpdate() {
+            // 动画状态机是否处于跳跃状态（用于针对跳跃动画做额外处理）
+            _animatorJumping = _animator.GetCurrentAnimatorStateInfo(0).IsName("JUMP00");
             // 更新动画控制器状态
             UpdateAnimatorState();
             // 更新角色控制器状态
@@ -56,15 +65,13 @@ namespace Game.Views.Scene {
 
         /// <summary> 更新动画控制器状态 </summary>
         private void UpdateAnimatorState() {
-            if (_isJumpPressed && _controller.CanJump && (_controller.IsGrounded || _controller.IsFalling) /* 防止多段跳时多次触发 Jump 动画 */) {
-                // animator.SetTrigger("Jump"); // 放在 Update 里会导致重复触发
+            if (_isJumpPressed && _controller.CanJump && !_animatorJumping && (_controller.IsGrounded || _controller.IsFalling) /* 防止多段跳时多次触发 Jump 动画 */) {
+                _animator.SetTrigger("Jump"); // 放在 Update 里会导致重复触发
             }
             if (_controller.IsGrounded) {
                 _animator.SetFloat("InputV", Mathf.Abs(_inputV));
                 _animator.SetFloat("InputH", Mathf.Abs(_inputH));
             }
-            // animator.SetBool("isGrounded", controller.IsGrounded);
-            // animator.SetBool("isFalling", controller.IsFalling);
         }
 
         /// <summary> 更新角色控制器状态 </summary>
@@ -80,7 +87,7 @@ namespace Game.Views.Scene {
                 _controller.Direction = direction;
             }
             // 检测 Update 中是否有跳跃输入
-            if (_isJumpPressed) {
+            if (_isJumpPressed && !_animatorJumping) {
                 _controller.Jump();
             }
         }

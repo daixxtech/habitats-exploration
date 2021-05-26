@@ -9,22 +9,28 @@ namespace Game.Views.Scene {
         [SerializeField] [InspectorReadOnly] private Rigidbody _rig3D;
 
         [Header("Character Moving")]
-        [SerializeField] private float _moveSpeed; // 移动速度
+        [SerializeField] private float _moveSpeed;
         [SerializeField] [InspectorReadOnly] private Vector3 _preVelocity; // 上次计算的速度（用于 SmoothDamp 函数）
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         [SerializeField] [InspectorReadOnly] private Vector3 _curVelocity; // 当前计算的速度（用于在 Inspector 中进行观测，对实际代码无影响，可删除）
-    #endif
+#endif
         [SerializeField] [InspectorReadOnly] private Vector3 _direction;
 
         [Header("Character Jumping")]
-        [SerializeField] private float _jumpForce; // 跳跃力度
-        [SerializeField] private int _jumpCount; // 最大可跳跃次数
+        [SerializeField] private float _jumpForce;
+        [SerializeField] private int _jumpCount;
         [SerializeField] [InspectorReadOnly] private int _remainingJumpCount; // 剩余可跳跃次数（用于支持多段跳）
         [SerializeField] [InspectorReadOnly] private bool _preIsGrounded; // 上次检测时是否落地
         [SerializeField] [InspectorReadOnly] private bool _isGrounded; // 是否落地
         [SerializeField] [InspectorReadOnly] private bool _isFalling; // 是否处于下落状态
 
-        #region 对外接口
+#region 对外接口
+        /// <summary> 移动速度 </summary>
+        public float MoveSpeed { get => _moveSpeed; internal set => _moveSpeed = value; }
+        /// <summary> 跳跃力度 </summary>
+        public float JumpForce { get => _jumpForce; internal set => _jumpForce = value; }
+        /// <summary> 最大可跳跃次数 </summary>
+        public int JumpCount { get => _jumpCount; internal set => _jumpCount = value; }
         /// <summary> 是否落地 </summary>
         public bool IsGrounded => _isGrounded;
         /// <summary> 是否处于下落状态 </summary>
@@ -52,7 +58,7 @@ namespace Game.Views.Scene {
                 _rig3D.velocity = new Vector3(_rig3D.velocity.x, _jumpForce, _rig3D.velocity.z);
             }
         }
-        #endregion
+#endregion
 
         private void Awake() {
             _rig3D = GetComponent<Rigidbody>();
@@ -62,11 +68,11 @@ namespace Game.Views.Scene {
             _remainingJumpCount = _jumpCount;
         }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         private void Update() {
             _curVelocity = _rig3D.velocity; // 更新当前速度，用于观测
         }
-    #endif
+#endif
 
         private void FixedUpdate() {
             Rotate();

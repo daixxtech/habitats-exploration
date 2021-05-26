@@ -189,24 +189,6 @@ Transform:
   m_Father: {fileID: 16583183}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &779029194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341166735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e28a25399aac9ad4582133311f6d4bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputV: 0
-  _inputH: 0
-  _isJumpPressed: 0
-  _controller: {fileID: 0}
-  _animator: {fileID: 0}
-  _cameraTrans: {fileID: 0}
 --- !u!54 &779029195
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3144,10 +3126,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1341589871}
   - component: {fileID: 1331816175}
-  - component: {fileID: 779029195}
   - component: {fileID: 1341166736}
-  - component: {fileID: 1341166738}
-  - component: {fileID: 779029194}
+  - component: {fileID: 779029195}
   m_Layer: 0
   m_Name: UnityChan
   m_TagString: Player
@@ -3185,29 +3165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1341166738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1341166735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdeeaac424dd8a42ac5b92c911e1831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rig3D: {fileID: 0}
-  _moveSpeed: 4
-  _preVelocity: {x: 0, y: 0, z: 0}
-  _curVelocity: {x: 0, y: 0, z: 0}
-  _direction: {x: 0, y: 0, z: 0}
-  _jumpForce: 6
-  _jumpCount: 2
-  _remainingJumpCount: 0
-  _preIsGrounded: 0
-  _isGrounded: 0
-  _isFalling: 0
 --- !u!1 &1341166739
 GameObject:
   m_ObjectHideFlags: 0
@@ -7418,7 +7375,6 @@ GameObject:
   - component: {fileID: 2116917623}
   - component: {fileID: 2116917622}
   - component: {fileID: 2116917621}
-  - component: {fileID: 2116917624}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -7491,28 +7447,3 @@ Transform:
   m_Father: {fileID: 16583183}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2116917624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116917620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292afe1026c94ba184b9351687e2d325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rotateSpeed: 0.005
-  _rotateDegXUpperLimit: 40
-  _rotateDegXLowerLimit: -10
-  _rotateRadX: 0
-  _rotateRadY: 0
-  _scaleSpeed: 0.005
-  _distanceLowerLimit: 1
-  _distanceUpperLimit: 5
-  _distance: 0
-  _actualDistance: 0
-  _offsetPos: {x: 0, y: 0, z: 0}
-  _playerTrans: {fileID: 0}
-  _playerPosOffset: {x: 0, y: 1.35, z: 0}
