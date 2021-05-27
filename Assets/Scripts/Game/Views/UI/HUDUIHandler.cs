@@ -22,16 +22,18 @@ namespace Game.Views.UI {
         private CClue _clueConf;
 
         private void Awake() {
-            _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
-            _interactBtn.onClick.AddListener(() => Facade.Player.OnInteractedClue?.Invoke(_clueConf.id));
             _clueCountTxt = transform.Find("Root/CluesPanel/Title/ClueCountTxt").GetComponent<Text>();
             _clueCtnr = transform.Find("Root/CluesPanel/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
             _minimapTxt = transform.Find("Root/Minimap/Name/Text").GetComponent<Text>();
             _minimapImg = transform.Find("Root/Minimap/Content/Image").GetComponent<Image>();
+            _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
+            _interactBtn.onClick.AddListener(() => Facade.Player.OnInteractedClue?.Invoke(_clueConf.id));
 
             transform.Find("Root/Joystick").gameObject.AddComponent<JoystickElem>();
             Button pauseBtn = transform.Find("Root/PauseBtn").GetComponent<Button>();
             pauseBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.PAUSE));
+            Button jumpBtn = transform.Find("Root/JumpBtn").GetComponent<Button>();
+            jumpBtn.onClick.AddListener(() => Facade.Input.OnJumpPressed?.Invoke());
         }
 
         public void OnEnable() {

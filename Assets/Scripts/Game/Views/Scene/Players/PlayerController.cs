@@ -8,7 +8,7 @@ namespace Game.Views.Scene {
         [Header("Player Input")]
         [SerializeField] [InspectorReadOnly] private float _inputV;
         [SerializeField] [InspectorReadOnly] private float _inputH;
-        [SerializeField] [InspectorReadOnly] private bool _isJumpPressed;
+        [SerializeField] [InspectorReadOnly] private bool _jumpPressed;
 
         [Header("Player State")]
         [SerializeField] [InspectorReadOnly] private bool _animatorJumping;
@@ -29,11 +29,22 @@ namespace Game.Views.Scene {
 
         private void OnEnable() {
             Facade.Input.OnJoystickDragged += OnJoystickDragged;
+            Facade.Input.OnJumpPressed += OnJumpPressed;
         }
 
         private void OnDisable() {
             Facade.Input.OnJoystickDragged -= OnJoystickDragged;
+            Facade.Input.OnJumpPressed -= OnJumpPressed;
         }
+
+#if UNITY_EDITOR
+        private void Update() {
+            if (Input.GetButtonDown("Jump")) {
+                _jumpPressed = true;
+            }
+        }
+
+#endif
 
         private void FixedUpdate() {
             // 动画状态机是否处于跳跃状态（用于针对跳跃动画做额外处理）
@@ -43,7 +54,7 @@ namespace Game.Views.Scene {
             // 更新角色控制器状态
             UpdateControllerState();
             // 重置跳跃输入
-            _isJumpPressed = false;
+            _jumpPressed = false;
         }
 
         private void OnTriggerEnter(Collider other) {
@@ -63,9 +74,13 @@ namespace Game.Views.Scene {
             _inputH = direction.x;
         }
 
+        private void OnJumpPressed() {
+            _jumpPressed = true;
+        }
+
         /// <summary> 更新动画控制器状态 </summary>
         private void UpdateAnimatorState() {
-            if (_isJumpPressed && _controller.CanJump && !_animatorJumping && (_controller.IsGrounded || _controller.IsFalling) /* 防止多段跳时多次触发 Jump 动画 */) {
+            if (_jumpPressed && _controller.CanJump && !_animatorJumping && (_controller.IsGrounded || _controller.IsFalling) /* 防止多段跳时多次触发 Jump 动画 */) {
                 _animator.SetTrigger("Jump"); // 放在 Update 里会导致重复触发
             }
             if (_controller.IsGrounded) {
@@ -87,7 +102,7 @@ namespace Game.Views.Scene {
                 _controller.Direction = direction;
             }
             // 检测 Update 中是否有跳跃输入
-            if (_isJumpPressed && !_animatorJumping) {
+            if (_jumpPressed && !_animatorJumping) {
                 _controller.Jump();
             }
         }
