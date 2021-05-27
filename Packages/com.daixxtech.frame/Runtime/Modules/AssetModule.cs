@@ -10,6 +10,8 @@ namespace Frame.Runtime.Modules {
         private static AssetModule _Instance;
         public static AssetModule Instance => _Instance ??= new AssetModule();
 
+        public const string BUNDLE_INFO_FILE_NAME = "bundle_infos.json";
+
         private Dictionary<string, string[]> _dependenciesDict;
         private Dictionary<string, string> _assetDict;
         private Dictionary<string, AssetBundle> _bundleDict;
@@ -21,8 +23,8 @@ namespace Frame.Runtime.Modules {
             _assetDict = new Dictionary<string, string>();
             _bundleDict = new Dictionary<string, AssetBundle>();
 
-            string infoPath = Path.Combine(Application.streamingAssetsPath, "BundleInfos.json");
-            UnityWebRequest request = new UnityWebRequest(infoPath) {downloadHandler = new DownloadHandlerBuffer()};
+            string infoPath = Path.Combine(Application.streamingAssetsPath, BUNDLE_INFO_FILE_NAME);
+            UnityWebRequest request = UnityWebRequest.Get(infoPath);
             UnityWebRequestAsyncOperation operation = request.SendWebRequest();
             while (!operation.isDone) { }
 

@@ -1,4 +1,5 @@
-﻿using Frame.Runtime.Modules.Assets;
+﻿using Frame.Runtime.Modules;
+using Frame.Runtime.Modules.Assets;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Frame.Editor.Utils {
                 bundle.Unload(true);
                 Debug.Log($"[AssetUtil] BuildAssetBundle: Build {bundleName}");
             }
-            string infoPath = Path.Combine(Application.streamingAssetsPath, "BundleInfos.json");
+            string infoPath = Path.Combine(Application.streamingAssetsPath, AssetModule.BUNDLE_INFO_FILE_NAME);
             File.WriteAllText(infoPath, JsonConvert.SerializeObject(bundleInfos));
             AssetDatabase.Refresh();
         }
