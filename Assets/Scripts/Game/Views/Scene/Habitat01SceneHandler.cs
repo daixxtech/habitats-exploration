@@ -17,7 +17,7 @@ namespace Game.Views.Scene {
             UIModule.Instance.HideUIAll();
             UIModule.Instance.ShowUI(UIDef.HUD);
 
-            Transform clueRoot = transform.Find("Environment/Clues");
+            Transform clueRoot = transform.Find("Clues");
             var clueConfs = ClueModule.Instance.GetCurHabitatClueConfs();
             int clueCount = clueConfs.Length;
             GameObject cluePrefab = AssetModule.Instance.LoadAsset<GameObject>("Scene_Clue.prefab");

@@ -45,13 +45,17 @@ namespace Game.Views.UI {
             _interactBtn.gameObject.SetActive(false);
 
             CClue[] clueConfs = ClueModule.Instance.GetCurHabitatClueConfs();
-            _clueCount = clueConfs?.Length ?? 0;
-            _clueCtnr.SetCount<ClueCtnrElem>(_clueCount);
-            Action<CClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
-            for (int i = 0; i < _clueCount; i++) {
-                var elem = (ClueCtnrElem) _clueCtnr.Children[i];
-                elem.SetInfo(clueConfs[i]);
-                elem.onClicked = onClicked;
+            if (clueConfs == null) {
+                _clueCtnr.SetCount<ClueCtnrElem>(0);
+            } else {
+                _clueCount = clueConfs.Length;
+                _clueCtnr.SetCount<ClueCtnrElem>(_clueCount);
+                Action<CClue> onClicked = conf => UIModule.Instance.ShowUI(UIDef.CLUE_TIPS, conf);
+                for (int i = 0; i < _clueCount; i++) {
+                    var elem = (ClueCtnrElem) _clueCtnr.Children[i];
+                    elem.SetInfo(clueConfs[i]);
+                    elem.onClicked = onClicked;
+                }
             }
             RefreshClueCount(0);
 
