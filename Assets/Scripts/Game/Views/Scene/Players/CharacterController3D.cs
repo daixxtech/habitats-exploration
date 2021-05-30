@@ -103,9 +103,10 @@ namespace Game.Views.Scene {
             _isGrounded = false;
             Vector3 position = transform.position;
             Vector3 pointTop = position + new Vector3(0, 1.33F, 0);
-            Vector3 pointBtm = position + new Vector3(0, 0.15F, 0);
+            Vector3 pointBtm = position + new Vector3(0, 0.13F, 0);
             int colliderCount = Physics.OverlapCapsuleNonAlloc(pointTop, pointBtm, 0.17F, Colliders, GameConfig.GroundLayer);
             _isGrounded = colliderCount > 0;
+            _rig3D.useGravity = !_isGrounded;
         }
 
         /// <summary> 检查人物是否处于下落状态 </summary>
