@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2099793823
+CRC: 3243706727
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 643d579458ca072efe409a4cae9382c2
+    Hash: 17fd61573070d1d096213e5c2c8d66b1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
@@ -16,9 +16,11 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Textures/UI/ui_back.png
+- Assets/Res/Textures/UI/ui_minimap_clue.png
 - Assets/Res/Textures/UI/ui_quit.png
 - Assets/Res/Textures/UI/ui_archive.png
 - Assets/Res/Textures/UI/ui_search.png
+- Assets/Res/Textures/UI/ui_minimap_player.png
 - Assets/Res/Textures/UI/ui_joystick.png
 - Assets/Res/Textures/UI/ui_square.png
 - Assets/Res/Textures/UI/ui_jump.png

@@ -14,8 +14,13 @@ namespace Game.Views.UI {
     public class HUDUIHandler : UIHandlerBase {
         private Text _clueCountTxt;
         private UIContainer _clueCtnr;
+
         private Text _minimapTxt;
         private Image _minimapImg;
+        private UIContainer _minimapClueCtnr;
+        private Transform _scenePlayer;
+        private RectTransform _minimapPlayer;
+
         private Button _interactBtn;
 
         private int _clueCount;
@@ -24,8 +29,13 @@ namespace Game.Views.UI {
         private void Awake() {
             _clueCountTxt = transform.Find("Root/CluesPanel/Title/ClueCountTxt").GetComponent<Text>();
             _clueCtnr = transform.Find("Root/CluesPanel/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
+
             _minimapTxt = transform.Find("Root/Minimap/Name/Text").GetComponent<Text>();
-            _minimapImg = transform.Find("Root/Minimap/Content/Image").GetComponent<Image>();
+            _minimapImg = transform.Find("Root/Minimap/Map").GetComponent<Image>();
+            _minimapClueCtnr = transform.Find("Root/Minimap/Map/ClueCtnr").gameObject.AddComponent<UIContainer>();
+            _scenePlayer = GameObject.FindGameObjectWithTag("Player").transform;
+            _minimapPlayer = transform.Find("Root/Minimap/Map/Player").GetComponent<RectTransform>();
+
             _interactBtn = transform.Find("Root/InteractBtn").GetComponent<Button>();
             _interactBtn.onClick.AddListener(() => Facade.Player.OnInteractedClue?.Invoke(_clueConf.id));
 
@@ -47,6 +57,7 @@ namespace Game.Views.UI {
             CClue[] clueConfs = ClueModule.Instance.GetCurHabitatClueConfs();
             if (clueConfs == null) {
                 _clueCtnr.SetCount<ClueCtnrElem>(0);
+                _minimapClueCtnr.SetCount<Image>(0);
             } else {
                 _clueCount = clueConfs.Length;
                 _clueCtnr.SetCount<ClueCtnrElem>(_clueCount);
@@ -55,6 +66,11 @@ namespace Game.Views.UI {
                     var elem = (ClueCtnrElem) _clueCtnr.Children[i];
                     elem.SetInfo(clueConfs[i]);
                     elem.onClicked = onClicked;
+                }
+                _minimapClueCtnr.SetCount<Image>(_clueCount);
+                for (int i = 0; i < _clueCount; i++) {
+                    var elem = _minimapClueCtnr.Children[i].GetComponent<RectTransform>();
+                    elem.anchoredPosition = new Vector2(clueConfs[i].position[0], clueConfs[i].position[2]) / 128.0F * 300.0F;
                 }
             }
             RefreshClueCount(0);
@@ -66,6 +82,11 @@ namespace Game.Views.UI {
         private void OnDisable() {
             Facade.Player.OnTriggeredClue -= OnPlayerTriggeredClue;
             Facade.Clue.OnClueUnlocked -= RefreshClueCount;
+        }
+
+        private void LateUpdate() {
+            _minimapPlayer.anchoredPosition = new Vector2(_scenePlayer.position.x, _scenePlayer.position.z) / 128.0F * 300.0F;
+            _minimapPlayer.eulerAngles = new Vector3(0, 0, -_scenePlayer.eulerAngles.y);
         }
 
         private void OnPlayerTriggeredClue(Collider other, bool enter) {
