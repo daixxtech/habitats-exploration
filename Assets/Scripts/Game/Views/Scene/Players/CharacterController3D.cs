@@ -4,9 +4,12 @@ using UnityEngine;
 
 namespace Game.Views.Scene {
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(CapsuleCollider))]
     public class CharacterController3D : MonoBehaviour {
+        [Header("Character Collision")]
         private static readonly Collider[] Colliders = new Collider[1]; // 碰撞检测数组（用于 OverlapCapsuleNonAlloc 函数）
         [SerializeField] [InspectorReadOnly] private Rigidbody _rig3D;
+        [SerializeField] [InspectorReadOnly] private CapsuleCollider _collider;
 
         [Header("Character Moving")]
         [SerializeField] private float _moveSpeed;
@@ -62,6 +65,7 @@ namespace Game.Views.Scene {
 
         private void Awake() {
             _rig3D = GetComponent<Rigidbody>();
+            _collider = GetComponent<CapsuleCollider>();
         }
 
         private void Start() {
@@ -102,9 +106,10 @@ namespace Game.Views.Scene {
             _preIsGrounded = _isGrounded; // 更新上次检测时是否落地
             _isGrounded = false;
             Vector3 position = transform.position;
-            Vector3 pointTop = position + new Vector3(0, 1.33F, 0);
-            Vector3 pointBtm = position + new Vector3(0, 0.13F, 0);
-            int colliderCount = Physics.OverlapCapsuleNonAlloc(pointTop, pointBtm, 0.17F, Colliders, GameConfig.GroundLayer);
+            const float COLLISION_DETECTION_RADIUS = 0.04F;
+            Vector3 pointTop = position + new Vector3(0, _collider.height - _collider.radius, 0);
+            Vector3 pointBtm = position + new Vector3(0, _collider.radius - COLLISION_DETECTION_RADIUS, 0);
+            int colliderCount = Physics.OverlapCapsuleNonAlloc(pointTop, pointBtm, _collider.radius, Colliders, GameConfig.GroundLayer);
             _isGrounded = colliderCount > 0;
             _rig3D.useGravity = !_isGrounded;
         }
