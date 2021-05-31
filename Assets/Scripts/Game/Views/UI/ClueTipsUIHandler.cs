@@ -11,10 +11,12 @@ namespace Game.Views.UI {
     public class ClueTipsUIHandler : UIHandlerBase {
         private Text _nameTxt;
         private Text _descriptionTxt;
+        private ScrollRect _descriptionScrollRect;
 
         private void Awake() {
             _nameTxt = transform.Find("Root/Tips/NameTxt").GetComponent<Text>();
-            _descriptionTxt = transform.Find("Root/Tips/DescTxt").GetComponent<Text>();
+            _descriptionTxt = transform.Find("Root/Tips/Description/Viewport/Content").GetComponent<Text>();
+            _descriptionScrollRect = transform.Find("Root/Tips/Description").GetComponent<ScrollRect>();
 
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => {
@@ -29,6 +31,7 @@ namespace Game.Views.UI {
             if (UIModule.Instance.Parameter is CClue conf) {
                 _nameTxt.text = conf.name;
                 _descriptionTxt.text = conf.description;
+                _descriptionScrollRect.verticalNormalizedPosition = 1;
             }
             Time.timeScale = 0;
         }
