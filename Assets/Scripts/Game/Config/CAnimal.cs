@@ -11,20 +11,23 @@ namespace Game.Config {
         public readonly int id;
         /// <summary> 名称 </summary>
         public readonly string name;
-        /// <summary> 图标 </summary>
-        public readonly string icon;
+        /// <summary> 图片 </summary>
+        public readonly string image;
         /// <summary> 拉丁学名 </summary>
         public readonly string latinName;
+        /// <summary> 国家动物保护等级 </summary>
+        public readonly string protectionLevel;
         /// <summary> 分布区域 </summary>
         public readonly string distribution;
         /// <summary> 描述 </summary>
         public readonly string description;
 
-        public CAnimal(int id, string name, string icon, string latinName, string distribution, string description){
+        public CAnimal(int id, string name, string image, string latinName, string protectionLevel, string distribution, string description){
             this.id = id;
             this.name = name;
-            this.icon = icon;
+            this.image = image;
             this.latinName = latinName;
+            this.protectionLevel = protectionLevel;
             this.distribution = distribution;
             this.description = description;
         }

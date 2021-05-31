@@ -11,6 +11,10 @@ namespace Game.Config {
         public readonly int id;
         /// <summary> 名称 </summary>
         public readonly string name;
+        /// <summary> 图片 </summary>
+        public readonly string image;
+        /// <summary> 所属动物 ID </summary>
+        public readonly int animalID;
         /// <summary> 所属栖息地 ID </summary>
         public readonly int habitatID;
         /// <summary> 线索描述 </summary>
@@ -18,9 +22,11 @@ namespace Game.Config {
         /// <summary> 位置 </summary>
         public readonly float[] position;
 
-        public CClue(int id, string name, int habitatID, string description, float[] position){
+        public CClue(int id, string name, string image, int animalID, int habitatID, string description, float[] position){
             this.id = id;
             this.name = name;
+            this.image = image;
+            this.animalID = animalID;
             this.habitatID = habitatID;
             this.description = description;
             this.position = position;

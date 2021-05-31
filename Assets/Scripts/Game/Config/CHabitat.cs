@@ -11,22 +11,22 @@ namespace Game.Config {
         public readonly int id;
         /// <summary> 名称 </summary>
         public readonly string name;
-        /// <summary> 图标 </summary>
-        public readonly string icon;
+        /// <summary> 图片 </summary>
+        public readonly string image;
         /// <summary> 场景 ID </summary>
         public readonly int sceneID;
         /// <summary> 是否可用 </summary>
         public readonly bool isAvailable;
-        /// <summary> 小地图 </summary>
-        public readonly string minimap;
+        /// <summary> 小地图图片 </summary>
+        public readonly string minimapImg;
 
-        public CHabitat(int id, string name, string icon, int sceneID, bool isAvailable, string minimap){
+        public CHabitat(int id, string name, string image, int sceneID, bool isAvailable, string minimapImg){
             this.id = id;
             this.name = name;
-            this.icon = icon;
+            this.image = image;
             this.sceneID = sceneID;
             this.isAvailable = isAvailable;
-            this.minimap = minimap;
+            this.minimapImg = minimapImg;
         }
 
         private static Dictionary<int, CHabitat> _Dict;

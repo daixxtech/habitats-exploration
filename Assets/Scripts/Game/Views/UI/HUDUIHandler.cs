@@ -50,7 +50,7 @@ namespace Game.Views.UI {
             CHabitat habitatConf = HabitatModule.Instance.GetCurHabitatConf();
             if (habitatConf != null) {
                 _minimapTxt.text = habitatConf.name;
-                _minimapImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(habitatConf.minimap);
+                _minimapImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(habitatConf.minimapImg);
             }
             _interactBtn.gameObject.SetActive(false);
 

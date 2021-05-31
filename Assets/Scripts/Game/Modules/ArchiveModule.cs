@@ -7,31 +7,34 @@ namespace Game.Modules {
         private static ArchiveModule _Instance;
         public static ArchiveModule Instance => _Instance ?? (_Instance = new ArchiveModule());
 
-        private Dictionary<int, bool> _archive;
+        private Dictionary<int, bool> _clueArchive;
 
         public bool NeedUpdate { get; } = false;
 
         public void Init() {
-            var animalConf = CAnimal.GetArray();
-            _archive = new Dictionary<int, bool>(animalConf.Length);
-            bool flag = false;
-            foreach (var conf in animalConf) {
-                _archive.Add(conf.id, flag = !flag);
+            var clueConfs = CClue.GetArray();
+            _clueArchive = new Dictionary<int, bool>(clueConfs.Length);
+            foreach (var clueConf in clueConfs) {
+                _clueArchive.Add(clueConf.id, false);
             }
+
+            Facade.Clue.OnClueUnlocked += UnlockClueArchive;
         }
 
-        public void Dispose() { }
+        public void Dispose() {
+            Facade.Clue.OnClueUnlocked -= UnlockClueArchive;
+        }
 
         public void Update() { }
 
-        public bool GetArchiveState(int animalID) {
-            _archive.TryGetValue(animalID, out bool unlocked);
+        public bool GetClueArchiveState(int animalID) {
+            _clueArchive.TryGetValue(animalID, out bool unlocked);
             return unlocked;
         }
 
-        private void OnArchiveUnlocked(int animalID) {
-            if (_archive.ContainsKey(animalID)) {
-                _archive[animalID] = true;
+        private void UnlockClueArchive(int clueID) {
+            if (_clueArchive.ContainsKey(clueID)) {
+                _clueArchive[clueID] = true;
             }
         }
     }
