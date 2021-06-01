@@ -4,14 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Editor {
-    public static class MinimapUtil {
+    public static class CameraUtil {
         private const string HABITAT_SCENE_NAME_PREFIX = "Habitat_";
-        private const string TEXTURE_MINIMAP_PATH = "Res/Textures/Minimap";
 
-        [MenuItem("Tools/Minimap/Capture Minimap Image")]
+        [MenuItem("Tools/Camera/Capture Minimap Image")]
         public static void CaptureMinimapImage() {
             Scene scene = SceneManager.GetActiveScene();
-            Debug.Log(scene.name);
             if (!scene.name.StartsWith(HABITAT_SCENE_NAME_PREFIX)) {
                 Debug.LogError("[MinimapUtil] CaptureMinimapImage: Current active scene is not a habitat.");
                 return;
@@ -43,7 +41,7 @@ namespace Editor {
             Object.DestroyImmediate(camera.gameObject);
             lightTrans.eulerAngles = lightAngles;
 
-            string directory = Path.Combine(Application.dataPath, TEXTURE_MINIMAP_PATH);
+            string directory = Path.Combine(Application.dataPath, "Res/Textures/Minimap");
             if (!Directory.Exists(directory)) {
                 Directory.CreateDirectory(directory);
             }
