@@ -17,6 +17,7 @@ namespace Game.Modules {
 
         public void Init() {
             _clueStateDict = new Dictionary<int, bool>();
+            
             SceneManager.sceneLoaded += OnSceneLoaded;
             Facade.Player.OnInteractedClue += UnlockClue;
         }

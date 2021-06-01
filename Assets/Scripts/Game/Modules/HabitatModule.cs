@@ -10,7 +10,7 @@ namespace Game.Modules {
 
         private CHabitat _habitatConf;
 
-        public bool NeedUpdate { get; }
+        public bool NeedUpdate { get; } = false;
 
         public void Init() {
             SceneManager.sceneLoaded += OnSceneLoaded;

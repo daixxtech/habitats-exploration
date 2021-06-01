@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Game.Modules {
     public class ArchiveModule : IModule {
         private static ArchiveModule _Instance;
-        public static ArchiveModule Instance => _Instance ?? (_Instance = new ArchiveModule());
+        public static ArchiveModule Instance => _Instance ??= new ArchiveModule();
 
         private Dictionary<int, bool> _clueArchive;
 
