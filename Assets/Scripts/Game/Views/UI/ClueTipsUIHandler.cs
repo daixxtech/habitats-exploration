@@ -21,7 +21,7 @@ namespace Game.Views.UI {
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => {
                 UIModule.Instance.HideUI(UIDef.CLUE_TIPS);
-                if (ClueModule.Instance.LeftLockedClueCount <= 0) {
+                if (ClueModule.Instance.LeftLockedClueCount <= 0 && NoticeModule.Instance.GetPopupState(ENoticePopup.ExplorationCompleted)) {
                     UIModule.Instance.ShowUI(UIDef.COMPLETION);
                 }
             });
