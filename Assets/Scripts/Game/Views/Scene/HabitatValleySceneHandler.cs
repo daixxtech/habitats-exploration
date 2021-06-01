@@ -6,8 +6,8 @@ using Game.Views.UI;
 using UnityEngine;
 
 namespace Game.Views.Scene {
-    [SceneBind(SceneDef.HABITAT_01)]
-    public class Habitat01SceneHandler : MonoBehaviour {
+    [SceneBind(SceneDef.HABITAT_VALLEY)]
+    public class HabitatValleySceneHandler : MonoBehaviour {
         private void Awake() {
             GameObject.FindGameObjectWithTag("MainCamera").AddComponent<CameraController>();
             GameObject.FindGameObjectWithTag("Player").AddComponent<PlayerController>();
