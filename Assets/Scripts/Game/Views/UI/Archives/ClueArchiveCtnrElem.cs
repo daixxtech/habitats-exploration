@@ -13,16 +13,11 @@ namespace Game.Views.UI.Archives {
         private GameObject _lockedCpnt;
 
         private CClue _conf;
-        private bool _pointerDown;
         public Action<CClue> onClicked;
 
         private void Awake() {
             _nameTxt = transform.Find("Content/NameTxt").GetComponent<Text>();
             _lockedCpnt = transform.Find("Locked").gameObject;
-        }
-
-        private void Update() {
-            transform.localScale = _pointerDown ? (Vector3) _ClickScale : Vector3.one;
         }
 
         public void SetInfo(CClue conf) {
@@ -32,11 +27,11 @@ namespace Game.Views.UI.Archives {
         }
 
         public void OnPointerDown(PointerEventData eventData) {
-            _pointerDown = true;
+            transform.localScale = _ClickScale;
         }
 
         public void OnPointerUp(PointerEventData eventData) {
-            _pointerDown = false;
+            transform.localScale = Vector2.one;
         }
 
         public void OnPointerClick(PointerEventData eventData) {

@@ -13,16 +13,11 @@ namespace Game.Views.UI.Archives {
         private Text _nameTxt;
 
         private CAnimal _conf;
-        private bool _pointerDown;
         public Action<CAnimal> onClicked;
 
         private void Awake() {
             _image = transform.Find("Content/Image").GetComponent<Image>();
             _nameTxt = transform.Find("Content/NameTxt").GetComponent<Text>();
-        }
-
-        private void Update() {
-            transform.localScale = _pointerDown ? (Vector3) _ClickScale : Vector3.one;
         }
 
         public void SetInfo(CAnimal conf) {
@@ -32,11 +27,11 @@ namespace Game.Views.UI.Archives {
         }
 
         public void OnPointerDown(PointerEventData eventData) {
-            _pointerDown = true;
+            transform.localScale = _ClickScale;
         }
 
         public void OnPointerUp(PointerEventData eventData) {
-            _pointerDown = false;
+            transform.localScale = Vector2.one;
         }
 
         public void OnPointerClick(PointerEventData eventData) {
