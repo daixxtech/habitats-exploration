@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2649340032
+CRC: 283725727
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 676306c7b3b72f93f2fc1dba6b7d4f7a
+    Hash: 235b68bfae74dbc97f06deeeb9fdcf95
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0ee43163ec82f4920940e96b28b1309d
@@ -83,6 +83,7 @@ Assets:
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_minimap_clue.png
 - Assets/Res/Prefabs/Scene/Scene_Clue.prefab
 - Assets/Res/Prefabs/UI/UI_Completion.prefab
+- Assets/Res/Textures/UI/HUD/tex_ui_hud_settings.png
 - Assets/Res/Prefabs/UI/UI_HUD.prefab
 - Assets/Res/Prefabs/Scene/Scene_UnityChan.prefab
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_search.png
@@ -90,7 +91,6 @@ Assets:
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_minimap_player.png
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_joystick.png
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_jump.png
-- Assets/Res/Textures/UI/HUD/tex_ui_hud_settings.png
 Dependencies:
 - D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/type_fonts
 - D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/type_tex_ui_general

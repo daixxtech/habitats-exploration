@@ -12,23 +12,27 @@ namespace Game.Views.UI {
     [UIBind(UIDef.LOADING)]
     public class LoadingUIHandler : UIHandlerBase {
         private Text _tipsTxt;
-        private Image _progressBarImg;
+        private RectTransform _valueRect;
+        private float _startValue, _diffValue;
 
         private void Awake() {
-            _tipsTxt = transform.Find("Tips/Text").GetComponent<Text>();
-            _progressBarImg = transform.Find("ProgressBar/ValueImg").GetComponent<Image>();
+            _tipsTxt = transform.Find("Root/Content/TipsTxt").GetComponent<Text>();
+            _valueRect = transform.Find("Root/Content/ProgressBar/ValueImg").GetComponent<RectTransform>();
+            Vector2 sizeDelta = _valueRect.sizeDelta;
+            _startValue = sizeDelta.y;
+            _diffValue = sizeDelta.x - sizeDelta.y;
         }
 
         public void OnEnable() {
             _tipsTxt.gameObject.SetActive(false);
-            _progressBarImg.gameObject.SetActive(false);
+            _valueRect.gameObject.SetActive(false);
             var tipsConfs = CLoadingTips.GetArray();
             if (tipsConfs.Length != 0) {
                 int randomIndex = Random.Range(0, tipsConfs.Length);
                 _tipsTxt.text = tipsConfs[randomIndex].content;
             }
             _tipsTxt.gameObject.SetActive(true);
-            _progressBarImg.gameObject.SetActive(true);
+            _valueRect.gameObject.SetActive(true);
 
             if (UIModule.Instance.Parameter is string sceneName) {
                 AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
@@ -41,12 +45,14 @@ namespace Game.Views.UI {
         private IEnumerator RefreshProgress(AsyncOperation operation) {
             operation.allowSceneActivation = false;
             float curValue = 0, targetValue;
-            _progressBarImg.fillAmount = 0;
+            Vector2 sizeDelta = new Vector2(_startValue, _startValue);
+            _valueRect.sizeDelta = sizeDelta;
             // 进度条平滑加载至当前异步操作的进度值
             while (operation.progress < 0.9F) {
                 targetValue = (int) (operation.progress * 100);
                 while (curValue < targetValue) {
-                    _progressBarImg.fillAmount = ++curValue / 100.0F;
+                    sizeDelta.x = _startValue + _diffValue * (++curValue / 100.0F);
+                    _valueRect.sizeDelta = sizeDelta;
                     yield return CoroutineUtil.EndOfFrame;
                 }
                 yield return CoroutineUtil.EndOfFrame;
@@ -54,10 +60,10 @@ namespace Game.Views.UI {
             // 当异步加载至 90% 时，平滑加载剩余 10%
             targetValue = 100;
             while (curValue < targetValue) {
-                _progressBarImg.fillAmount = ++curValue / 100.0F;
+                sizeDelta.x = _startValue + _diffValue * (++curValue / 100.0F);
+                _valueRect.sizeDelta = sizeDelta;
                 yield return CoroutineUtil.EndOfFrame;
             }
-            yield return new WaitForSeconds(0.5F);
             operation.allowSceneActivation = true;
         }
     }

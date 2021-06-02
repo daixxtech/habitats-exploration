@@ -15,8 +15,8 @@ namespace Game.Views.UI {
         private GameObject _notAvailableTipsCpnt;
 
         private void Awake() {
-            _notAvailableTipsCpnt = transform.Find("Root/NotAvailableTips").gameObject;
-            _habitatCtnr = transform.Find("Root/Habitats/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
+            _notAvailableTipsCpnt = transform.Find("Root/Content/NotAvailableTips").gameObject;
+            _habitatCtnr = transform.Find("Root/Content/List/Ctnr/Viewport/Content").gameObject.AddComponent<UIContainer>();
 
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.HABITATS));

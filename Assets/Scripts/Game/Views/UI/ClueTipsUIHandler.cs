@@ -14,9 +14,9 @@ namespace Game.Views.UI {
         private ScrollRect _descriptionScrollRect;
 
         private void Awake() {
-            _nameTxt = transform.Find("Root/Tips/NameTxt").GetComponent<Text>();
-            _descriptionTxt = transform.Find("Root/Tips/Description/Viewport/Content").GetComponent<Text>();
-            _descriptionScrollRect = transform.Find("Root/Tips/Description").GetComponent<ScrollRect>();
+            _nameTxt = transform.Find("Root/Content/NameTxt").GetComponent<Text>();
+            _descriptionTxt = transform.Find("Root/Content/Description/Viewport/Content").GetComponent<Text>();
+            _descriptionScrollRect = transform.Find("Root/Content/Description").GetComponent<ScrollRect>();
 
             Button closeBtn = transform.Find("Root/Header/CloseBtn").GetComponent<Button>();
             closeBtn.onClick.AddListener(() => {

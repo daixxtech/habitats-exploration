@@ -16,7 +16,7 @@ namespace Game.Views.UI {
             startBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.HABITATS));
             Button guideBtn = transform.Find("Root/Options/GuideBtn").GetComponent<Button>();
             guideBtn.onClick.AddListener(() => { _guideCpnt.SetActive(true); });
-            Button guideCloseBtn = transform.Find("Root/Guide/Header/CloseBtn").GetComponent<Button>();
+            Button guideCloseBtn = transform.Find("Root/Guide/Root/Header/CloseBtn").GetComponent<Button>();
             guideCloseBtn.onClick.AddListener(() => _guideCpnt.SetActive(false));
             Button archiveBtn = transform.Find("Root/Options/ArchiveBtn").GetComponent<Button>();
             archiveBtn.onClick.AddListener(() => UIModule.Instance.ShowUI(UIDef.ARCHIVE));

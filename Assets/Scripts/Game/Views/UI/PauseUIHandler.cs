@@ -9,9 +9,9 @@ namespace Game.Views.UI {
     [UIBind(UIDef.PAUSE)]
     public class PauseUIHandler : UIHandlerBase {
         private void Awake() {
-            Button continueBtn = transform.Find("Root/Menu/ContinueBtn").GetComponent<Button>();
+            Button continueBtn = transform.Find("Root/Content/ContinueBtn").GetComponent<Button>();
             continueBtn.onClick.AddListener(() => UIModule.Instance.HideUI(UIDef.PAUSE));
-            Button backBtn = transform.Find("Root/Menu/BackBtn").GetComponent<Button>();
+            Button backBtn = transform.Find("Root/Content/BackBtn").GetComponent<Button>();
             backBtn.onClick.AddListener(() => {
                 UIModule.Instance.HideUIAll();
                 UIModule.Instance.ShowUI(UIDef.LOADING, SceneDef.START);
