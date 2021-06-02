@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 4246599574
+CRC: 2580430984
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -24,4 +24,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_6:
       Name: textures_habitat
+      Dependencies: {}
+    Info_7:
+      Name: textures_animal
       Dependencies: {}
