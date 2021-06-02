@@ -8,12 +8,14 @@ using UnityEngine;
 namespace Game.Views.Scene {
     [SceneBind(SceneDef.HABITAT_VALLEY)]
     public class HabitatValleySceneHandler : MonoBehaviour {
-        private void Awake() {
-            GameObject.FindGameObjectWithTag("MainCamera").AddComponent<CameraController>();
-            GameObject.FindGameObjectWithTag("Player").AddComponent<PlayerController>();
-        }
-
         private void Start() {
+            GameObject characterPrefab = AssetModule.Instance.LoadAsset<GameObject>("Scene_UnityChan.prefab");
+            CScene sceneConf = GameSceneModule.Instance.GetCurSceneConf();
+            Vector3 position = new Vector3(sceneConf.birthPointPosition[0], sceneConf.birthPointPosition[1], sceneConf.birthPointPosition[2]);
+            Vector3 angles = new Vector3(sceneConf.birthPointAngles[0], sceneConf.birthPointAngles[1], sceneConf.birthPointAngles[2]);
+            Instantiate(characterPrefab, position, Quaternion.Euler(angles), transform).AddComponent<PlayerController>();
+            GameObject.FindGameObjectWithTag("MainCamera").AddComponent<CameraController>();
+
             UIModule.Instance.HideUIAll();
             UIModule.Instance.ShowUI(UIDef.HUD);
 

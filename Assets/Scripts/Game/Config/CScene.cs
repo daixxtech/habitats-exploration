@@ -13,11 +13,17 @@ namespace Game.Config {
         public readonly string name;
         /// <summary> 栖息地 ID </summary>
         public readonly int habitatID;
+        /// <summary> 出生点位置 </summary>
+        public readonly float[] birthPointPosition;
+        /// <summary> 出生点角度 </summary>
+        public readonly float[] birthPointAngles;
 
-        public CScene(int id, string name, int habitatID){
+        public CScene(int id, string name, int habitatID, float[] birthPointPosition, float[] birthPointAngles){
             this.id = id;
             this.name = name;
             this.habitatID = habitatID;
+            this.birthPointPosition = birthPointPosition;
+            this.birthPointAngles = birthPointAngles;
         }
 
         private static Dictionary<int, CScene> _Dict;
