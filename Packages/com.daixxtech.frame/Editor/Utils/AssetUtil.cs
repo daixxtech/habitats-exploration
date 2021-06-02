@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Frame.Editor.Utils {
     public static class AssetUtil {
-        [MenuItem("Tools/Assets/Build AssetBundle")]
+        [MenuItem("FrameTools/Assets/Build AssetBundle")]
         public static void BuildAssetBundle() {
             if (!Directory.Exists(Application.streamingAssetsPath)) {
                 Directory.CreateDirectory(Application.streamingAssetsPath);

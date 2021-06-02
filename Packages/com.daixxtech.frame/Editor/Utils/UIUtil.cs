@@ -6,7 +6,7 @@ namespace Frame.Editor.Utils {
     public static class UIUtil {
         private static readonly StringBuilder Builder = new StringBuilder();
 
-        [MenuItem("Tools/UI/Copy UI Path %#X")]
+        [MenuItem("FrameTools/UI/Copy UI Path %#X")]
         public static void CopyUITransformPath() {
             Transform cur = Selection.activeTransform;
             if (cur == null) {
