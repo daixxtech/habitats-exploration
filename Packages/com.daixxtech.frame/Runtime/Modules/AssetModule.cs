@@ -53,24 +53,25 @@ namespace Frame.Runtime.Modules {
             if (!_assetDict.TryGetValue(name, out string bundleName)) {
                 return null;
             }
-            if (!_bundleDict.TryGetValue(bundleName, out var bundle)) {
-                bundle = LoadBundle(bundleName);
-            }
+            AssetBundle bundle = LoadBundle(bundleName);
             return bundle ? bundle.LoadAsset<T>(name) : null;
         }
 
         private AssetBundle LoadBundle(string name) {
+            if (_bundleDict.TryGetValue(name, out var bundle)) {
+                return bundle;
+            }
+
             string path = Path.Combine(Application.streamingAssetsPath, name);
             UnityWebRequest request = UnityWebRequestAssetBundle.GetAssetBundle(path);
             UnityWebRequestAsyncOperation operation = request.SendWebRequest();
             while (!operation.isDone) { }
 
-            AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(request);
+            bundle = DownloadHandlerAssetBundle.GetContent(request);
             if (bundle) {
                 string[] dependencies = _dependenciesDict[name];
                 if (dependencies != null) {
-                    int length = dependencies.Length;
-                    for (int i = 0; i < length; i++) {
+                    for (int i = 0, length = dependencies.Length; i < length; i++) {
                         LoadBundle(dependencies[i]);
                     }
                 }
