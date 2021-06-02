@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 540493762
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: fedb6a0178beca97eed4afe02cfdb24c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Config/CLoadingTips.json
+- Assets/Res/Config/CScene.json
+- Assets/Res/Config/CAnimal.json
+- Assets/Res/Config/CClue.json
+- Assets/Res/Config/CHabitat.json
+Dependencies: []

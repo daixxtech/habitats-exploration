@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3379420095
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 32cf201b8423f519df428f5c5ea94494
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Textures/Animal/tex_animal_asian-wild-cat.png
+- Assets/Res/Textures/Animal/tex_animal_golden-monkey.png
+- Assets/Res/Textures/Animal/tex_animal_giant-panda.png
+- Assets/Res/Textures/Animal/tex_animal_south-chinese-tiger.png
+Dependencies: []

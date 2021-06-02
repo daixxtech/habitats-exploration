@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+CRC: 1084326754
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5805681a3c831379ad94d1c72c8b062c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Textures/UI/General/tex_ui_general_back.png
+- Assets/Res/Textures/UI/General/tex_ui_general_lock.png
+- Assets/Res/Textures/UI/General/tex_ui_general_square.png
+- Assets/Res/Textures/UI/General/tex_ui_general_button_background.png
+- Assets/Res/Textures/UI/General/tex_ui_general_close.png
+- Assets/Res/Textures/UI/General/tex_ui_general_circle.png
+Dependencies: []
