@@ -47,7 +47,7 @@ namespace Game.Views.UI {
         }
 
         public void OnEnable() {
-            CHabitat habitatConf = HabitatModule.Instance.GetCurHabitatConf();
+            CHabitat habitatConf = CHabitat.Get(GameSceneModule.Instance.GetCurSceneConf().habitatID);
             if (habitatConf != null) {
                 _minimapTxt.text = habitatConf.name;
                 _minimapImg.sprite = AssetModule.Instance.LoadAsset<Sprite>(habitatConf.minimapImg);

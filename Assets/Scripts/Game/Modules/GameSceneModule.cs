@@ -4,11 +4,11 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 
 namespace Game.Modules {
-    public class HabitatModule : IModule {
-        private static HabitatModule _Instance;
-        public static HabitatModule Instance => _Instance ??= new HabitatModule();
+    public class GameSceneModule : IModule {
+        private static GameSceneModule _Instance;
+        public static GameSceneModule Instance => _Instance ??= new GameSceneModule();
 
-        private CHabitat _habitatConf;
+        private CScene _sceneConf;
 
         public bool NeedUpdate { get; } = false;
 
@@ -23,12 +23,11 @@ namespace Game.Modules {
         public void Update() { }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            CScene sceneConf = CScene.GetArray().FirstOrDefault(conf => conf.name == scene.name);
-            _habitatConf = sceneConf == null ? null : CHabitat.Get(sceneConf.habitatID);
+            _sceneConf = CScene.GetArray().FirstOrDefault(conf => conf.name == scene.name);
         }
 
-        public CHabitat GetCurHabitatConf() {
-            return _habitatConf;
+        public CScene GetCurSceneConf() {
+            return _sceneConf;
         }
     }
 }

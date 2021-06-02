@@ -17,7 +17,7 @@ namespace Game.Modules {
 
         public void Init() {
             _clueStateDict = new Dictionary<int, bool>();
-            
+
             SceneManager.sceneLoaded += OnSceneLoaded;
             Facade.Player.OnInteractedClue += UnlockClue;
         }
@@ -30,7 +30,7 @@ namespace Game.Modules {
         public void Update() { }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-            CHabitat habitatConf = HabitatModule.Instance.GetCurHabitatConf();
+            CHabitat habitatConf = CHabitat.Get(GameSceneModule.Instance.GetCurSceneConf().habitatID);
             if (habitatConf == null) {
                 _clueConfs = null;
                 LeftLockedClueCount = 0;

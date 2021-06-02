@@ -18,8 +18,8 @@ namespace Game {
             _moduleLs.Add(AssetModule.Instance);
             _moduleLs.Add(InputModule.Instance);
             // 功能模块
+            _moduleLs.Add(GameSceneModule.Instance);
             _moduleLs.Add(ArchiveModule.Instance);
-            _moduleLs.Add(HabitatModule.Instance);
             _moduleLs.Add(ClueModule.Instance);
             _moduleLs.Add(NoticeModule.Instance);
             // 模块初始化
