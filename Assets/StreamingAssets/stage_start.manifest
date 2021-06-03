@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2715982114
+CRC: 769071858
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5beabce8bfaed0808f678d3285fd620f
+    Hash: 0703a7dcc94db8ced65605229e79101f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 808a27811fc37ae0c62cd88c35e3173b
@@ -59,7 +59,7 @@ Assets:
 - Assets/Res/Prefabs/UI/UI_Archive.prefab
 - Assets/Res/Textures/UI/Start/tex_ui_start_guide.png
 - Assets/Res/Prefabs/UI/UI_Start.prefab
-- Assets/Res/Textures/UI/Start/tex_ui_start_quit.png
+- Assets/Res/Textures/UI/Start/tex_ui_start_exit.png
 - Assets/Res/Prefabs/UI/UI_Loading.prefab
 Dependencies:
 - D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/type_fonts

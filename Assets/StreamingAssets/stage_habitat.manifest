@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 283725727
+CRC: 3450692300
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 235b68bfae74dbc97f06deeeb9fdcf95
+    Hash: 21f4190a5f11ea6619d5e1c416c950a2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 0ee43163ec82f4920940e96b28b1309d
@@ -80,7 +80,9 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Prefabs/UI/UI_ClueTips.prefab
+- Assets/Res/Textures/UI/HUD/tex_ui_hud_continue.png
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_minimap_clue.png
+- Assets/Res/Textures/UI/HUD/tex_ui_hud_quit.png
 - Assets/Res/Prefabs/Scene/Scene_Clue.prefab
 - Assets/Res/Prefabs/UI/UI_Completion.prefab
 - Assets/Res/Textures/UI/HUD/tex_ui_hud_settings.png
