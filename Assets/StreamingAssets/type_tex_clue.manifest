@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3394133739
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d0306b6633f7b7b1d92f156ba2fdb11c
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Res/Textures/Clue/tex_clue_giant-panda_thumb.png
+- Assets/Res/Textures/Clue/tex_clue_south-chinese-tiger_distribution-and-habits.png
+- Assets/Res/Textures/Clue/tex_clue_south-chinese-tiger_predatory-behavior.png
+- Assets/Res/Textures/Clue/tex_clue_giant-panda_stool.png
+Dependencies: []

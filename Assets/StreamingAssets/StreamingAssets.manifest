@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3192792794
+CRC: 113267293
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -30,3 +30,6 @@ AssetBundleManifest:
       Dependencies:
         Dependency_0: type_fonts
         Dependency_1: type_tex_ui_general
+    Info_8:
+      Name: type_tex_clue
+      Dependencies: {}
