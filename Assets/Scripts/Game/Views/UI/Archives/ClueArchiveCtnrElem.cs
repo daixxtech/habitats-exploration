@@ -6,9 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Game.Views.UI.Archives {
-    public class ClueArchiveCtnrElem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler {
-        private static readonly Vector2 _ClickScale = new Vector2(0.975F, 0.975F);
-
+    public class ClueArchiveCtnrElem : MonoBehaviour, IPointerClickHandler {
         private Text _nameTxt;
         private GameObject _lockedCpnt;
 
@@ -26,15 +24,7 @@ namespace Game.Views.UI.Archives {
             _lockedCpnt.SetActive(!ArchiveModule.Instance.GetClueArchiveState(_conf.id));
         }
 
-        public void OnPointerDown(PointerEventData eventData) {
-            transform.localScale = _ClickScale;
-        }
-
-        public void OnPointerUp(PointerEventData eventData) {
-            transform.localScale = Vector2.one;
-        }
-
-        public void OnPointerClick(PointerEventData eventData) {
+        void IPointerClickHandler.OnPointerClick(PointerEventData eventData) {
             onClicked?.Invoke(_conf);
         }
     }

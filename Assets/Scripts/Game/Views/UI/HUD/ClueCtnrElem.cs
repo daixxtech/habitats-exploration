@@ -7,6 +7,7 @@ using UnityEngine.UI;
 namespace Game.Views.UI.HUD {
     public class ClueCtnrElem : MonoBehaviour {
         private Button _button;
+        private GameObject _lockedCpnt;
         private Text _nameTxt;
 
         private CClue _conf;
@@ -17,6 +18,7 @@ namespace Game.Views.UI.HUD {
             _button = transform.GetComponent<Button>();
             _button.onClick.AddListener(() => onClicked?.Invoke(_conf));
             _nameTxt = transform.Find("Text").GetComponent<Text>();
+            _lockedCpnt = transform.Find("Locked").gameObject;
         }
 
         private void OnEnable() {
@@ -31,6 +33,7 @@ namespace Game.Views.UI.HUD {
             _conf = conf;
             _unlocked = ClueModule.Instance.GetClueUnlocked(_conf.id);
             _button.interactable = _unlocked;
+            _lockedCpnt.SetActive(!_unlocked);
             _nameTxt.text = _unlocked ? _conf.name : "线索未发现";
         }
 
