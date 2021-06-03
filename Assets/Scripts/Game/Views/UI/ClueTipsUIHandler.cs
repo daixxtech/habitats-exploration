@@ -9,11 +9,13 @@ using UnityEngine.UI;
 namespace Game.Views.UI {
     [UIBind(UIDef.CLUE_TIPS)]
     public class ClueTipsUIHandler : UIHandlerBase {
+        private Image _image;
         private Text _nameTxt;
         private Text _descriptionTxt;
         private ScrollRect _descriptionScrollRect;
 
         private void Awake() {
+            _image = transform.Find("Root/Content/Image").GetComponent<Image>();
             _nameTxt = transform.Find("Root/Content/NameTxt").GetComponent<Text>();
             _descriptionTxt = transform.Find("Root/Content/Description/Viewport/Content").GetComponent<Text>();
             _descriptionScrollRect = transform.Find("Root/Content/Description").GetComponent<ScrollRect>();
@@ -29,6 +31,7 @@ namespace Game.Views.UI {
 
         public void OnEnable() {
             if (UIModule.Instance.Parameter is CClue conf) {
+                _image.sprite = AssetModule.Instance.LoadAsset<Sprite>(conf.image);
                 _nameTxt.text = conf.name;
                 _descriptionTxt.text = conf.description;
                 _descriptionScrollRect.verticalNormalizedPosition = 1;
