@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4235958849
+CRC: 3444994860
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0aac79a19da836e75d73e96c68e95f06
+    Hash: b503c6b67dc60114a749250a696f19ef
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
@@ -16,4 +16,5 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Textures/Minimap/tex_minimap_valley.png
+- Assets/Res/Textures/Minimap/tex_minimap_forest.png
 Dependencies: []

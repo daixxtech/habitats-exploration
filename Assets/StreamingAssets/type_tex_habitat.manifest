@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 404943258
+CRC: 1410338436
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 22a3427dee7e964a1106455dcadeee8a
+    Hash: aa10f0885c1da2bddfdf6afb3ecf38c2
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
@@ -16,4 +16,5 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Textures/Habitat/tex_habitat_valley.png
+- Assets/Res/Textures/Habitat/tex_habitat_forest.png
 Dependencies: []
