@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1933859003
+CRC: 850741313
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -32,4 +32,7 @@ AssetBundleManifest:
         Dependency_1: type_tex_ui_general
     Info_8:
       Name: type_tex_clue
+      Dependencies: {}
+    Info_9:
+      Name: stage_analyse
       Dependencies: {}

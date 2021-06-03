@@ -26,6 +26,16 @@ namespace Game {
             foreach (var module in _moduleLs) {
                 module.Init();
             }
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            /* 加载控制台及分析器插件 */
+            GameObject consoleGO = Instantiate(AssetModule.Instance.LoadAsset<GameObject>("IngameDebugConsole.prefab"));
+            DestroyImmediate(consoleGO.transform.Find("EventSystem").gameObject);
+            Canvas consoleCanvas = consoleGO.GetComponent<Canvas>();
+            consoleCanvas.worldCamera = UIModule.Instance.UICamera;
+            GameObject analyzerGO = Instantiate(AssetModule.Instance.LoadAsset<GameObject>("[Graphy].prefab"), transform);
+            Canvas analyzerCanvas = analyzerGO.GetComponent<Canvas>();
+            analyzerCanvas.worldCamera = UIModule.Instance.UICamera;
+#endif
             /* 进入 Start 场景 */
             SceneManager.LoadScene(SceneDef.START);
             Application.targetFrameRate = 60;
