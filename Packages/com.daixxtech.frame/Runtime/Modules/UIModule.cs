@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Frame.Runtime.Modules {
     public class UIModule : IModule {
-        private const int DESTROY_TIME = 10;
+        private const int DESTROY_TIME = 30;
 
         private static UIModule _Instance;
         public static UIModule Instance => _Instance ??= new UIModule();
