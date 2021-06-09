@@ -1,15 +1,19 @@
 ManifestFileVersion: 0
-CRC: 82524842
+CRC: 824073743
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 670cda7edfefba0a2d0ecfd156ada359
+    Hash: 33ee9a75d9a56255873e8878028e0f2b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+    Hash: f2013514fe9cc708c84fd1a7cbf968bb
 HashAppended: 0
 ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 48
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -17,8 +21,10 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Res/Textures/UI/General/tex_ui_general_back.png
 - Assets/Res/Textures/UI/General/tex_ui_general_lock.png
+- Assets/Res/Materials/UIHeaderGaussianBlurMaterial.mat
 - Assets/Res/Textures/UI/General/tex_ui_general_circle-blur.png
 - Assets/Res/Textures/UI/General/tex_ui_general_checkmark.png
+- Assets/Res/Shaders/UIGaussianBlurShader.shader
 - Assets/Res/Textures/UI/General/tex_ui_general_square.png
 - Assets/Res/Textures/UI/General/tex_ui_general_button-background.png
 - Assets/Res/Textures/UI/General/tex_ui_general_close.png

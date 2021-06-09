@@ -1,15 +1,17 @@
 ManifestFileVersion: 0
-CRC: 1445899084
+CRC: 979530886
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3a42c62c82084f8efb2df6aac3a165d2
+    Hash: 8d447e7d285865569f37feb838d12910
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f1af010b9fe9fc8311e9118a484b90a6
+    Hash: 785039813e9b6766e3d6a1be5698b35a
 HashAppended: 0
 ClassTypes:
 - Class: 1
+  Script: {instanceID: 0}
+- Class: 21
   Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
@@ -53,14 +55,17 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Res/Textures/UI/Start/tex_ui_start_archive.png
 - Assets/Res/Textures/UI/Background/tex_ui_background_start.jpg
+- Assets/Res/Textures/UI/Start/tex_ui_start_archive.png
+- Assets/Res/Textures/UI/Background/tex_ui_background_loading.jpg
 - Assets/Res/Prefabs/UI/UI_Habitats.prefab
 - Assets/Res/Prefabs/UI/UI_Archive.prefab
 - Assets/Res/Textures/UI/Start/tex_ui_start_guide.png
 - Assets/Res/Prefabs/UI/UI_Start.prefab
 - Assets/Res/Textures/UI/Start/tex_ui_start_exit.png
 - Assets/Res/Prefabs/UI/UI_Loading.prefab
+- Assets/Res/Textures/UI/Background/tex_ui_background_habitats.jpg
+- Assets/Res/Textures/UI/Background/tex_ui_background_archive.jpg
 Dependencies:
-- D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/type_fonts
-- D:/university/graduation-design/habitats-exploration/Assets/StreamingAssets/type_tex_ui_general
+- D:/workspace/code/projects/habitats-exploration/Assets/StreamingAssets/type_fonts
+- D:/workspace/code/projects/habitats-exploration/Assets/StreamingAssets/type_tex_ui_general
